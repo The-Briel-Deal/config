@@ -1,0 +1,12 @@
+[Unit]
+Description=Palworld Server
+
+[Service]
+Type=simple
+User=gf-hypr
+WorkingDirectory=/home/gf-hypr/.steam/steam/steamapps/common/PalServer
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl:/usr/lib/rustup/bin
+ExecStart=/usr/bin/screen -DmS palserver /home/gf-hypr/.steam/steam/steamapps/common/PalServer/PalServer.sh
+ExecStop=/usr/bin/screen -S palserver -X quit
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,39 @@
+2024-01-06 18:18:51.454 [info] Log level: Info
+2024-01-06 18:18:51.454 [info] Validating found git in: "git"
+2024-01-06 18:18:51.454 [info] Using git "2.43.0" from "git"
+2024-01-06 18:18:51.454 [info] > git rev-parse --show-toplevel [2ms]
+2024-01-06 18:18:51.454 [info] > git rev-parse --git-dir --git-common-dir [1ms]
+2024-01-06 18:18:51.454 [info] Open repository: /home/gf-hypr/Configuration
+2024-01-06 18:18:51.454 [info] > git config --get commit.template [4ms]
+2024-01-06 18:18:51.456 [info] > git rev-parse --show-toplevel [3ms]
+2024-01-06 18:18:51.463 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [4ms]
+2024-01-06 18:18:51.467 [warning] ENOENT: no such file or directory, open '/home/gf-hypr/Configuration/.git/refs/remotes/origin/master'
+2024-01-06 18:18:51.467 [info] > git rev-parse --git-dir --git-common-dir [4ms]
+2024-01-06 18:18:51.469 [info] Open repository: /home/gf-hypr/Configuration/config
+2024-01-06 18:18:51.476 [info] > git rev-parse refs/remotes/origin/master [9ms]
+2024-01-06 18:18:51.481 [info] > git rev-parse --show-toplevel [4ms]
+2024-01-06 18:18:51.481 [info] > git config --get commit.template [8ms]
+2024-01-06 18:18:51.488 [info] > git status -z -uall [8ms]
+2024-01-06 18:18:51.496 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [8ms]
+2024-01-06 18:18:51.496 [info] > git rev-parse --show-toplevel [12ms]
+2024-01-06 18:18:51.499 [warning] ENOENT: no such file or directory, open '/home/gf-hypr/Configuration/config/.git/refs/remotes/origin/main'
+2024-01-06 18:18:51.503 [info] > git config --get commit.template [8ms]
+2024-01-06 18:18:51.503 [info] > git rev-parse refs/remotes/origin/main [4ms]
+2024-01-06 18:18:51.552 [info] > git status -z -uall [46ms]
+2024-01-06 18:18:51.552 [info] > git rev-parse --show-toplevel [49ms]
+2024-01-06 18:18:51.558 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/master refs/remotes/master [10ms]
+2024-01-06 18:18:51.792 [warning] ENOENT: no such file or directory, open '/home/gf-hypr/Configuration/.git/refs/remotes/origin/master'
+2024-01-06 18:18:51.797 [info] > git rev-parse --show-toplevel [240ms]
+2024-01-06 18:18:51.799 [info] > git config --get commit.template [3ms]
+2024-01-06 18:18:51.799 [info] > git rev-parse refs/remotes/origin/master [8ms]
+2024-01-06 18:18:51.807 [info] > git status -z -uall [4ms]
+2024-01-06 18:18:51.816 [info] > git for-each-ref --format=%(refname)%00%(upstream:short)%00%(objectname)%00%(upstream:track)%00%(upstream:remotename)%00%(upstream:remoteref) refs/heads/main refs/remotes/main [3ms]
+2024-01-06 18:18:51.838 [warning] ENOENT: no such file or directory, open '/home/gf-hypr/Configuration/config/.git/refs/remotes/origin/main'
+2024-01-06 18:18:51.838 [info] > git show --textconv :10-ignores.sh [17ms]
+2024-01-06 18:18:51.838 [info] > git show --textconv :99-unsorted.sh [8ms]
+2024-01-06 18:18:51.838 [info] > git ls-files --stage -- /home/gf-hypr/Configuration/config/10-ignores.sh [13ms]
+2024-01-06 18:18:51.840 [info] > git rev-parse refs/remotes/origin/main [3ms]
+2024-01-06 18:18:51.843 [info] > git ls-files --stage -- /home/gf-hypr/Configuration/config/99-unsorted.sh [10ms]
+2024-01-06 18:18:51.863 [info] > git status -z -uall [20ms]
+2024-01-06 18:18:52.152 [info] > git check-ignore -v -z --stdin [6ms]
+2024-01-06 18:18:52.152 [info] > git check-ignore -v -z --stdin [1ms]
