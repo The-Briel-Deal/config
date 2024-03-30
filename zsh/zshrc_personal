@@ -1,4 +1,5 @@
 alias vim=/usr/bin/nvim
+eval "$(zoxide init zsh)"
 
 # Setting up fbterm
 #case "$TERM" in

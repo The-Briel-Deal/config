@@ -1,0 +1,63 @@
+[
+  {
+    "config_version": 2,
+    "id": "ca08610b-9774-4baf-adf5-3bf2eab9db41",
+    "archive_prefix": "b87557-",
+    "repo_id": "ac5f29af187a4cb63c5e37e80f6ce7e19529332d10980c8ae2182fe1e3b7cb69",
+    "repo": {
+      "type": "Remote",
+      "uri": "ssh://root@orangepi5/borg_backup",
+      "settings": {
+        "command_line_args": []
+      }
+    },
+    "encrypted": false,
+    "encryption_mode": "none",
+    "include": [
+      "",
+      "/etc",
+      "/home"
+    ],
+    "exclude": [
+      {
+        "PathPrefix": ".local/share/Steam"
+      },
+      {
+        "PathPrefix": ".local/share/supertuxkart"
+      },
+      {
+        "PathPrefix": ".steam/root/steamapps"
+      },
+      {
+        "PathPrefix": "Downloads"
+      },
+      "Caches",
+      "Trash",
+      "FlatpakApps",
+      "VmsContainers"
+    ],
+    "schedule": {
+      "enabled": true,
+      "settings": {
+        "run_on_battery": false
+      },
+      "frequency": {
+        "Daily": {
+          "preferred_time": "12:00:00"
+        }
+      }
+    },
+    "prune": {
+      "enabled": false,
+      "keep": {
+        "hourly": 48,
+        "daily": 14,
+        "weekly": 4,
+        "monthly": 12,
+        "yearly": 10
+      }
+    },
+    "title": "Remote Location",
+    "user_scripts": {}
+  }
+]

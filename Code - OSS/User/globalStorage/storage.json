@@ -3,10 +3,12 @@
     "profileAssociations": {
         "workspaces": {
             "file:///home/gf-hypr/Configuration": "__default__profile__",
-            "file:///var/tmp/systemd-private-26df9dd98d6b4092b1549acea5f2b204-systemd-logind.service-P5k6o6": "__default__profile__"
+            "file:///var/tmp/systemd-private-26df9dd98d6b4092b1549acea5f2b204-systemd-logind.service-P5k6o6": "__default__profile__",
+            "file:///home/gf-hypr/src": "__default__profile__",
+            "file:///home/gf-hypr/.config": "__default__profile__"
         },
         "emptyWindows": {
-            "1706000075817": "__default__profile__"
+            "1710703089540": "__default__profile__"
         }
     },
     "profileAssociationsMigration": true,
@@ -17,7 +19,7 @@
         "folders": [],
         "emptyWindows": [
             {
-                "backupFolder": "1706000075817"
+                "backupFolder": "1710703089540"
             }
         ]
     },
@@ -59,10 +61,33 @@
                             "items": [
                                 {
                                     "id": "workbench.action.reopenClosedEditor",
-                                    "label": "&&Reopen Closed Editor"
+                                    "label": "&&Reopen Closed Editor",
+                                    "enabled": false
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/gf-hypr/.config",
+                                        "path": "/home/gf-hypr/.config",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/.config"
+                                },
+                                {
+                                    "id": "openRecentFolder",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/gf-hypr/src",
+                                        "path": "/home/gf-hypr/src",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/src"
                                 },
                                 {
                                     "id": "openRecentFolder",
@@ -88,6 +113,28 @@
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/gf-hypr/Downloads/patch.txt",
+                                        "path": "/home/gf-hypr/Downloads/patch.txt",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Downloads/patch.txt"
+                                },
+                                {
+                                    "id": "openRecentFile",
+                                    "uri": {
+                                        "$mid": 1,
+                                        "external": "file:///home/gf-hypr/Downloads/debian-live-12.5.0-amd64-standard.iso.contents",
+                                        "path": "/home/gf-hypr/Downloads/debian-live-12.5.0-amd64-standard.iso.contents",
+                                        "scheme": "file"
+                                    },
+                                    "enabled": true,
+                                    "label": "~/Downloads/debian-live-12.5.0-amd64-standard.iso.contents"
                                 },
                                 {
                                     "id": "openRecentFile",
@@ -137,13 +184,11 @@
                     },
                     {
                         "id": "workbench.action.files.save",
-                        "label": "&&Save",
-                        "enabled": false
+                        "label": "&&Save"
                     },
                     {
                         "id": "workbench.action.files.saveAs",
-                        "label": "Save &&As...",
-                        "enabled": false
+                        "label": "Save &&As..."
                     },
                     {
                         "id": "saveAll",
@@ -279,13 +324,11 @@
                     },
                     {
                         "id": "workbench.action.files.revert",
-                        "label": "Re&&vert File",
-                        "enabled": false
+                        "label": "Re&&vert File"
                     },
                     {
                         "id": "workbench.action.closeActiveEditor",
-                        "label": "&&Close Editor",
-                        "enabled": false
+                        "label": "&&Close Editor"
                     },
                     {
                         "id": "workbench.action.closeWindow",
@@ -330,13 +373,11 @@
                     },
                     {
                         "id": "actions.find",
-                        "label": "&&Find",
-                        "enabled": false
+                        "label": "&&Find"
                     },
                     {
                         "id": "editor.action.startFindReplaceAction",
-                        "label": "&&Replace",
-                        "enabled": false
+                        "label": "&&Replace"
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -482,7 +523,8 @@
                                 },
                                 {
                                     "id": "workbench.action.toggleSidebarVisibility",
-                                    "label": "&&Primary Side Bar"
+                                    "label": "&&Primary Side Bar",
+                                    "checked": true
                                 },
                                 {
                                     "id": "workbench.action.toggleAuxiliaryBar",
@@ -496,6 +538,10 @@
                                 {
                                     "id": "workbench.action.togglePanel",
                                     "label": "&&Panel"
+                                },
+                                {
+                                    "id": "toggle.toggleCustomTitleBar",
+                                    "label": "Custom Title Bar"
                                 },
                                 {
                                     "id": "vscode.menubar.separator"
@@ -513,6 +559,10 @@
                                                 "id": "workbench.action.activityBarLocation.side",
                                                 "label": "&&Side",
                                                 "checked": true
+                                            },
+                                            {
+                                                "id": "workbench.action.activityBarLocation.top",
+                                                "label": "&&Top"
                                             },
                                             {
                                                 "id": "workbench.action.activityBarLocation.hide",
@@ -599,6 +649,10 @@
                                                 "checked": true
                                             },
                                             {
+                                                "id": "workbench.action.editorActionsTitleBar",
+                                                "label": "Title Bar"
+                                            },
+                                            {
                                                 "id": "workbench.action.hideEditorActions",
                                                 "label": "Hidden"
                                             }
@@ -620,7 +674,8 @@
                                 },
                                 {
                                     "id": "editor.action.toggleStickyScroll",
-                                    "label": "&&Sticky Scroll"
+                                    "label": "&&Sticky Scroll",
+                                    "checked": true
                                 },
                                 {
                                     "id": "editor.action.toggleRenderWhitespace",
@@ -781,8 +836,7 @@
                     },
                     {
                         "id": "editor.action.toggleWordWrap",
-                        "label": "&&Word Wrap",
-                        "enabled": false
+                        "label": "&&Word Wrap"
                     }
                 ]
             },
@@ -799,7 +853,8 @@
                     },
                     {
                         "id": "workbench.action.navigateToLastEditLocation",
-                        "label": "&&Last Edit Location"
+                        "label": "&&Last Edit Location",
+                        "enabled": false
                     },
                     {
                         "id": "vscode.menubar.separator"
@@ -1079,6 +1134,10 @@
                                 {
                                     "id": "editor.debug.action.addLogPoint",
                                     "label": "&&Logpoint..."
+                                },
+                                {
+                                    "id": "editor.debug.action.triggerByBreakpoint",
+                                    "label": "&&Triggered Breakpoint..."
                                 }
                             ]
                         }
@@ -1452,6 +1511,11 @@
                 "isNative": false,
                 "userSettingsLabel": "ctrl+k ctrl+shift+\\"
             },
+            "workbench.action.copyEditorToNewWindow": {
+                "label": "Ctrl+K O",
+                "isNative": false,
+                "userSettingsLabel": "ctrl+k o"
+            },
             "workbench.action.toggleEditorGroupLayout": {
                 "label": "Shift+Alt+0",
                 "userSettingsLabel": "shift+alt+0"
@@ -1691,14 +1755,14 @@
             "editorPartMinWidth": 220,
             "titleBarHeight": 0,
             "activityBarWidth": 48,
-            "sideBarWidth": 0,
+            "sideBarWidth": 170,
             "statusBarHeight": 22,
             "windowBorder": false
         }
     },
     "windowsState": {
         "lastActiveWindow": {
-            "backupPath": "/home/gf-hypr/.config/Code - OSS/Backups/1706000075817",
+            "backupPath": "/home/gf-hypr/.config/Code - OSS/Backups/1710703089540",
             "uiState": {
                 "mode": 0,
                 "x": 768,
