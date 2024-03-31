@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/gf-hypr/.local/share/nvim/site/pack/packer/start/catppuccin",
     url = "https://github.com/catppuccin/nvim"
   },
+  fugitive = {
+    loaded = true,
+    path = "/home/gf-hypr/.local/share/nvim/site/pack/packer/start/fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
+  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/gf-hypr/.local/share/nvim/site/pack/packer/start/nvim-treesitter",

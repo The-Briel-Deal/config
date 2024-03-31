@@ -3,7 +3,9 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 
 	-- Use Packer
-	use 'wbthomason/packer.nvim'
+	use {
+		'wbthomason/packer.nvim'
+	}
 
 	-- Use Telescope For Fuzzy Finding (:
 	use {
@@ -17,10 +19,15 @@ return require('packer').startup(function(use)
 		run = ':TSUpdate'
 	}
 
-	-- Git Plugin for Vim
-	use { "tpope/vim-fugitive", as = "fugitive" }
+	-- Sweet Succulent Git Plugin for Vim 🤤
+	use { 
+		"tpope/vim-fugitive", 
+		as = "fugitive" 
+	}
 
 	-- Set Theme (Choosing flavor in catppuccin.lua)
-	use { "catppuccin/nvim", as = "catppuccin"}
+	use { 
+		"catppuccin/nvim", 
+		as = "catppuccin"}
 
 end)
