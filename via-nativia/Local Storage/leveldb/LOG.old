@@ -1,8 +1,0 @@
-2024/03/27-22:00:00.342 60592 Reusing MANIFEST /home/gf-hypr/.config/via-nativia/Local Storage/leveldb/MANIFEST-000001
-2024/03/27-22:00:00.342 60592 Recovering log #4
-2024/03/27-22:00:00.342 60592 Level-0 table #6: started
-2024/03/27-22:00:00.357 60592 Level-0 table #6: 26058 bytes OK
-2024/03/27-22:00:00.367 60592 Delete type=0 #4
-2024/03/27-22:04:30.396 6084c Level-0 table #9: started
-2024/03/27-22:04:30.402 6084c Level-0 table #9: 26152 bytes OK
-2024/03/27-22:04:30.413 6084c Delete type=0 #7

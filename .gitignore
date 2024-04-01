@@ -2,3 +2,35 @@ discord/
 gpucache/
 chromium/
 obsidian/
+baloo*
+Epic/
+kde*
+borg*
+cef_user_data/
+dconf/
+discord-screenaudio/
+supertuxkart/
+nyaa/
+pika-backup/
+knfsshare
+kiorc
+gtk-2.0/
+htop/
+gh/
+gamescope/
+obs-studio/
+via-nativia/
+yuzu/
+user-dirs.dirs
+user-dirs.locale
+systemd/
+pavucontrol.ini
+dolphinrc
+Valve Corporation/
+FasterPPlus/
+kconf_updaterc
+kglobalshortcutsrc
+QtProject.conf
+pulse/
+Code - OSS/
+rclone/

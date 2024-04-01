@@ -1,3 +1,0 @@
-2024-02-29 17:03:07.648 [info] Initial editor state {"filesToOpenOrCreate":[{"fileUri":{"$mid":1,"path":"/home/gf-hypr/Downloads/debian-live-12.5.0-amd64-standard.iso.contents","scheme":"file"},"type":1,"exists":true,"options":{}}],"filesToDiff":[],"filesToMerge":[]}
-2024-02-29 17:03:07.903 [info] Started local extension host with pid 6461.
-2024-02-29 17:03:10.722 [info] [perf] Render performance baseline is 17ms

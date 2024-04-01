@@ -1,4 +1,0 @@
-2024-01-23 03:54:35.817 [info] Initial editor state {"filesToOpenOrCreate":[{"fileUri":{"$mid":1,"path":"/etc/systemd/system/palserver.service","scheme":"file"},"type":1,"exists":true,"options":{}}],"filesToDiff":[],"filesToMerge":[]}
-2024-01-23 03:54:36.043 [info] Started local extension host with pid 65328.
-2024-01-23 03:54:38.898 [info] [perf] Render performance baseline is 17ms
-2024-01-23 03:54:54.331 [error] [text file model] handleSaveError(2) - exit - resulted in a save error: Error: Unable to write file '/etc/systemd/system/palserver.service' (NoPermissions (FileSystemError): Error: EACCES: permission denied, open '/etc/systemd/system/palserver.service') file:///etc/systemd/system/palserver.service
