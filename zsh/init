@@ -1,19 +1,16 @@
-alias vim=/usr/bin/nvim
-eval "$(zoxide init zsh)"
+# Fuzzy Finder Default Command
+export FZF_DEFAULT_COMMAND="fd ."
 
-export FZF_DEFAULT_COMMAND="fd . $HOME"
-
+# Alias to Backup Factorio Saves to my Portable SSD
 alias back_factorio_to_sandisk='sudo tar -cvf /mnt/sandisk_data/factorio_backup/factorio_backup_$(date '+%m-%d-%y_%H-%M-%S').tar "/home/gf-hypr/.factorio"'
-
 
 # The following lines were added by compinstall
 zstyle ':completion:*' completer _complete _ignored 
 zstyle :compinstall filename '/home/gf-hypr/.zshrc'
-
 autoload -Uz compinit
 compinit
 
-# End of lines added by compinstall
+# Initializing fzf, zoxide, and starship
 eval "$(fzf --zsh)"
 eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
