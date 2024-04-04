@@ -1,3 +1,4 @@
+source ~/.config/zsh/alias
 # Fuzzy Finder Default Command
 export FZF_DEFAULT_COMMAND="fd ."
 
