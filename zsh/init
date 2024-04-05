@@ -1,4 +1,4 @@
-source ~/.config/zsh/alias
+source "$(dirname "$(realpath "$0")")/alias"
 # Fuzzy Finder Default Command
 export FZF_DEFAULT_COMMAND="fd ."
 
