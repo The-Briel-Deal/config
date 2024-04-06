@@ -51,3 +51,6 @@ vim.api.nvim_create_autocmd({"BufReadPost", "FileReadPost"},
     }
 )
 
+vim.filetype.add({
+    pattern = {[".*/hypr/.*%.conf"] = "hyprlang"},	
+})
