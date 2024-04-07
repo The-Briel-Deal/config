@@ -8,7 +8,6 @@ neodev.setup()
 -- Setting up Lua Language Server
 lspconfig.lua_ls.setup({})
 
-
 -- Setting up cmp
 cmp.setup({
 	snippet = {
@@ -65,7 +64,6 @@ cmp.setup.cmdline(':', {
 function SetupLspBinds(args)
 	vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { buffer = args.buf })
 	vim.keymap.set("n", "<leader>lf", vim.lsp.buf.format, { buffer = args.buf })
-	vim.keymap.set("i", "<C-A>", vim.lsp.buf.completion, {})
 end
 
 -- Here I setup an autocommand to run setup my keymaps above.
