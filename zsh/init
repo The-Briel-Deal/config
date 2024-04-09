@@ -5,6 +5,10 @@ export FZF_DEFAULT_COMMAND="fd ."
 # Alias to Backup Factorio Saves to my Portable SSD
 alias back_factorio_to_sandisk='sudo tar -cvf /mnt/sandisk_data/factorio_backup/factorio_backup_$(date '+%m-%d-%y_%H-%M-%S').tar "/home/gf-hypr/.factorio"'
 
+# Vim Mode and Incremental Backsearch
+# bindkey -v
+# bindkey '^K' history-incremental-search-backward
+
 # The following lines were added by compinstall
 zstyle ':completion:*' completer _complete _ignored 
 zstyle :compinstall filename '/home/gf-hypr/.zshrc'
