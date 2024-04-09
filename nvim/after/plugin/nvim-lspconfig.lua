@@ -1,6 +1,7 @@
 local lspconfig = require('lspconfig')
 local neodev = require('neodev')
 local cmp = require('cmp')
+local lsp_zero = require('lsp-zero')
 
 -- Setting up my Neodev
 neodev.setup()
@@ -23,10 +24,10 @@ cmp.setup({
 		['<CR>'] = cmp.mapping.scroll_docs({ select = true }),
 	}),
 	sources = cmp.config.sources({
-		{ name = 'nvim_lsp' },
-		{ name = 'vsnip' },
-	}, {
-		{ name = 'buffer' },
+--		{ name = 'nvim_lsp' },
+--		{ name = 'vsnip' },
+--	}, {
+--		{ name = 'buffer' },
 	})
 })
 
@@ -72,3 +73,17 @@ vim.api.nvim_create_autocmd('LspAttach',
 		callback = SetupLspBinds
 	}
 )
+
+lsp_zero.on_attach(function(client, bufnr)
+    lsp_zero.default_keymaps({buffer = bufnr})
+end)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {},
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  },
+})

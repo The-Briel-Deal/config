@@ -109,6 +109,21 @@ _G.packer_plugins = {
     path = "/home/gf-hypr/.local/share/nvim/site/pack/packer/start/fugitive",
     url = "https://github.com/tpope/vim-fugitive"
   },
+  ["lsp-zero.nvim"] = {
+    loaded = true,
+    path = "/home/gf-hypr/.local/share/nvim/site/pack/packer/start/lsp-zero.nvim",
+    url = "https://github.com/VonHeikemen/lsp-zero.nvim"
+  },
+  ["mason-lspconfig.nvim"] = {
+    loaded = true,
+    path = "/home/gf-hypr/.local/share/nvim/site/pack/packer/start/mason-lspconfig.nvim",
+    url = "https://github.com/williamboman/mason-lspconfig.nvim"
+  },
+  ["mason.nvim"] = {
+    loaded = true,
+    path = "/home/gf-hypr/.local/share/nvim/site/pack/packer/start/mason.nvim",
+    url = "https://github.com/williamboman/mason.nvim"
+  },
   ["neodev.nvim"] = {
     loaded = true,
     path = "/home/gf-hypr/.local/share/nvim/site/pack/packer/start/neodev.nvim",
