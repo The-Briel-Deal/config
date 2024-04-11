@@ -35,3 +35,13 @@ pulse/
 Code - OSS/
 rclone/
 google-chrome/
+.gsd-keyboard.settings-ported
+chrome-remote-desktop/
+evolution/
+gcloud/
+git/
+google/
+gtk-3.0/
+ibus/
+pypoetry/
+nvim/plugin/packer_compiled.lua
