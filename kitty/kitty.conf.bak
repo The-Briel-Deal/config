@@ -1,3 +1,12 @@
-font_family MesloLGS NF
-kitty +kitten themes  --reload-in=all Catppuccin-Macchiato
+# Set font to JetBrains Mono with Ligatures
+font_family JetBrainsMono Nerd Font Mono
 
+# Set Default Shell in Kitty to Fish
+shell fish
+
+
+# kitty +kitten themes  --reload-in=all Catppuccin-Macchiato
+
+
+# Catppuccin-Macchiato
+include current-theme.conf
