@@ -23,6 +23,6 @@ end
 )
 -- Find Files in Home
 vim.keymap.set('n', '<leader>fh', function()
-	builtin.find_files({ cwd = '~' })
+	builtin.find_files({ cwd = '~', hidden=true })
 end
 )
