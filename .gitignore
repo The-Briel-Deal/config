@@ -47,4 +47,5 @@ pypoetry/
 nvim/plugin/packer_compiled.lua
 GNOME-xdg-terminals.list
 xdg-terminals.list
-
+# This file is for testing hyprland in a debug build.
+/hypr/hyprlandd.conf
