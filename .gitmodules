@@ -1,0 +1,3 @@
+[submodule "i3/catppuccin"]
+	path = i3/catppuccin
+	url = git@github.com:catppuccin/i3.git
