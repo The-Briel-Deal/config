@@ -1,3 +1,3 @@
 [submodule "i3/catppuccin"]
 	path = i3/catppuccin
-	url = git@github.com:catppuccin/i3.git
+	url = https://github.com/The-Briel-Deal/catppuccin-i3.git
