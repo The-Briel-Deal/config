@@ -50,3 +50,9 @@ xdg-terminals.list
 Electron/
 libvirt/
 vlc/
+/hypr/hyprlandd.conf
+Code/
+enchant/
+glinux/
+goobuntu-indicator/
+nautilus/
