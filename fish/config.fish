@@ -7,3 +7,5 @@ end
 if test $hostname = "gf.c.googlers.com";
     source ~/.google_fish_config;
 end;
+
+export EDITOR=vim
