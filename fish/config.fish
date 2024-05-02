@@ -9,3 +9,4 @@ if test $hostname = "gf.c.googlers.com";
 end;
 
 export EDITOR=vim
+export GTK_THEME=Adwaita:dark
