@@ -26,3 +26,5 @@ vim.keymap.set('n', '<leader>fh', function()
 	builtin.find_files({ cwd = '~', hidden=true })
 end
 )
+-- Telescope Buffers
+vim.keymap.set('n', '<leader>fb', builtin.buffers)
