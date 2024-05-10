@@ -3,6 +3,15 @@ local neodev = require('neodev')
 local cmp = require('cmp')
 local lsp_zero = require('lsp-zero')
 
+local configs = require("lspconfig.configs")
+configs.ciderlsp = {
+  default_config = {
+    cmd = { "/google/bin/releases/cider/ciderlsp/ciderlsp", "--tooltag=nvim-cmp", "--noforward_sync_responses" },
+    filetypes = { "c", "cpp", "java", "kotlin", "objc", "proto", "textproto", "go", "python", "bzl" },
+    root_dir = lspconfig.util.root_pattern("BUILD"),
+    settings = {},
+  },
+}
 -- Setting up my Neodev
 neodev.setup()
 
@@ -80,6 +89,10 @@ vim.api.nvim_create_autocmd('LspAttach',
 lsp_zero.on_attach(function(client, bufnr)
     lsp_zero.default_keymaps({buffer = bufnr})
 end)
+
+lspconfig.ciderlsp.setup({
+  capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+})
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
