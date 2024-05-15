@@ -1,4 +1,7 @@
 source ~/.config/shell/alias
+source ~/.config/fish/abbr.fish
+
+fzf_configure_bindings --directory=\cf
 
 if status is-interactive
     # Commands to run in interactive sessions can go here
