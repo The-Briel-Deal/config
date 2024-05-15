@@ -1,12 +1,7 @@
 source ~/.config/shell/alias
 source ~/.config/fish/abbr.fish
 
-fzf_configure_bindings --directory=\cf
-
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
-
+# Load My Work Config if I'm on my Work Laptop.
 if test $hostname = "gf.c.googlers.com";
     source ~/.google_fish_config;
 end;
