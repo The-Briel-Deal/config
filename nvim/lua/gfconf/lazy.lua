@@ -61,6 +61,9 @@ require("lazy").setup({
 		"mbbill/undotree"
 	},
 	{
-      "folke/zen-mode.nvim"
+		"folke/zen-mode.nvim"
+	},
+	{
+		"mfussenegger/nvim-dap"
 	}
 })
