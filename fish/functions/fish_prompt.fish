@@ -5,38 +5,52 @@ set __fish_git_prompt_showstashstate 1
 set __fish_git_prompt_shorten_branch_len 7
 set __fish_git_prompt_showcolorhints 1
 
-function fish_prompt
-    # Definition of how the fish_prompt looks.
+
+function nickname
+    #===Abreviate=The=Users=Name===#
+    #==Default-to-actual-username==#
+    set -f nickname $USER
+
+    #==If-it's-me-use-initial==#
     if [ $USER = "gabe" ] || [ $USER = "gabrielford" ]
-	set nickname "gf"
-    else
-	set nickname $USER
+	set -f nickname "gf"
     end
 
-    if [ $status = 0 ]
-	set fish_color_status $fish_color_normal
-    else
-	set fish_color_status $fish_color_error
-    end
+    #==Echo-the-response==#
+    echo -n (set_color $fish_color_user)
+    echo $nickname
+end
+
+function hostname
+    #===Abreviate=The=Hosts=Name===#
     switch $hostname
+    #==If-it's-work-machine-shorten==#
     case "gf.c.googlers.com"
-	set hostnickname "ctop"
+	set -f hostnickname "ctop"
     case "gabrielford-macbookpro"
-	set hostnickname "gmac"
+	set -f hostnickname "gmac"
     case "*"
-	set hostnickname $hostname
+	set -f hostnickname $hostname
     end
-    printf '%s%s%s on %s%s%s at %s%s%s%s%s%s' \
-    (set_color $fish_color_user) \
-    $nickname \
-    (set_color $fish_color_operator) \
-    (set_color $fish_color_host) \
-    $hostnickname \
-    (set_color $fish_color_operator) \
-    (set_color $fish_color_cwd) \
-    (prompt_pwd) \
-    (set_color $fish_color_normal) \
-    (fish_git_prompt) \
-    (set_color $fish_color_status) \
-    " := "
+
+    #==Echo-the-response==#
+    echo -n (set_color $fish_color_host)
+    echo -n $hostname
+end
+
+function path
+    #===Color=The=Path===#
+    echo -n (set_color $fish_color_cwd)
+    echo -n (prompt_pwd)
+end
+
+function fish_prompt
+    #===Definition=Of=How=The=Fish=Prompt=Looks===#
+    #==Set-the-seperators-and-suffix==#
+    set at  (set_color $fish_color_operator)'@'
+    set in  (set_color $fish_color_operator)':'
+    set suf (set_color $fish_color_operator)'=>'
+
+    #==Set-the-prompt-itself==#
+    echo -n (nickname)$at(hostname)$in(path)$suf
 end

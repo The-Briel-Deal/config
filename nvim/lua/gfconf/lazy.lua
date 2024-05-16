@@ -65,5 +65,8 @@ require("lazy").setup({
 	},
 	{
 		"mfussenegger/nvim-dap"
+	},
+	{
+		"ndonfris/fish-lsp"
 	}
 })
