@@ -27,7 +27,7 @@ function hostname
     #==If-it's-work-machine-shorten==#
     case "gf.c.googlers.com"
 	set -f hostnickname "ctop"
-    case "gabrielford-macbookpro"
+    case "gabrielford-macbookpro" "gabrielford-macbookpro.roam.internal"
 	set -f hostnickname "gmac"
     case "*"
 	set -f hostnickname $hostname
@@ -35,7 +35,7 @@ function hostname
 
     #==Echo-the-response==#
     echo -n (set_color $fish_color_host)
-    echo -n $hostname
+    echo -n $hostnickname
 end
 
 function path
