@@ -6,46 +6,46 @@ set __fish_git_prompt_shorten_branch_len 7
 set __fish_git_prompt_showcolorhints 1
 
 
-function nickname
-    #===Abreviate=The=Users=Name===#
-    #==Default-to-actual-username==#
-    set -f nickname $USER
-
-    #==If-it's-me-use-initial==#
-    if [ $USER = "gabe" ] || [ $USER = "gabrielford" ]
-	set -f nickname "gf"
-    end
-
-    #==Echo-the-response==#
-    echo -n (set_color $fish_color_user)
-    echo $nickname
-end
-
-function hostname
-    #===Abreviate=The=Hosts=Name===#
-    switch $hostname
-    #==If-it's-work-machine-shorten==#
-    case "gf.c.googlers.com"
-	set -f hostnickname "ctop"
-    case "gabrielford-macbookpro" "gabrielford-macbookpro.roam.internal"
-	set -f hostnickname "gmac"
-    case "*"
-	set -f hostnickname $hostname
-    end
-
-    #==Echo-the-response==#
-    echo -n (set_color $fish_color_host)
-    echo -n $hostnickname
-end
-
-function path
-    #===Color=The=Path===#
-    echo -n (set_color $fish_color_cwd)
-    echo -n (prompt_pwd)
-end
-
 function fish_prompt
     #===Definition=Of=How=The=Fish=Prompt=Looks===#
+    function nickname
+	#===Abreviate=The=Users=Name===#
+	#==Default-to-actual-username==#
+	set -f nickname $USER
+
+	#==If-it's-me-use-initial==#
+	if [ $USER = "gabe" ] || [ $USER = "gabrielford" ]
+	    set -f nickname "gf"
+	end
+
+	#==Echo-the-response==#
+	echo -n (set_color $fish_color_user)
+	echo $nickname
+    end
+
+    function hostname
+	#===Abreviate=The=Hosts=Name===#
+	switch $hostname
+	#==If-it's-work-machine-shorten==#
+	case "gf.c.googlers.com"
+	    set -f hostnickname "ctop"
+	case "gabrielford-macbookpro" "gabrielford-macbookpro.roam.internal"
+	    set -f hostnickname "gmac"
+	case "*"
+	    set -f hostnickname $hostname
+	end
+
+	#==Echo-the-response==#
+	echo -n (set_color $fish_color_host)
+	echo -n $hostnickname
+    end
+
+    function path
+	#===Color=The=Path===#
+	echo -n (set_color $fish_color_cwd)
+	echo -n (prompt_pwd)
+    end
+
     #==Set-the-seperators-and-suffix==#
     set at  (set_color $fish_color_operator)'@'
     set in  (set_color $fish_color_operator)':'

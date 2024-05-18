@@ -34,6 +34,16 @@ vim.keymap.set('n', '<leader>fc', function()
 	builtin.find_files({ cwd = '~/.config' })
 end)
 
+-- Find Files in My Notes
+vim.keymap.set('n', '<leader>fn', function()
+	builtin.find_files({ cwd = '~/Notes' })
+end)
+
+-- Find Files in My Code dir
+vim.keymap.set('n', '<leader>fC', function()
+	builtin.find_files({ cwd = '~/Code' })
+end)
+
 -- Search for a line in curr buffer
 vim.keymap.set('n', '<leader>f/', builtin.current_buffer_fuzzy_find)
 
