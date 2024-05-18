@@ -5,15 +5,17 @@ local lsp_zero = require('lsp-zero')
 
 local configs = require("lspconfig.configs")
 configs.ciderlsp = {
-  default_config = {
-    cmd = { "/google/bin/releases/cider/ciderlsp/ciderlsp", "--tooltag=nvim-cmp", "--noforward_sync_responses" },
-    filetypes = { "c", "cpp", "java", "kotlin", "objc", "proto", "textproto", "go", "python", "bzl" },
-    root_dir = lspconfig.util.root_pattern("BUILD"),
-    settings = {},
-  },
+	default_config = {
+		cmd = { "/google/bin/releases/cider/ciderlsp/ciderlsp", "--tooltag=nvim-cmp", "--noforward_sync_responses" },
+		filetypes = { "c", "cpp", "java", "kotlin", "objc", "proto", "textproto", "go", "python", "bzl" },
+		root_dir = lspconfig.util.root_pattern("BUILD"),
+		settings = {},
+	},
 }
 -- Setting up my Neodev
-neodev.setup()
+neodev.setup({
+	library = { plugins = { "nvim-dap-ui" }, types = true }
+})
 
 -- Setting up Lua Language Server
 lspconfig.lua_ls.setup({})
@@ -30,9 +32,9 @@ cmp.setup({
 		['<C-d>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
-		['<CR>'] = cmp.mapping.confirm({select = false}),
-	        ['<C-j>'] = cmp.mapping.select_next_item(),
-	        ['<C-k>'] = cmp.mapping.select_prev_item(),
+		['<CR>'] = cmp.mapping.confirm({ select = false }),
+		['<C-j>'] = cmp.mapping.select_next_item(),
+		['<C-k>'] = cmp.mapping.select_prev_item(),
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
@@ -40,7 +42,7 @@ cmp.setup({
 	}, {
 		{ name = 'buffer' },
 	}),
-	formatting = lsp_zero.cmp_format({details = true})
+	formatting = lsp_zero.cmp_format({ details = true })
 })
 
 -- `/` cmdline setup.
@@ -86,20 +88,21 @@ vim.api.nvim_create_autocmd('LspAttach',
 	}
 )
 
-lsp_zero.on_attach(function(client, bufnr)
-    lsp_zero.default_keymaps({buffer = bufnr})
+lsp_zero.on_attach(function(_, bufnr)
+	lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
 lspconfig.ciderlsp.setup({
-  capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 })
 
-require('mason').setup({})
+require('mason').setup()
+
 require('mason-lspconfig').setup({
-  ensure_installed = {},
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
-  },
+	ensure_installed = {},
+	handlers = {
+		function(server_name)
+			require('lspconfig')[server_name].setup({})
+		end,
+	},
 })

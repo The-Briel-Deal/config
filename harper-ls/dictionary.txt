@@ -1,0 +1,12 @@
+Lua
+cmp
+LSP
+lua
+nvim
+Neorg
+Neodev
+keymaps
+lspconfig
+catppuccin
+Treesitter
+autocommand

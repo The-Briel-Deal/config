@@ -5,7 +5,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		"clone",
 		"--filter=blob:none",
 		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
+		"--branch=stable", -- Latest stable release
 		lazypath,
 	})
 end
@@ -29,7 +29,7 @@ require("lazy").setup({
 		"tpope/vim-fugitive",
 		as = "fugitive"
 	},
-	-- Set Theme (Choosing flavor in catppuccin.lua)
+	-- Set Theme (Choosing flavor in `catppuccin.lua`)
 	{
 		"catppuccin/nvim",
 		as = "catppuccin"
@@ -38,7 +38,7 @@ require("lazy").setup({
 	{
 		"neovim/nvim-lspconfig",
 	},
-	-- Install Neodev for lua development
+	-- Install Neodev for Lua development
 	{
 		"folke/neodev.nvim"
 	},
@@ -53,7 +53,17 @@ require("lazy").setup({
 			"hrsh7th/cmp-vsnip",
 			"hrsh7th/vim-vsnip",
 			"VonHeikemen/lsp-zero.nvim",
-			"williamboman/mason.nvim",
+			{
+				"williamboman/mason.nvim",
+				opts = {
+					ensure_installed = {
+						"clangd",
+						"clang-format",
+						"codelldb",
+						"gopls",
+					}
+				}
+			},
 			"williamboman/mason-lspconfig.nvim"
 		}
 	},
@@ -64,7 +74,11 @@ require("lazy").setup({
 		"folke/zen-mode.nvim"
 	},
 	{
-		"mfussenegger/nvim-dap"
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio"
+		}
 	},
 	{
 		"ndonfris/fish-lsp"
