@@ -74,7 +74,18 @@ require("lazy").setup({
 		"folke/zen-mode.nvim"
 	},
 	{
+		"jay-babu/mason-nvim-dap.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"mfussenegger/nvim-dap",
+		},
+		opts = {
+			handlers = {}
+		},
+	},
+	{
 		"rcarriga/nvim-dap-ui",
+		event = "VeryLazy",
 		dependencies = {
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio"

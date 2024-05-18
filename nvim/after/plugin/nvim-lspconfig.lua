@@ -14,7 +14,7 @@ configs.ciderlsp = {
 }
 -- Setting up my Neodev
 neodev.setup({
-	library = { plugins = { "nvim-dap-ui" }, types = true }
+	library = { plugins = { "nvim-dap-ui", "nvim-dap" }, types = true }
 })
 
 -- Setting up Lua Language Server
@@ -97,7 +97,7 @@ lspconfig.ciderlsp.setup({
 })
 
 require('mason').setup()
-
+require('mason-nvim-dap').setup()
 require('mason-lspconfig').setup({
 	ensure_installed = {},
 	handlers = {

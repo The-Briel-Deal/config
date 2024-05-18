@@ -5,6 +5,7 @@ lua
 nvim
 Neorg
 Neodev
+config
 keymaps
 lspconfig
 catppuccin
