@@ -57,10 +57,16 @@ require("lazy").setup({
 				"williamboman/mason.nvim",
 				opts = {
 					ensure_installed = {
+						-- C/CPP LSP, Formatter, and DAP
 						"clangd",
 						"clang-format",
 						"codelldb",
+						-- Go LSP
 						"gopls",
+						-- Lua LSP, Formatter, and Linter
+						"lua-language-server",
+						"luaformatter",
+						"luacheck",
 					}
 				}
 			},
@@ -105,5 +111,10 @@ require("lazy").setup({
 		lazy = false, -- Disable lazy loading as some `lazy.nvim` distributions set `lazy = true` by default
 		version = "*", -- Pin Neorg to the latest stable release
 		config = true,
+	},
+	{
+		'echasnovski/mini.nvim',
+		version = '*',
+		config
 	}
 })
