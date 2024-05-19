@@ -5,7 +5,7 @@ local lsp_zero = require('lsp-zero')
 
 -- Setting up my Neodev
 neodev.setup({
-	library = { plugins = { "nvim-dap-ui", "nvim-dap", "lsp-zero", "nvim-cmp", "mini.starter" }, types = true }
+	library = { plugins = { "nvim-dap-ui", "nvim-dap", "lsp-zero", "nvim-cmp", "mini.starter", "starter" }, types = true }
 })
 
 -- Setting up Lua Language Server
