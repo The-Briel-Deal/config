@@ -97,14 +97,13 @@ require("lazy").setup({
 			"nvim-neotest/nvim-nio"
 		}
 	},
-	{
-		"ndonfris/fish-lsp"
-	},
+	-- Needed for Neorg
 	{
 		"vhyrro/luarocks.nvim",
 		priority = 1000,
 		config = true,
 	},
+	-- Org mode for Neovim
 	{
 		"nvim-neorg/neorg",
 		dependencies = { "luarocks.nvim" },
@@ -112,9 +111,9 @@ require("lazy").setup({
 		version = "*", -- Pin Neorg to the latest stable release
 		config = true,
 	},
+	-- A bunch of miscellaneous mini plugins
 	{
 		'echasnovski/mini.nvim',
 		version = '*',
-		config
 	}
 })
