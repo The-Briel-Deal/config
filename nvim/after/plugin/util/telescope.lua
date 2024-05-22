@@ -1,5 +1,7 @@
+local ts = require('telescope')
 local builtin = require('telescope.builtin')
 local ts_utils = require('telescope.utils')
+
 
 local function find_parent_files()
 	local depth_back = vim.fn.input("Parents Dirs Back >")
@@ -14,6 +16,9 @@ end
 
 -- Find Files in Vim CWD
 vim.keymap.set('n', '<leader>ff', builtin.find_files)
+
+-- Find Files in Vim CWD
+vim.keymap.set('n', '<leader>fe', ts.extensions.file_browser.file_browser)
 
 -- Find Files Not Ignored By Git
 vim.keymap.set('n', '<leader>fg', builtin.git_files)

@@ -3,10 +3,8 @@ local neodev = require('neodev')
 local cmp = require('cmp')
 local lsp_zero = require('lsp-zero')
 
--- Setting up my Neodev
-neodev.setup({
-	library = { plugins = { "nvim-dap-ui", "nvim-dap", "lsp-zero", "nvim-cmp", "mini.starter", "starter" }, types = true }
-})
+-- Setting up Neodev
+neodev.setup({})
 
 -- Setting up Lua Language Server
 lspconfig.lua_ls.setup({})
@@ -19,7 +17,6 @@ cmp.setup({
 		end
 	},
 	mapping = cmp.mapping.preset.insert({
-
 		['<C-d>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
 		['<C-Space>'] = cmp.mapping.complete(),
