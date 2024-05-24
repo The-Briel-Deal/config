@@ -22,15 +22,12 @@ vim.keymap.set("n", "<leader>j", function() vim.cmd.wincmd("j") end)
 vim.keymap.set("n", "<leader>k", function() vim.cmd.wincmd("k") end)
 vim.keymap.set("n", "<leader>l", function() vim.cmd.wincmd("l") end)
 
--- Set go Lead+rf as run file.
-vim.keymap.set("n", "<leader>rf", function()
-	local filetype = vim.bo.filetype
-	print(string.format("Building and Running %s File.", filetype))
-	-- Handle C
-	if filetype=="c" then
-		vim.cmd("!gcc %:p -o %:p:r")
-		vim.cmd("!%:p:r")
-	else
-		print(string.format("There is no handler for %s files, you can add it in 'nvim/lua/gfconf/remap.lua'", filetype))
+-- Open new Daily Note.
+vim.keymap.set("n", "<leader>nd", function()
+	local template_path = "~/Notes/Templates/nvim-daily-note.md"
+	local daily_note_path = '~/Notes/Daily/' .. vim.fn.strftime('%Y-%m-%d') .. '.md'
+	if (vim.fn.empty(vim.fn.glob(vim.fn.expand(daily_note_path))) == 1) then
+		os.execute("cp " .. template_path .. " " .. daily_note_path)
 	end
+	vim.cmd.edit(daily_note_path)
 end)

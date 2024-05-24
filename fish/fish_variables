@@ -1,5 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
+SETUVAR --export HX_DEVICE_URL:https\x3a//irztzn6928\x2dhx\x2dwebui\x2d1\x2ehex01\x2ehelix\x2eapps\x2efireeye\x2ecom/api/hosts
+SETUVAR --export HX_URL:https\x3a//irztzn6928\x2dhx\x2dwebui\x2d1\x2ehex01\x2ehelix\x2eapps\x2efireeye\x2ecom/api/hosts
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_color_autosuggestion:6e738d
