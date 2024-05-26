@@ -1,4 +1,5 @@
-set -l dog """
+function fish_greeting
+    set -l dog """
                                  ._.
     (___________________________()6 `-,
     (   ______________________   /''\"`
@@ -6,8 +7,9 @@ set -l dog """
     \"\" \"\"                     \"\" \"\"
     """
 
-if type -q "lolcat"
-    echo $dog | lolcat
-else
-    echo $dog
+    if type -q "lolcat"
+	echo $dog | lolcat
+    else
+	echo $dog
+    end
 end

@@ -40,7 +40,7 @@ function fish_prompt
 	echo -n $hostnickname
     end
 
-    function path
+    function prompt_path
 	#===Color=The=Path===#
 	echo -n (set_color $fish_color_cwd)
 	echo -n (prompt_pwd)
@@ -52,5 +52,5 @@ function fish_prompt
     set suf (set_color $fish_color_operator)'=>'
 
     #==Set-the-prompt-itself==#
-    echo -n (nickname)$at(hostname)$in(path)$suf
+    echo -n (nickname)$at(hostname)$in(prompt_path)$suf
 end
