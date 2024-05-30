@@ -6,6 +6,7 @@ export MANPAGER='nvim +Man!'
 # Load My Work Config if I'm on my Work Laptop.
 if test $hostname = "gf.c.googlers.com";
     source ~/.google_fish_config;
+    alias copybara='/google/bin/releases/copybara/public/copybara/copybara'
 
     # Setup Pyenv.
     pyenv init - | source
