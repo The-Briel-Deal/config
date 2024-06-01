@@ -22,6 +22,19 @@ vim.keymap.set("n", "<leader>j", function() vim.cmd.wincmd("j") end)
 vim.keymap.set("n", "<leader>k", function() vim.cmd.wincmd("k") end)
 vim.keymap.set("n", "<leader>l", function() vim.cmd.wincmd("l") end)
 
+-- New tab page.
+vim.keymap.set("n", "<leader>tn", vim.cmd.tabnew)
+-- Close tab page.
+vim.keymap.set("n", "<leader>tc", vim.cmd.tabclose)
+-- New tab term.
+vim.keymap.set("n", "<leader>tt", '<cmd>tab term<cr>')
+-- New tab explorer.
+vim.keymap.set("n", "<leader>te", '<cmd>Texplore<cr>')
+-- Next tab.
+vim.keymap.set("n", "<leader>tl", '<cmd>tabnext<cr>')
+-- Last tab.
+vim.keymap.set("n", "<leader>th", '<cmd>tabprevious<cr>')
+
 -- Open new Daily Note.
 vim.keymap.set("n", "<leader>nd", function()
 	local template_path = "~/Notes/Templates/nvim-daily-note.md"
