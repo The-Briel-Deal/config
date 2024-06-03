@@ -47,7 +47,7 @@ bindsym $mod+q exec kitty
 bindsym $mod+c kill
 
 # start tofi (a program launcher)
-set $menu tofi-run | xargs swaymsg exec --
+set $menu tofi-drun | xargs swaymsg exec --
 bindsym $mod+r exec $menu
 
 # change focus
@@ -66,7 +66,7 @@ bindsym $mod+Shift+l move right
 bindsym $mod+Control+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -77,7 +77,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+v floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
