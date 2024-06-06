@@ -9,6 +9,5 @@ padding-top = 35%
 result-spacing = 25
 num-results = 5
 background-color = #000A
-matching-algorithm = fuzzy
 require-match = true
 auto-accept-single = true

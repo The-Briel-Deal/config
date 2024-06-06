@@ -35,6 +35,9 @@ vim.keymap.set("n", "<leader>tl", '<cmd>tabnext<cr>')
 -- Last tab.
 vim.keymap.set("n", "<leader>th", '<cmd>tabprevious<cr>')
 
+-- Explore Home.
+vim.keymap.set("n", "<leader>eh", '<cmd>Explore ~<cr>')
+
 -- Open new Daily Note.
 vim.keymap.set("n", "<leader>nd", function()
 	local template_path = "~/Notes/Templates/nvim-daily-note.md"
