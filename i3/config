@@ -5,7 +5,7 @@ set $mod Mod4
 font pango:JetBrainsMono Nerd Font Mono 12
 
 # Import Catppuccin theme.
-include ~/.config/i3/catppuccin/themes/catppuccin-macchiato
+include ~/.config/sway/catppuccin/themes/catppuccin-macchiato
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
