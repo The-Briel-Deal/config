@@ -5,8 +5,9 @@
 	"position": "bottom",
 
 	"modules-left": [
-		"hyprland/workspaces",
+		"sway/workspaces",
 		"custom/right-arrow-dark"
+//		"wlr/taskbar"
 	],
 	"modules-center": [
 		"custom/left-arrow-dark",
@@ -56,10 +57,9 @@
 		"tooltip": false
 	},
 
-	"sway/workspaces": {
-		"disable-scroll": true,
-		"format": "{name}"
-	},
+//	"wlr/taskbar": {
+//		"format": "{icon}"
+//	},
 
 	"clock#1": {
 		"format": "{:%a}",
