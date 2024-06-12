@@ -17,14 +17,6 @@ cmp.setup({
 			vim.fn["vsnip#anonymous"](args.body)
 		end
 	},
-	mapping = cmp.mapping.preset.insert({
-		['<C-d>'] = cmp.mapping.scroll_docs(-4),
-		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<CR>'] = cmp.mapping.confirm({ select = false }),
-		['<C-j>'] = cmp.mapping.select_next_item(),
-		['<C-k>'] = cmp.mapping.select_prev_item(),
-	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'vsnip' },
@@ -64,6 +56,11 @@ cmp.setup.cmdline(':', {
 }
 )
 
+lspconfig.pyright.setup({
+	filetypes = {"python"},
+	root_dir = lspconfig.util.find_git_ancestor,
+})
+
 lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr })
 end)
@@ -86,7 +83,7 @@ if vim.fn.hostname() == "gf.c.googlers.com" then
 		default_config = {
 			cmd = { "/google/bin/releases/cider/ciderlsp/ciderlsp", "--tooltag=nvim-cmp", "--noforward_sync_responses" },
 			filetypes = { "c", "cpp", "java", "kotlin", "objc", "proto", "textproto", "go", "python", "bzl" },
-			root_dir = lspconfig.util.root_pattern("BUILD"),
+			root_dir = lspconfig.util.root_pattern('google3/*BUILD');
 			settings = {},
 		},
 	}
