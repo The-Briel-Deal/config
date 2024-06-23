@@ -47,3 +47,12 @@ vim.keymap.set("n", "<leader>nd", function()
 	end
 	vim.cmd.edit(daily_note_path)
 end)
+
+-- ZenMode Hotkey
+vim.keymap.set("n", "<leader>zm", function()
+	require("zen-mode").toggle({
+		window = {
+			width = .75
+		}
+	})
+end)
