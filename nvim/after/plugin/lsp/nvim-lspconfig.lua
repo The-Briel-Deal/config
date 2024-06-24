@@ -92,3 +92,18 @@ if vim.fn.hostname() == "gf.c.googlers.com" then
 		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
 	})
 end
+
+if vim.fn.hostname() == "gabrielford-macbookpro.roam.internal" then
+	configs.ciderlsp = {
+		default_config = {
+			cmd = { "/Users/gabrielford/ciderlsp", "--tooltag=nvim-cmp", "--noforward_sync_responses" },
+			filetypes = { "c", "cpp", "java", "kotlin", "objc", "proto", "textproto", "go", "python", "bzl" },
+			root_dir = lspconfig.util.root_pattern("BUILD"),
+			settings = {},
+		},
+	}
+
+	lspconfig.ciderlsp.setup({
+		capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+	})
+end
