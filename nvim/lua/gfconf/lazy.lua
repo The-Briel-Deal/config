@@ -27,6 +27,11 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim"
 		}
 	},
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" }
+	},
 	-- Install Treesitter for Syntax Highlighting
 	{
 		'nvim-treesitter/nvim-treesitter',
