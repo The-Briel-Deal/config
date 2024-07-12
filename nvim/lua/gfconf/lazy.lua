@@ -110,12 +110,6 @@ require("lazy").setup({
 			"nvim-neotest/nvim-nio"
 		}
 	},
-	-- Needed for Neorg
-	{
-		"vhyrro/luarocks.nvim",
-		priority = 1000,
-		config = true,
-	},
 	-- A bunch of miscellaneous mini plugins
 	{
 		'echasnovski/mini.nvim',
