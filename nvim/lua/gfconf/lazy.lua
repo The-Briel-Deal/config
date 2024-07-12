@@ -13,20 +13,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	-- Use Telescope For Fuzzy Finding (:
+	-- For finding things.
 	{
 		'nvim-telescope/telescope.nvim',
 		dependencies = {
 			'nvim-lua/plenary.nvim'
 		}
 	},
-	{
-		"nvim-telescope/telescope-file-browser.nvim",
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			"nvim-lua/plenary.nvim"
-		}
-	},
+	-- For navigating to frequented buffers quickly
 	{
 		"ThePrimeagen/harpoon",
 		branch = "harpoon2",
@@ -47,18 +41,13 @@ require("lazy").setup({
 		"catppuccin/nvim",
 		as = "catppuccin"
 	},
-	-- Set LSP (nvim-lspconfig)
-	{
-		"neovim/nvim-lspconfig",
-	},
-	-- Install Neodev for Lua development
-	{
-		"folke/neodev.nvim"
-	},
 	-- Install nvim-cmp
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
+			-- Core Lspconfig Plugin
+			"neovim/nvim-lspconfig",
+			-- Cmp related extensions
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
@@ -67,6 +56,7 @@ require("lazy").setup({
 			"hrsh7th/vim-vsnip",
 			"VonHeikemen/lsp-zero.nvim",
 			{
+				-- Mason lets me easily install LSPs
 				"williamboman/mason.nvim",
 				opts = {
 					ensure_installed = {
@@ -86,33 +76,23 @@ require("lazy").setup({
 			"williamboman/mason-lspconfig.nvim"
 		}
 	},
+	-- Install Neodev for Lua development
+	{
+		"folke/neodev.nvim",
+		dependencies = {
+			"hrsh7th/nvim-cmp",
+		}
+	},
+	-- Undo Tree for going back through undos and redos
 	{
 		"mbbill/undotree"
 	},
+	-- Zen Mode is a plugin to fullscreen one buffer to remove distractions
 	{
 		"folke/zen-mode.nvim"
 	},
+	-- Debug Adapter Protocol
 	{
-		"jay-babu/mason-nvim-dap.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"mfussenegger/nvim-dap",
-		},
-		opts = {
-			handlers = {}
-		},
+		"mfussenegger/nvim-dap",
 	},
-	{
-		"rcarriga/nvim-dap-ui",
-		event = "VeryLazy",
-		dependencies = {
-			"mfussenegger/nvim-dap",
-			"nvim-neotest/nvim-nio"
-		}
-	},
-	-- A bunch of miscellaneous mini plugins
-	{
-		'echasnovski/mini.nvim',
-		version = '*',
-	}
 })
