@@ -39,7 +39,7 @@ require("lazy").setup({
 	-- Set Theme (Choosing flavor in `catppuccin.lua`)
 	{
 		"catppuccin/nvim",
-		as = "catppuccin"
+		as = "catppuccin",
 	},
 	-- Install nvim-cmp
 	{
@@ -94,6 +94,7 @@ require("lazy").setup({
 	-- Debug Adapter Protocol
 	{
 		"mfussenegger/nvim-dap",
+		dependencies = { "TheHamsta/nvim-dap-virtual-text" }
 	},
 	--- Google Plugins
 	-- Figtree
