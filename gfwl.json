@@ -1,4 +1,5 @@
 {
-    "new_term": "Q",
-    "exit_key": "Escape"
+	"new_term": "Q",
+	"exit_key": "Escape",
+	"mod": "alt"
 }
