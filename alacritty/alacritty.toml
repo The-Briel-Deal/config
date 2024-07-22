@@ -1,0 +1,22 @@
+[font]
+size = 12.0
+
+[font.bold]
+family = "Monaspace Neon"
+style = "Bold"
+
+[font.bold_italic]
+family = "Monaspace Neon"
+style = "Bold Italic"
+
+[font.italic]
+family = "Monaspace Neon"
+style = "Italic"
+
+[font.normal]
+family = "Monaspace Neon"
+style = "Regular"
+
+[shell]
+program = "/usr/local/bin/tmx2"
+args = ["new-session", "-A", "-D", "-s", "main"]
