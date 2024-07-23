@@ -27,7 +27,7 @@ include ~/.config/sway/catppuccin/themes/catppuccin-macchiato
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+q exec kitty
+bindsym $mod+q exec alacritty
 
 # kill focused window
 bindsym $mod+c kill
