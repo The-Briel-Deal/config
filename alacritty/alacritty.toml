@@ -18,5 +18,5 @@ family = "Monaspace Neon"
 style = "Regular"
 
 [shell]
-program = "/usr/local/bin/tmx2"
+program = "tmux"
 args = ["new-session", "-A", "-D", "-s", "main"]
