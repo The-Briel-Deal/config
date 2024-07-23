@@ -19,7 +19,7 @@ function fish_prompt
 	end
 
 	#==Echo-the-response==#
-	echo -n (set_color $fish_color_user)
+	echo -n (set_color $fish_prompt_color_username)
 	echo $nickname
     end
 
@@ -36,20 +36,20 @@ function fish_prompt
 	end
 
 	#==Echo-the-response==#
-	echo -n (set_color $fish_color_host)
+	echo -n (set_color $fish_prompt_color_hostname)
 	echo -n $hostnickname
     end
 
     function prompt_path
 	#===Color=The=Path===#
-	echo -n (set_color $fish_color_cwd)
+	echo -n (set_color $fish_prompt_color_path)
 	echo -n (prompt_pwd)
     end
 
     #==Set-the-seperators-and-suffix==#
-    set at  (set_color $fish_color_operator)'@'
-    set in  (set_color $fish_color_operator)':'
-    set suf (set_color $fish_color_operator)'=>'
+    set at  (set_color $fish_prompt_color_operators)'@'
+    set in  (set_color $fish_prompt_color_operators)':'
+    set suf (set_color $fish_prompt_color_operators)'=>'
 
     #==Set-the-prompt-itself==#
     echo -n (nickname)$at(hostname)$in(prompt_path)$suf
