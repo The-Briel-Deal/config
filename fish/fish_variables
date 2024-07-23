@@ -18,6 +18,7 @@ SETUVAR fish_color_history_current:\x2d\x2dbold
 SETUVAR fish_color_host:8aadf4
 SETUVAR fish_color_host_remote:a6da95
 SETUVAR fish_color_keyword:ed8796
+SETUVAR fish_color_match:\x2d\x2dbackground\x3dbrblue
 SETUVAR fish_color_normal:cad3f5
 SETUVAR fish_color_operator:f5bde6
 SETUVAR fish_color_option:a6da95
@@ -26,7 +27,7 @@ SETUVAR fish_color_quote:a6da95
 SETUVAR fish_color_redirection:f5bde6
 SETUVAR fish_color_search_match:\x2d\x2dbackground\x3d363a4f
 SETUVAR fish_color_selection:\x2d\x2dbackground\x3d363a4f
-SETUVAR fish_color_status:cad3f5
+SETUVAR fish_color_status:ed8796
 SETUVAR fish_color_user:8bd5ca
 SETUVAR fish_color_valid_path:\x2d\x2dunderline
 SETUVAR fish_key_bindings:fish_default_key_bindings

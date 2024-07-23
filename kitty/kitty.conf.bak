@@ -2,11 +2,15 @@
 font_family JetBrainsMono Nerd Font Mono
 
 # Set Default Shell in Kitty to Fish
-shell fish
+# shell fish
 
+# Set Tab and Split Binds
+map ctrl+shift+n next_tab
+map ctrl+shift+p previous_tab
 
-# kitty +kitten themes  --reload-in=all Catppuccin-Macchiato
-
-
-# Catppuccin-Macchiato
+# ! Note that this line is managed by kitty.
+# BEGIN_KITTY_THEME
+# Catppuccin Kitty Macchiato
 include current-theme.conf
+# END_KITTY_THEME
+background_opacity 0.8

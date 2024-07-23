@@ -41,6 +41,12 @@ require("lazy").setup({
 		"catppuccin/nvim",
 		as = "catppuccin",
 	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
 	-- Install nvim-cmp
 	{
 		"hrsh7th/nvim-cmp",
