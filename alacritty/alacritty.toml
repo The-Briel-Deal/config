@@ -17,8 +17,7 @@ style = "Italic"
 family = "JetBrainsMono Nerd Font Mono"
 style = "Regular"
 
-# TokyoNight Alacritty Colors
-# Default colors
+#=TokyoNight Alacritty Colors=#
 [colors.primary]
 background = '#1a1b26'
 foreground = '#c0caf5'
