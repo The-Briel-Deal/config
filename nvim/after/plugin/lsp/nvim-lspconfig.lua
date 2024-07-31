@@ -1,11 +1,7 @@
 local lspconfig = require('lspconfig')
 local configs = require("lspconfig.configs")
-local neodev = require('neodev')
 local cmp = require('cmp')
 local lsp_zero = require('lsp-zero')
-
--- Setting up Neodev
-neodev.setup({})
 
 -- Setting up Lua Language Server
 lspconfig.lua_ls.setup({})
