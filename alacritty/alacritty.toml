@@ -17,9 +17,9 @@ style = "Italic"
 family = "Monaspace Neon"
 style = "Regular"
 
-[shell]
-program = "tmux"
-args = ["new-session", "-A", "-D", "-s", "main"]
+# [shell]
+# program = "tmux"
+# args = ["new-session", "-A", "-D", "-s", "main"]
 
 # TokyoNight Alacritty Colors
 # Default colors
