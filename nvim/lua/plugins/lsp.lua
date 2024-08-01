@@ -1,7 +1,8 @@
 -- Install nvim-cmp and other lsp things!
+---@type LazySpec
 return {
 	"hrsh7th/nvim-cmp",
-	event = "BufEnter *.lua",
+	event = "InsertEnter",
 	dependencies = {
 		-- Core Lspconfig Plugin
 		"neovim/nvim-lspconfig",
@@ -49,7 +50,6 @@ return {
 		},
 		sources = require("cmp").config.sources({
 			{ name = 'nvim_lsp' },
-			{ name = 'vsnip' },
 		}, {
 			{ name = 'buffer' },
 		})
