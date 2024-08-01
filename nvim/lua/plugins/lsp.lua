@@ -1,6 +1,7 @@
 -- Install nvim-cmp and other lsp things!
 return {
 	"hrsh7th/nvim-cmp",
+	event = "BufEnter *.lua",
 	dependencies = {
 		-- Core Lspconfig Plugin
 		"neovim/nvim-lspconfig",
@@ -9,9 +10,6 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
-		"hrsh7th/cmp-vsnip",
-		"hrsh7th/vim-vsnip",
-		"VonHeikemen/lsp-zero.nvim",
 		{
 			-- Mason lets me easily install LSPs
 			"williamboman/mason.nvim",
@@ -30,6 +28,39 @@ return {
 				}
 			}
 		},
-		"williamboman/mason-lspconfig.nvim"
+		{
+			"williamboman/mason-lspconfig.nvim",
+			opts = {
+				ensure_installed = {},
+				handlers = {
+					function(server_name)
+						require('lspconfig')[server_name].setup({})
+					end,
+				},
+			},
+		},
+	},
+	opts = function()
+		return {
+		snippet = {
+			expand = function(args)
+				vim.fn["vsnip#anonymous"](args.body)
+			end
+		},
+		sources = require("cmp").config.sources({
+			{ name = 'nvim_lsp' },
+			{ name = 'vsnip' },
+		}, {
+			{ name = 'buffer' },
+		})
 	}
+	end,
+	keys = {
+      { "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
+      { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
+      { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
+      { "gI", vim.lsp.buf.implementation, desc = "Goto Implementation" },
+      { "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
+	-- TODO: Add shift-k for hover.
+	},
 }
