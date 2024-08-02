@@ -21,28 +21,28 @@ require 'nvim-treesitter.configs'.setup {
 }
 
 -- Create AutoCMD to set appropriate tab size
-vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" },
-	{
-		callback = function()
-			vim.bo.tabstop = 8
-			vim.bo.softtabstop = 4
-			vim.bo.shiftwidth = 4
-			vim.bo.expandtab = false
-		end,
-	}
-)
+-- vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" },
+-- 	{
+-- 		callback = function()
+-- 			vim.bo.tabstop = 8
+-- 			vim.bo.softtabstop = 4
+-- 			vim.bo.shiftwidth = 4
+-- 			vim.bo.expandtab = false
+-- 		end,
+-- 	}
+-- )
 
 -- Create AutoCMD to set files in ~/.config/zsh to bash
-vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" },
-	{
-		pattern = "*/zsh/*",
-		callback = function()
-			vim.cmd("set filetype=bash")
-		end,
-	}
-)
+-- vim.api.nvim_create_autocmd({ "BufReadPost", "FileReadPost" },
+-- 	{
+-- 		pattern = "*/zsh/*",
+-- 		callback = function()
+-- 			vim.cmd("set filetype=bash")
+-- 		end,
+-- 	}
+-- )
 
 -- Add pattern to recognize hyprland config
-vim.filetype.add({
-	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-})
+-- vim.filetype.add({
+-- 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+-- })
