@@ -1,66 +1,27 @@
 -- Install nvim-cmp and other lsp things!
 ---@type LazySpec
 return {
-	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
-	dependencies = {
-		-- Core Lspconfig Plugin
-		"neovim/nvim-lspconfig",
-		-- Cmp related extensions
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
-		{
-			-- Mason lets me easily install LSPs
-			"williamboman/mason.nvim",
-			opts = {
-				ensure_installed = {
-					-- C/CPP LSP, Formatter, and DAP
-					"clangd",
-					"clang-format",
-					"codelldb",
-					-- Go LSP
-					"gopls",
-					-- Lua LSP, Formatter, and Linter
-					"lua-language-server",
-					"luaformatter",
-					"luacheck",
-				}
+	"neovim/nvim-lspconfig",
+	config = function()
+		local nvim_lspconfig = require("lspconfig")
+		local lsp_configs = require("lspconfig.configs")
+
+		lsp_configs.ciderlsp = {
+			default_config = {
+				cmd = { '/google/bin/releases/cider/ciderlsp/ciderlsp', '--tooltag=nvim-lsp', '--noforward_sync_responses' },
+				filetypes = { "c", "cpp", "java", "kotlin", "objc", "proto", "textproto", "go", "python", "bzl", "typescript" },
+				offset_encoding = 'utf-8',
+				root_dir = nvim_lspconfig.util.root_pattern('google3/*BUILD'),
+				settings = {},
 			}
-		},
-		{
-			"williamboman/mason-lspconfig.nvim",
-			opts = {
-				ensure_installed = {},
-				handlers = {
-					function(server_name)
-						require('lspconfig')[server_name].setup({})
-					end,
-				},
-			},
-		},
-	},
-	opts = function()
-		return {
-		snippet = {
-			expand = function(args)
-				vim.fn["vsnip#anonymous"](args.body)
-			end
-		},
-		sources = require("cmp").config.sources({
-			{ name = 'nvim_lsp' },
-		}, {
-			{ name = 'buffer' },
-		})
-	}
+		}
+		nvim_lspconfig.ciderlsp.setup({})
 	end,
 	keys = {
-      { "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
-      { "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-      { "gr", vim.lsp.buf.references, desc = "References", nowait = true },
-      { "gI", vim.lsp.buf.implementation, desc = "Goto Implementation" },
-      { "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
-	-- TODO: Add shift-k for hover.
+		{ "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
+		{ "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
+		{ "gr", vim.lsp.buf.references, desc = "References"},
+		{ "gI", vim.lsp.buf.implementation, desc = "Goto Implementation" },
+		{ "gy", vim.lsp.buf.type_definition, desc = "Goto T[y]pe Definition" },
 	},
 }
