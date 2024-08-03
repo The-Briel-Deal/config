@@ -1,10 +1,12 @@
 -- Install lazydev for Lua development
 return {
 	"folke/lazydev.nvim",
-	ft = "lua", -- only load on lua files
+	ft = "lua",
+	dependencies = { "Bilal2453/luvit-meta", lazy = true }, -- `vim.uv` typings
 	opts = {
 		library = {
-			"lazy.nvim"
+			"lazy.nvim",
+			{ path = "luvit-meta/library", words = { "vim%.uv" } },
 		},
 	},
 }
