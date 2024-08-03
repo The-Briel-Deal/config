@@ -71,7 +71,7 @@ return {
 		{ "gr",   vim.lsp.buf.references,                  desc = "Goto References" },
 		{ "gi",   vim.lsp.buf.implementation,              desc = "Goto Implementation" },
 		{ "gy",   vim.lsp.buf.type_definition,             desc = "Goto Type Definition" },
-		{ "gl",   vim.lsp.diagnostic.get_line_diagnostics, desc = "Get Line Diagnostics" },
 		{ "<F3>", vim.lsp.buf.format,                      desc = "Format Document" },
+		{ "gl",   vim.diagnostic.open_float,             desc = "Goto Type Definition" },
 	},
 }
