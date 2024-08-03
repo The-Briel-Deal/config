@@ -17,8 +17,10 @@ return {
 						end,
 					},
 					window = {
-						-- completion = cmp.config.window.bordered(),
-						-- documentation = cmp.config.window.bordered(),
+					--[[
+						completion = require('cmp').config.window.bordered(),
+						documentation = require('cmp').config.window.bordered(),
+					]]
 					},
 					mapping = require('cmp').mapping.preset.insert({
 						['<C-b>'] = require('cmp').mapping.scroll_docs(-4),
