@@ -7,14 +7,44 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
-
+		{
+			"hrsh7th/nvim-cmp",
+			opts = function()
+				return {
+					snippet = {
+						expand = function(args)
+							vim.snippet.expand(args.body)
+						end,
+					},
+					window = {
+						-- completion = cmp.config.window.bordered(),
+						-- documentation = cmp.config.window.bordered(),
+					},
+					mapping = require('cmp').mapping.preset.insert({
+						['<C-b>'] = require('cmp').mapping.scroll_docs(-4),
+						['<C-f>'] = require('cmp').mapping.scroll_docs(4),
+						['<C-Space>'] = require('cmp').mapping.complete(),
+						['<C-e>'] = require('cmp').mapping.abort(),
+						['<CR>'] = require('cmp').mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+					}),
+					sources = require('cmp').config.sources({
+						{ name = 'nvim_lsp' },
+					}, {
+						{ name = 'buffer' },
+					})
+				}
+			end,
+		},
+		"hrsh7th/cmp-nvim-lsp"
 	},
 	lazy = false,
 	config = function()
-		require("mason").setup()
+		local mason = require("mason")
 		local mason_lsp_config = require("mason-lspconfig")
 		local nvim_lspconfig = require("lspconfig")
 		local lsp_configs = require("lspconfig.configs")
+
+		mason.setup({})
 
 		mason_lsp_config.setup({
 			ensure_installed = {},
@@ -38,13 +68,6 @@ return {
 			}
 			nvim_lspconfig.ciderlsp.setup({})
 		end
-
-		if (vim.fn.executable('lua-language-server') == 1) then
-			nvim_lspconfig.lua_ls.setup({})
-		end
-		if (vim.fn.executable('clangd') == 1) then
-			nvim_lspconfig.clangd.setup({})
-		end
 	end,
 	opts = {
 	},
@@ -54,7 +77,7 @@ return {
 		{ "gr",   vim.lsp.buf.references,                  desc = "Goto References" },
 		{ "gi",   vim.lsp.buf.implementation,              desc = "Goto Implementation" },
 		{ "gy",   vim.lsp.buf.type_definition,             desc = "Goto Type Definition" },
-		{ "gl",   vim.lsp.diagnostic.get_line_diagnostics, desc = "Goto Type Definition" },
+		{ "gl",   vim.lsp.diagnostic.get_line_diagnostics, desc = "Get Line Diagnostics" },
 		{ "<F3>", vim.lsp.buf.format,                      desc = "Format Document" },
 	},
 }
