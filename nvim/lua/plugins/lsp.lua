@@ -66,12 +66,14 @@ return {
 	opts = {
 	},
 	keys = {
-		{ "gd",   vim.lsp.buf.definition,                  desc = "Goto Definition" },
-		{ "gD",   vim.lsp.buf.declaration,                 desc = "Goto Declaration" },
-		{ "gr",   vim.lsp.buf.references,                  desc = "Goto References" },
-		{ "gi",   vim.lsp.buf.implementation,              desc = "Goto Implementation" },
-		{ "gy",   vim.lsp.buf.type_definition,             desc = "Goto Type Definition" },
-		{ "<F3>", vim.lsp.buf.format,                      desc = "Format Document" },
-		{ "gl",   vim.diagnostic.open_float,             desc = "Goto Type Definition" },
+		{ "gd",   vim.lsp.buf.definition,      desc = "Goto Definition" },
+		{ "gD",   vim.lsp.buf.declaration,     desc = "Goto Declaration" },
+		{ "gr",   vim.lsp.buf.references,      desc = "Goto References" },
+		{ "gi",   vim.lsp.buf.implementation,  desc = "Goto Implementation" },
+		{ "gy",   vim.lsp.buf.type_definition, desc = "Goto Type Definition" },
+		{ "gl",   vim.diagnostic.open_float,   desc = "Goto Type Definition" },
+		{ "<F2>", vim.lsp.buf.rename,          desc = "Rename Symbol" },
+		{ "<F3>", vim.lsp.buf.format,          desc = "Format Document" },
+		{ "<F4>", vim.lsp.buf.code_action,     desc = "Code Action" },
 	},
 }
