@@ -40,17 +40,21 @@ return {
 
 		mason.setup({})
 
+		---@type boolean
+		local mason_autostart = vim.fn.has_key(vim.fn.environ(), "NO_MASON_AUTOSTART") == 0
 		mason_lsp_config.setup({
 			ensure_installed = {},
 			handlers = {
 				function(server_name)
-					nvim_lspconfig[server_name].setup({})
+					nvim_lspconfig[server_name].setup({
+						autostart = mason_autostart
+					})
 				end,
 			}
 		})
 
 		-- Setup CiderLSP if its path exists.
-		if (vim.fn.isdirectory(CIDER_LSP_DIR) == 1) then
+		if (vim.fn.executable(CIDER_LSP_DIR) == 1) then
 			lsp_configs.ciderlsp = {
 				default_config = {
 					cmd = { CIDER_LSP_DIR, '--tooltag=nvim-lsp', '--noforward_sync_responses' },
