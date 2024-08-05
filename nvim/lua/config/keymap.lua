@@ -49,3 +49,8 @@ set("n", "<leader>nd", function()
 	end
 	vim.cmd.edit(daily_note_path)
 end)
+
+-- Open Kratom Log.
+set("n", "<leader>nk", function()
+	vim.cmd.edit("~/Notes/Log/Kratom/August Kratom Log.md")
+end)
