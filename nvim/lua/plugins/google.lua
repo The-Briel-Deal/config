@@ -93,7 +93,7 @@ if (vim.fn.hostname() == "gf.c.googlers.com") then
 				vim.api.nvim_set_keymap('n', '[lc',
 					[[<Cmd>lua require('google.comments').goto_prev_comment()<CR>]],
 					{ noremap = true, silent = true })
-				vim.api.nvim_set_keymap('n', '<Leader>lc',
+				vim.api.nvim_set_keymap('n', '<Leader>gc',
 					[[<Cmd>lua require('google.comments').toggle_line_comments()<CR>]],
 					{ noremap = true, silent = true })
 				vim.api.nvim_set_keymap('n', '<Leader>ac',
