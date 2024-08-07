@@ -50,6 +50,57 @@ if (vim.fn.hostname() == "gf.c.googlers.com") then
 				},
 			},
 		},
+		{
+			url = 'sso://@user/chmnchiang/google-comments',
+			requires = { 'nvim-lua/plenary.nvim' },
+			lazy = false,
+			config = function()
+				-- Use the default option.
+				require('google.comments').setup()
+				--[[
+				-- Here are all the options and their default values:
+				require('google.comments').setup {
+					--- The command and args for fetching comments.
+					--- Example: {'comments', '--arg1'}
+					--- Refer to `get_comments.par --help` to see all the options.
+					command = { '/google/bin/releases/editor-devtools/get_comments.par',
+						'--full', '--json', "-x=''" },
+					--- The name of the sign to show on the sign column.
+					--- You might want to define one using `sign_define`.
+					--- Example:
+					---   vim.fn.sign_define('COMMENTS_ICON', {text = ' '})
+					---   -- And then set `sign = 'COMMENTS_ICON'` in the options.
+					sign = nil,
+					--- Fetch the comments after calling `setup`.
+					auto_fetch = true,
+					display = {
+						--- The width of the comment display window.
+						width = 40,
+						--- When showing file paths, use relative paths or not.
+						relative_path = true,
+						--- Enable viewing comments through floating window
+						floating = false,
+						--- Options used when creating the floating window.
+						floating_window_options = require('google.comments.options')
+						    .default_floating_window_options,
+					},
+				}
+				--]]
+				-- here are some mappings you might want:
+				vim.api.nvim_set_keymap('n', ']lc',
+					[[<Cmd>lua require('google.comments').goto_next_comment()<CR>]],
+					{ noremap = true, silent = true })
+				vim.api.nvim_set_keymap('n', '[lc',
+					[[<Cmd>lua require('google.comments').goto_prev_comment()<CR>]],
+					{ noremap = true, silent = true })
+				vim.api.nvim_set_keymap('n', '<Leader>lc',
+					[[<Cmd>lua require('google.comments').toggle_line_comments()<CR>]],
+					{ noremap = true, silent = true })
+				vim.api.nvim_set_keymap('n', '<Leader>ac',
+					[[<Cmd>lua require('google.comments').show_all_comments()<CR>]],
+					{ noremap = true, silent = true })
+			end
+		}
 	}
 end
 return {}

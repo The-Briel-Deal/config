@@ -55,6 +55,7 @@ return {
 
 		-- Setup CiderLSP if its path exists.
 		if (vim.fn.executable(CIDER_LSP_DIR) == 1) then
+			-- Cider LSP
 			lsp_configs.ciderlsp = {
 				default_config = {
 					cmd = { CIDER_LSP_DIR, '--tooltag=nvim-lsp', '--noforward_sync_responses' },
@@ -65,6 +66,16 @@ return {
 				}
 			}
 			nvim_lspconfig.ciderlsp.setup({})
+			-- Analysis LSP
+			lsp_configs.analysislsp = {
+				default_config = {
+					cmd = { '/google/bin/users/lerm/glint-ale/analysis_lsp/server', '--lint_on_save=false', '--max_qps=10' },
+					filetypes = { "c", "cpp", "java", "kotlin", "objc", "proto", "textproto", "go", "python", "bzl" },
+					root_dir = nvim_lspconfig.util.root_pattern('google3/*BUILD'),
+					settings = {},
+				},
+			}
+			nvim_lspconfig.analysislsp.setup({})
 		end
 	end,
 	opts = {
