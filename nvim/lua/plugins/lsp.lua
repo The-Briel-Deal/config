@@ -71,6 +71,7 @@ return {
 				default_config = {
 					cmd = { '/google/bin/users/lerm/glint-ale/analysis_lsp/server', '--lint_on_save=false', '--max_qps=10' },
 					filetypes = { "c", "cpp", "java", "kotlin", "objc", "proto", "textproto", "go", "python", "bzl" },
+					offset_encoding = 'utf-8',
 					root_dir = nvim_lspconfig.util.root_pattern('google3/*BUILD'),
 					settings = {},
 				},
