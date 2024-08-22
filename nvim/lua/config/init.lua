@@ -2,6 +2,16 @@ vim.go.number = true
 vim.go.relativenumber = true
 vim.go.termsync = false
 vim.g.netrw_banner = false
--- let g:netrw_banner=0
+vim.g.clipboard = {
+	name = 'OSC 52',
+	copy = {
+		['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+		['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+	},
+	paste = {
+		['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+		['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+	},
+}
 
 require("config.keymap")
