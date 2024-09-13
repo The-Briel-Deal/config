@@ -29,7 +29,12 @@ return {
 				}
 			end,
 		},
-		"hrsh7th/cmp-nvim-lsp"
+		"hrsh7th/cmp-nvim-lsp",
+		{
+			'mrcjkb/rustaceanvim',
+			version = '^5', -- Recommended
+			lazy = false, -- This plugin is already lazy
+		}
 	},
 	lazy = false,
 	config = function()
@@ -46,6 +51,9 @@ return {
 			ensure_installed = {},
 			handlers = {
 				function(server_name)
+					if server_name == "rust_analyzer" then
+						return -- Using Rustaceanvim
+					end
 					nvim_lspconfig[server_name].setup({
 						autostart = mason_autostart
 					})
