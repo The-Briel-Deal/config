@@ -4,8 +4,6 @@ vim.g.mapleader = " "
 
 local set = vim.keymap.set
 
--- Set Lead+pv as go to Netrw.
-set("n", "<leader>pv", vim.cmd.Ex)
 -- Set Lead+bp as go to last Buffer.
 set("n", "<leader>bp", vim.cmd.bp)
 -- Set Lead+bn as go to last Buffer.

@@ -1,13 +1,14 @@
 return {
 	'stevearc/oil.nvim',
+	lazy = false,
 	---@module 'oil'
 	---@type oil.SetupOpts
-	opts = {},
-	-- Optional dependencies
+	opts = {
+		default_file_explorer = true,
+	},
 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
-	-- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
 	cmd = "Oil",
 	keys = {
-		{ "<leader>po", function() require("oil").open() end, desc = "Open Oil" },
+		{ "<leader>pv", function() require("oil").open() end, desc = "Open Oil" },
 	},
 }
