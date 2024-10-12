@@ -5,6 +5,12 @@ return {
 	---@type oil.SetupOpts
 	opts = {
 		default_file_explorer = true,
+		columns = {
+			"icon",
+			"permission",
+			"size",
+			"mtime",
+		}
 	},
 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	cmd = "Oil",
