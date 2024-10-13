@@ -1,14 +1,14 @@
-if (vim.fn.hostname() == "gf.c.googlers.com") then
+if vim.fn.hostname() == "gf.c.googlers.com" then
 	--- Google Plugins
 	return {
 		-- Figtree
 		{
-			url = 'sso://user/jackcogdill/nvim-figtree',
+			url = "sso://user/jackcogdill/nvim-figtree",
 			keys = {
 				{
-					'<Leader>gf',
+					"<Leader>gf",
 					function()
-						require('figtree').toggle()
+						require("figtree").toggle()
 					end,
 				},
 			},
@@ -51,12 +51,12 @@ if (vim.fn.hostname() == "gf.c.googlers.com") then
 			},
 		},
 		{
-			url = 'sso://@user/chmnchiang/google-comments',
-			requires = { 'nvim-lua/plenary.nvim' },
+			url = "sso://@user/chmnchiang/google-comments",
+			requires = { "nvim-lua/plenary.nvim" },
 			lazy = false,
 			config = function()
 				-- Use the default option.
-				require('google.comments').setup()
+				require("google.comments").setup()
 				--[[
 				-- Here are all the options and their default values:
 				require('google.comments').setup {
@@ -87,20 +87,32 @@ if (vim.fn.hostname() == "gf.c.googlers.com") then
 				}
 				--]]
 				-- here are some mappings you might want:
-				vim.api.nvim_set_keymap('n', ']lc',
+				vim.api.nvim_set_keymap(
+					"n",
+					"]lc",
 					[[<Cmd>lua require('google.comments').goto_next_comment()<CR>]],
-					{ noremap = true, silent = true })
-				vim.api.nvim_set_keymap('n', '[lc',
+					{ noremap = true, silent = true }
+				)
+				vim.api.nvim_set_keymap(
+					"n",
+					"[lc",
 					[[<Cmd>lua require('google.comments').goto_prev_comment()<CR>]],
-					{ noremap = true, silent = true })
-				vim.api.nvim_set_keymap('n', '<Leader>gc',
+					{ noremap = true, silent = true }
+				)
+				vim.api.nvim_set_keymap(
+					"n",
+					"<Leader>gc",
 					[[<Cmd>lua require('google.comments').toggle_line_comments()<CR>]],
-					{ noremap = true, silent = true })
-				vim.api.nvim_set_keymap('n', '<Leader>ac',
+					{ noremap = true, silent = true }
+				)
+				vim.api.nvim_set_keymap(
+					"n",
+					"<Leader>ac",
 					[[<Cmd>lua require('google.comments').show_all_comments()<CR>]],
-					{ noremap = true, silent = true })
-			end
-		}
+					{ noremap = true, silent = true }
+				)
+			end,
+		},
 	}
 end
 return {}

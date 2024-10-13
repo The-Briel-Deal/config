@@ -1,8 +1,8 @@
 -- Install Treesitter for Syntax Highlighting
 return {
-	'nvim-treesitter/nvim-treesitter',
+	"nvim-treesitter/nvim-treesitter",
 	event = "BufEnter",
-	run = ':TSUpdate',
+	run = ":TSUpdate",
 	opt = {
 		-- A list of parser names, or "all" (the five listed parsers should always be installed)
 		ensure_installed = { "python", "javascript", "typescript", "cpp", "c", "lua", "vim", "vimdoc", "query", "bash" },
@@ -21,9 +21,7 @@ return {
 
 		-- Enable indentation.
 		indent = {
-			enable = true
-		}
-	}
-
-
+			enable = true,
+		},
+	},
 }

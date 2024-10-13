@@ -1,5 +1,5 @@
 return {
-	'stevearc/oil.nvim',
+	"stevearc/oil.nvim",
 	lazy = false,
 	---@module 'oil'
 	---@type oil.SetupOpts
@@ -10,11 +10,17 @@ return {
 			"permission",
 			"size",
 			"mtime",
-		}
+		},
 	},
 	dependencies = { { "echasnovski/mini.icons", opts = {} } },
 	cmd = "Oil",
 	keys = {
-		{ "<leader>pv", function() require("oil").open() end, desc = "Open Oil" },
+		{
+			"<leader>pv",
+			function()
+				require("oil").open()
+			end,
+			desc = "Open Oil",
+		},
 	},
 }

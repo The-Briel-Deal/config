@@ -4,6 +4,6 @@ return {
 	lazy = true,
 	priority = 1000,
 	init = function()
-		vim.cmd.colorscheme "tokyonight"
+		vim.cmd.colorscheme("tokyonight")
 	end,
 }

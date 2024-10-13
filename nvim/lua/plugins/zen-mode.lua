@@ -2,6 +2,11 @@
 return {
 	"folke/zen-mode.nvim",
 	keys = {
-		{ "<leader>zm", function() require("zen-mode").toggle({ window = { width = .75 } }) end },
+		{
+			"<leader>zm",
+			function()
+				require("zen-mode").toggle({ window = { width = 0.75 } })
+			end,
+		},
 	},
 }

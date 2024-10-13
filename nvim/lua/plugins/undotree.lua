@@ -4,5 +4,5 @@ return {
 	event = "BufEnter",
 	keys = {
 		{ "<leader>u", vim.cmd.UndotreeToggle, desc = "Toggle UndoTree" },
-	}
+	},
 }
