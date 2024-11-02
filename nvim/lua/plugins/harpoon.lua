@@ -20,35 +20,35 @@ return {
 			desc = "Open Harpoon List",
 		},
 		{
-			"<A-a>",
+			"<C-h>a",
 			function()
 				require("harpoon"):list():select(1)
 			end,
 			desc = "Go to Mark 1",
 		},
 		{
-			"<A-s>",
+			"<C-h>s",
 			function()
 				require("harpoon"):list():select(2)
 			end,
 			desc = "Go to Mark 2",
 		},
 		{
-			"<A-d>",
+			"<C-h>d",
 			function()
 				require("harpoon"):list():select(3)
 			end,
 			desc = "Go to Mark 3",
 		},
 		{
-			"<A-f>",
+			"<C-h>f",
 			function()
 				require("harpoon"):list():select(4)
 			end,
 			desc = "Go to Mark 4",
 		},
 		{
-			"<A-g>",
+			"<C-h>g",
 			function()
 				require("harpoon"):list():select(5)
 			end,
