@@ -54,6 +54,30 @@ return {
 					if server_name == "rust_analyzer" then
 						return -- Using Rustaceanvim
 					end
+					if server_name == "pylsp" then
+						nvim_lspconfig.pylsp.setup {
+							settings = {
+								pylsp = {
+									plugins = {
+										-- formatter options
+										black = { enabled = true },
+										autopep8 = { enabled = false },
+										yapf = { enabled = false },
+										-- linter options
+										pylint = { enabled = true, executable = "pylint" },
+										pyflakes = { enabled = false },
+										pycodestyle = { enabled = false },
+										-- type checker
+										pylsp_mypy = { enabled = true },
+										-- auto-completion options
+										jedi_completion = { fuzzy = true },
+										-- import sorting
+										pyls_isort = { enabled = true },
+									}
+								}
+							}
+						}
+					end
 					nvim_lspconfig[server_name].setup({
 						autostart = mason_autostart,
 					})
@@ -103,17 +127,18 @@ return {
 			nvim_lspconfig.analysislsp.setup({})
 		end
 	end,
+	---@type lspconfig.Config
 	opts = {},
 	keys = {
-		{ "gd", vim.lsp.buf.definition, desc = "Goto Definition" },
-		{ "gD", vim.lsp.buf.declaration, desc = "Goto Declaration" },
-		{ "gr", vim.lsp.buf.references, desc = "Goto References" },
-		{ "gi", vim.lsp.buf.implementation, desc = "Goto Implementation" },
-		{ "gy", vim.lsp.buf.type_definition, desc = "Goto Type Definition" },
-		{ "gl", vim.diagnostic.open_float, desc = "Open Diagnostics in Float" },
-		{ "gq", vim.diagnostic.setqflist, desc = "Add All Diagnostics to Quickfix List" },
-		{ "<F2>", vim.lsp.buf.rename, desc = "Rename Symbol" },
-		{ "<F3>", vim.lsp.buf.format, desc = "Format Document" },
-		{ "<F4>", vim.lsp.buf.code_action, desc = "Code Action" },
+		{ "gd",   vim.lsp.buf.definition,      desc = "Goto Definition" },
+		{ "gD",   vim.lsp.buf.declaration,     desc = "Goto Declaration" },
+		{ "gr",   vim.lsp.buf.references,      desc = "Goto References" },
+		{ "gi",   vim.lsp.buf.implementation,  desc = "Goto Implementation" },
+		{ "gy",   vim.lsp.buf.type_definition, desc = "Goto Type Definition" },
+		{ "gl",   vim.diagnostic.open_float,   desc = "Open Diagnostics in Float" },
+		{ "gq",   vim.diagnostic.setqflist,    desc = "Add All Diagnostics to Quickfix List" },
+		{ "<F2>", vim.lsp.buf.rename,          desc = "Rename Symbol" },
+		{ "<F3>", vim.lsp.buf.format,          desc = "Format Document" },
+		{ "<F4>", vim.lsp.buf.code_action,     desc = "Code Action" },
 	},
 }
