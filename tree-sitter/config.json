@@ -1,59 +1,62 @@
 {
-  "parser-directories": [
-    "/home/gf-hypr/github",
-    "/home/gf-hypr/src",
-    "/home/gf-hypr/source",
-    "/home/gf-hypr/projects",
-    "/home/gf-hypr/dev",
-    "/home/gf-hypr/git"
-  ],
-  "theme": {
-    "function": 26,
-    "string.special": 30,
-    "variable.parameter": {
-      "underline": true
-    },
-    "punctuation.bracket": 239,
-    "constructor": 136,
-    "variable.builtin": {
-      "bold": true
-    },
-    "punctuation.delimiter": 239,
-    "constant": 94,
-    "embedded": null,
-    "module": 136,
-    "tag": 18,
-    "type.builtin": {
-      "color": 23,
-      "bold": true
-    },
-    "attribute": {
-      "italic": true,
-      "color": 124
-    },
-    "keyword": 56,
-    "number": {
-      "color": 94,
-      "bold": true
-    },
-    "property": 124,
-    "string": 28,
-    "type": 23,
-    "constant.builtin": {
-      "color": 94,
-      "bold": true
-    },
-    "function.builtin": {
-      "color": 26,
-      "bold": true
-    },
-    "operator": {
-      "color": 239,
-      "bold": true
-    },
-    "comment": {
-      "color": 245,
-      "italic": true
-    }
-  }
+	"parser-directories": [
+		"/home/gf-hypr/github",
+		"/home/gf-hypr/src",
+		"/home/gf-hypr/source",
+		"/home/gf-hypr/projects",
+		"/home/gf-hypr/dev",
+		"/home/gf-hypr/git"
+	],
+	"theme": {
+		"function": 26,
+		"string.special": 30,
+		"variable.parameter": {
+			"underline": true
+		},
+		"punctuation.bracket": 239,
+		"constructor": 136,
+		"variable.builtin": {
+			"bold": true
+		},
+		"punctuation.delimiter": 239,
+		"constant": 94,
+		"embedded": null,
+		"module": 136,
+		"tag": 18,
+		"type.builtin": {
+			"color": 23,
+			"bold": true
+		},
+		"attribute": {
+			"italic": true,
+			"color": 124
+		},
+		"keyword": 56,
+		"number": {
+			"color": 94,
+			"bold": true
+		},
+		"property": 124,
+		"string": 28,
+		"type": 23,
+		"constant.builtin": {
+			"color": 94,
+			"bold": true
+		},
+		"function.builtin": {
+			"color": 26,
+			"bold": true
+		},
+		"operator": {
+			"color": 239,
+			"bold": true
+		},
+		"comment": {
+			"color": 245,
+			"italic": true
+		}
+	},
+	"highlight": {
+		"enable": true
+	}
 }

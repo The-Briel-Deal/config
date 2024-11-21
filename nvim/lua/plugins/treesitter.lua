@@ -1,27 +1,67 @@
 -- Install Treesitter for Syntax Highlighting
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = "BufEnter",
-	run = ":TSUpdate",
-	opt = {
-		-- A list of parser names, or "all" (the five listed parsers should always be installed)
-		ensure_installed = { "python", "javascript", "typescript", "cpp", "c", "lua", "vim", "vimdoc", "query", "bash" },
-
-		-- Install parsers synchronously (only applied to `ensure_installed`)
-		sync_install = true,
-
-		-- Automatically install missing parsers when entering buffer, uses TS CLI.
-		auto_install = true,
-
-		-- Enable Syntax Highlighting Based on Treesitter.
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = false,
+	version = false, -- last release is way too old and doesn't work on Windows
+	build = ":TSUpdate",
+	lazy = false,
+	config = function(_, opts)
+		require 'nvim-treesitter.configs'.setup(opts)
+	end,
+	cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+	keys = {
+		{ "<c-space>", desc = "Increment Selection" },
+		{ "<bs>",      desc = "Decrement Selection", mode = "x" },
+	},
+	opts_extend = { "ensure_installed" },
+	---@type TSConfig
+	---@diagnostic disable-next-line: missing-fields
+	opts = {
+		highlight = { enable = true },
+		indent = { enable = true },
+		ensure_installed = {
+			"bash",
+			"c",
+			"diff",
+			"html",
+			"javascript",
+			"jsdoc",
+			"json",
+			"jsonc",
+			"lua",
+			"luadoc",
+			"luap",
+			"markdown",
+			"markdown_inline",
+			"printf",
+			"python",
+			"query",
+			"regex",
+			"toml",
+			"tsx",
+			"typescript",
+			"vim",
+			"vimdoc",
+			"xml",
+			"yaml",
+			"rust",
 		},
-
-		-- Enable indentation.
-		indent = {
+		incremental_selection = {
 			enable = true,
+			keymaps = {
+				init_selection = "<C-space>",
+				node_incremental = "<C-space>",
+				scope_incremental = false,
+				node_decremental = "<bs>",
+			},
+		},
+		textobjects = {
+			move = {
+				enable = true,
+				goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
+				goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
+				goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
+				goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
+			},
 		},
 	},
 }
