@@ -7,6 +7,7 @@ return {
 	dependencies = {
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
+		"mfussenegger/nvim-jdtls",
 		{
 			"hrsh7th/nvim-cmp",
 			opts = function()
@@ -42,6 +43,18 @@ return {
 		local mason_lsp_config = require("mason-lspconfig")
 		local nvim_lspconfig = require("lspconfig")
 		local lsp_configs = require("lspconfig.configs")
+		-- Fix for rust-analyzer cancel spam.
+		-- TODO: Remove once fixed https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
+		for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+			local default_diagnostic_handler = vim.lsp.handlers[method]
+			vim.lsp.handlers[method] = function(err, result, context, config)
+				if err ~= nil and err.code == -32802 then
+					return
+				end
+				return default_diagnostic_handler(err, result, context, config)
+			end
+		end
+
 
 		mason.setup({})
 
@@ -53,6 +66,9 @@ return {
 				function(server_name)
 					if server_name == "rust_analyzer" then
 						return -- Using Rustaceanvim
+					end
+					if server_name == "jdtls" then
+						return -- Using nvim-jdtls
 					end
 					if server_name == "pylsp" then
 						nvim_lspconfig.pylsp.setup {
