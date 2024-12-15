@@ -6,8 +6,8 @@
 
 	"modules-left": [
 		"sway/workspaces",
-		"custom/right-arrow-dark"
-//		"wlr/taskbar"
+		"custom/right-arrow-dark",
+		"wlr/taskbar"
 	],
 	"modules-center": [
 		"custom/left-arrow-dark",
@@ -31,9 +31,9 @@
 		"cpu",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
-		// "battery",
-		// "custom/left-arrow-light",
-		// "custom/left-arrow-dark",
+		"battery",
+		"custom/left-arrow-light",
+		"custom/left-arrow-dark",
 		"disk",
 		"custom/left-arrow-light",
 		"custom/left-arrow-dark",
@@ -57,9 +57,9 @@
 		"tooltip": false
 	},
 
-//	"wlr/taskbar": {
-//		"format": "{icon}"
-//	},
+	"wlr/taskbar": {
+		"format": "{icon}"
+	},
 
 	"clock#1": {
 		"format": "{:%a}",
