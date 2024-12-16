@@ -1,25 +1,5 @@
 exec_always pkill kanshi; exec kanshi
 
-output eDP-1 {
-  scale 1.5
-}
-
-# LG OLED Monitor.
-output DP-2 {
-  mode 3840x2160@120.000Hz
-  scale 1
-  pos 0 0
-  background "~/.config/hypr/assets/celeste-blue-heart.png" fill
-}
-
-# Dell IPS Monitor.
-output DP-1 {
-  mode 3840x2160@60.000Hz
-  scale 1
-  pos 3840 -740
-  background "~/.config/hypr/assets/celeste-blue-heart.png" fill
-}
-
 # Set mod key as Mod4, by default this is Super/Meta.
 set $mod Mod4
 
@@ -28,13 +8,13 @@ set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+q exec alacritty
+bindsym $mod+q exec kitty
 
 # kill focused window
 bindsym $mod+c kill
 
 # start tofi (a program launcher)
-set $menu tofi-drun | xargs swaymsg exec --
+set $menu fuzzel | xargs swaymsg exec --
 bindsym $mod+r exec $menu
 
 # change focus
