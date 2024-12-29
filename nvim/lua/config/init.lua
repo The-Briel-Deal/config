@@ -1,6 +1,8 @@
 vim.go.number = true
 vim.go.relativenumber = true
 vim.go.termsync = false
+vim.go.tabstop = 2
+vim.go.shiftwidth = 2
 vim.g.netrw_banner = false
 vim.g.clipboard = {
 	name = "OSC 52",
