@@ -17,3 +17,11 @@ vim.g.clipboard = {
 }
 
 require("config.keymap")
+
+-- Highlight on Yank
+vim.api.nvim_create_autocmd({ 'TextYankPost' }, {
+	pattern = "*",
+	callback = function()
+		vim.hl.on_yank { higroup = 'IncSearch', timeout = 130 }
+	end
+})
