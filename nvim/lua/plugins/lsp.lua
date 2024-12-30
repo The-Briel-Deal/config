@@ -62,6 +62,7 @@ return {
 		local mason_autostart = vim.fn.has_key(vim.fn.environ(), "NO_MASON_AUTOSTART") == 0
 		mason_lsp_config.setup({
 			ensure_installed = {},
+			automatic_installation = true,
 			handlers = {
 				function(server_name)
 					if server_name == "rust_analyzer" then
@@ -114,7 +115,7 @@ return {
 						"kotlin",
 						"objc",
 						"proto",
-						"textproto",
+						"pbtxt",
 						"go",
 						"python",
 						"bzl",
@@ -134,7 +135,16 @@ return {
 						"--lint_on_save=false",
 						"--max_qps=10",
 					},
-					filetypes = { "c", "cpp", "java", "kotlin", "objc", "proto", "textproto", "go", "python", "bzl" },
+					filetypes = { "c",
+						"cpp",
+						"java",
+						"kotlin",
+						"objc",
+						"proto",
+						"pbtxt",
+						"go",
+						"python",
+						"bzl" },
 					offset_encoding = "utf-8",
 					root_dir = nvim_lspconfig.util.root_pattern("google3/*BUILD"),
 					settings = {},
