@@ -20,6 +20,9 @@ end
 # Set Editor and Theme.
 export EDITOR=vim
 export GTK_THEME=Adwaita:dark
+
+# Keybinds
+set -g fish_key_bindings fish_vi_key_bindings
   
 # TokyoNight Color Palette
 set -l foreground c0caf5
