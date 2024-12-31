@@ -5,14 +5,14 @@ vim.go.tabstop = 2
 vim.go.shiftwidth = 2
 vim.g.netrw_banner = false
 vim.g.clipboard = {
-	name = "OSC 52",
+	name = "Tmux Clipboard",
 	copy = {
-		["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-		["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+		["+"] = {'tmux', 'load-buffer', '-'},
+		["*"] = {'tmux', 'load-buffer', '-'},
 	},
 	paste = {
-		["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-		["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+		["+"] = {'tmux', 'save-buffer', '-'},
+		["*"] = {'tmux', 'save-buffer', '-'},
 	},
 }
 
