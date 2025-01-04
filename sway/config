@@ -1,4 +1,5 @@
 exec_always pkill kanshi; exec kanshi
+output "*" bg $HOME/.config/wallpapers/arch_00_3840x2160.png fill
 
 # Set mod key as Mod4, by default this is Super/Meta.
 set $mod Mod4
