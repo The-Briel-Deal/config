@@ -1,5 +1,5 @@
-[submodule "nvim/pack/git/start/vim-fugitive"]
-	path = nvim/plugin/fugitive/
+[submodule "nvim/pack/util/start/fugitive"]
+	path = nvim/pack/util/start/fugitive/
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "nvim/pack/util/start/oil"]
 	path = nvim/pack/util/start/oil
