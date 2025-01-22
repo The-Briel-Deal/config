@@ -1,3 +1,4 @@
-require "oil".setup {}
-require "map"
+require("plugins").setup {}
+require("config").setup {}
+require("map").setup {}
 
