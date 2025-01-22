@@ -44,6 +44,8 @@ M.setup = function(opts)
   	set("n", "<leader>pv", oil.open)
   end
 
+  -- FUGITIVE KEYMAP --
+ 	set("n", "<leader>gs", vim.cmd.Git)
 end
 
 return M
