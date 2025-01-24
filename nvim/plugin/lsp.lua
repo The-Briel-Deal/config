@@ -1,7 +1,5 @@
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(_)
-		print("Autocmd run")
-
     local function on_list(options)
       vim.fn.setqflist({}, ' ', options)
       vim.cmd.cfirst()
