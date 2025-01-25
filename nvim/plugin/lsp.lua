@@ -1,5 +1,8 @@
 vim.api.nvim_create_autocmd('LspAttach', {
-	callback = function(_)
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		assert(client)
+
 		local function on_list(options)
 			vim.fn.setqflist({}, ' ', options)
 			vim.cmd.cfirst()
@@ -23,5 +26,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end, { buffer = true })
 
 		vim.api.nvim_create_user_command("Format", function(_) vim.lsp.buf.format() end, {})
+
+		vim.lsp.completion.enable(true, client.id, args.buf)
+
+		set('i', '<C-n>',
+			vim.lsp.completion.trigger,
+			{ buffer = true }
+		)
+		set('i', '<C-p>',
+			vim.lsp.completion.trigger,
+			{ buffer = true }
+		)
 	end
 })
