@@ -13,3 +13,6 @@
 [submodule "nvim/pack/util/start/telescope"]
 	path = nvim/pack/util/start/telescope
 	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "nvim/pack/util/opt/plenary"]
+	path = nvim/pack/util/start/plenary
+	url = https://github.com/nvim-lua/plenary.nvim.git
