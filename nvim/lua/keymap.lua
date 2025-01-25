@@ -46,6 +46,84 @@ M.setup = function(opts)
 
 	-- FUGITIVE KEYMAP --
 	set("n", "<leader>gs", vim.cmd.Git)
+
+	-- TELESCOPE KEYMAP --
+	---@type {key: string, callback: fun(), desc: string}[]
+	local telescope_keymap = {
+		{
+			key = "<leader>ff",
+			callback = function()
+				require("telescope.builtin").find_files()
+			end,
+			desc = "Find Files",
+		},
+		{
+			key = "<leader>fs",
+			callback = function()
+				require("telescope.builtin").live_grep()
+			end,
+			desc = "Find Files",
+		},
+		{
+			key = "<leader>fg",
+			callback = function()
+				require("telescope.builtin").git_files({ use_file_path = true })
+			end,
+			desc = "Find Files in Git",
+		},
+		{
+			key = "<leader>fh",
+			callback = function()
+				require("telescope.builtin").help_tags()
+			end,
+			desc = "Find Nvim Help Docs",
+		},
+		{
+			key = "<leader>fc",
+			callback = function()
+				require("telescope.builtin").find_files({ cwd = "~/.config" })
+			end,
+			desc = "Find Files in my .config Dir",
+		},
+		{
+			key = "<leader>fn",
+			callback = function()
+				require("telescope.builtin").find_files({ cwd = "~/Notes" })
+			end,
+			desc = "Find Files in my Notes Dir",
+		},
+		{
+			key = "<leader>fC",
+			callback = function()
+				require("telescope.builtin").find_files({ cwd = "~/Code" })
+			end,
+			desc = "Find Files in my Code Dir",
+		},
+		{
+			key = "<leader>f/",
+			callback = function()
+				require("telescope.builtin").current_buffer_fuzzy_find()
+			end,
+			desc = "Find Line in Current Buffer",
+		},
+		{
+			key = "<leader>fo",
+			callback = function()
+				require("telescope.builtin").oldfiles()
+			end,
+			desc = "Find File in my File History",
+		},
+		{
+			key = "<leader>fb",
+			callback = function()
+				require("telescope.builtin").buffers()
+			end,
+			desc = "Find Buffer in open Buffers",
+		},
+	}
+	for _, keymap in ipairs(telescope_keymap) do
+		set('n', keymap.key, keymap.callback, { desc = keymap.desc })
+	end
 end
 
 return M
