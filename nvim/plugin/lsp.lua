@@ -1,5 +1,7 @@
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
+		local set = vim.keymap.set
+
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		assert(client)
 
@@ -8,7 +10,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.cmd.cfirst()
 		end
 
-		local set = vim.keymap.set
 
 		-- Go to Definition
 		set('n', 'gd', function()
@@ -27,6 +28,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		vim.api.nvim_create_user_command("Format", function(_) vim.lsp.buf.format() end, {})
 
+		-- Completion
 		vim.lsp.completion.enable(true, client.id, args.buf)
 
 		set('i', '<C-n>',
@@ -37,5 +39,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.lsp.completion.trigger,
 			{ buffer = true }
 		)
+
+		-- Inlay Hints
+		vim.lsp.inlay_hint.enable(true)
+
+		-- Toggle
+		set('n', '<leader>in', function()
+			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+		end)
 	end
 })
