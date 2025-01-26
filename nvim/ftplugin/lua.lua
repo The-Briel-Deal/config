@@ -1,4 +1,3 @@
-print("Starting Lua LSP!")
 vim.lsp.start({
 	name = 'luals',
 	cmd = { 'lua-language-server' },
