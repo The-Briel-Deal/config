@@ -2,37 +2,6 @@ local M = {}
 
 local GDB_INIT_FILE = ".gdbinit"
 
-local function add_breakpoint(breakpoint, filename)
-	local file = assert(io.open(filename, "a"))
-	assert(file:write(breakpoint))
-	assert(file:close())
-end
-
-local function remove_breakpoint(breakpoint, filename)
-	local file = assert(io.open(filename, "r"))
-	local file_content = assert(file:read("a"))
-	local i, j = assert(string.find(file_content, breakpoint, 1, true))
-	assert(file:close())
-
-	local start_content = string.sub(file_content, 1, i - 1)
-	local end_content = string.sub(file_content, j + 1, -1)
-
-	file = assert(io.open(filename, "w"))
-	file:write(start_content .. end_content)
-	assert(file:close())
-end
-
-local function already_contains_breakpoint(breakpoint, filename)
-	local file = assert(io.open(filename, "r"))
-	for line in file:lines() do
-		if (line .. "\n") == breakpoint then
-			assert(file:close())
-			return true
-		end
-	end
-	assert(file:close())
-	return false
-end
 
 
 
@@ -43,10 +12,10 @@ M.setup = function(_)
 	-- New breakpoint
 	set('n', '<leader>bb', function()
 		local break_stmt = M.get_break_stmt()
-		if already_contains_breakpoint(break_stmt, GDB_INIT_FILE) then
-			remove_breakpoint(break_stmt, GDB_INIT_FILE)
+		if M.already_contains_breakpoint(break_stmt, GDB_INIT_FILE) then
+			M.remove_breakpoint(break_stmt, GDB_INIT_FILE)
 		else
-			add_breakpoint(break_stmt, GDB_INIT_FILE)
+			M.add_breakpoint(break_stmt, GDB_INIT_FILE)
 		end
 
 		M.mark_breakpoints()
@@ -98,6 +67,38 @@ M.mark_breakpoints = function()
 	end
 
 	assert(file:close())
+end
+
+M.add_breakpoint = function(breakpoint, filename)
+	local file = assert(io.open(filename, "a"))
+	assert(file:write(breakpoint))
+	assert(file:close())
+end
+
+M.remove_breakpoint = function(breakpoint, filename)
+	local file = assert(io.open(filename, "r"))
+	local file_content = assert(file:read("a"))
+	local i, j = assert(string.find(file_content, breakpoint, 1, true))
+	assert(file:close())
+
+	local start_content = string.sub(file_content, 1, i - 1)
+	local end_content = string.sub(file_content, j + 1, -1)
+
+	file = assert(io.open(filename, "w"))
+	file:write(start_content .. end_content)
+	assert(file:close())
+end
+
+M.already_contains_breakpoint = function(breakpoint, filename)
+	local file = assert(io.open(filename, "r"))
+	for line in file:lines() do
+		if (line .. "\n") == breakpoint then
+			assert(file:close())
+			return true
+		end
+	end
+	assert(file:close())
+	return false
 end
 
 return M
