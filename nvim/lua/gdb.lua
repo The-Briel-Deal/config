@@ -34,6 +34,7 @@ M.get_break_stmt = function()
 end
 
 M.mark_breakpoints = function()
+	vim.fn.sign_define("breakpoint", { text = "BP", texthl = "ErrorMsg" })
 	local breakpoints = {}
 
 	local file = assert(io.open(GDB_INIT_FILE, "r"))
@@ -48,8 +49,13 @@ M.mark_breakpoints = function()
 
 		local name = string.sub(name_and_line, 1, split_index - 1)
 		local line_num = string.sub(name_and_line, split_index + 1, length)
-		print("Name: '" .. name .. "' Line Num: '" .. line_num .. "'")
-		--		breakpoints += {name = name, line = line_num}
+		-- print("Name: '" .. name .. "' Line Num: '" .. line_num .. "'")
+		breakpoints[#breakpoints + 1] = { name = name, line = line_num }
+	end
+
+	for i, breakpoint in pairs(breakpoints) do
+		-- print(i .. " -- Name: '" .. breakpoint.name .. "' Line Num: '" .. breakpoint.line .. "'")
+		vim.fn.sign_place(i, "breakpoints", "breakpoint", breakpoint.name, {lnum=breakpoint.line})
 	end
 
 	assert(file:close())
