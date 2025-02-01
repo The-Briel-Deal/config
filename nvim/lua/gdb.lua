@@ -1,5 +1,7 @@
 local M = {}
 
+local GDB_INIT_FILE = ".gdbinit"
+
 M.setup = function(_)
 	local set = vim.keymap.set
 
@@ -7,14 +9,14 @@ M.setup = function(_)
 	set('n', '<leader>bb', function()
 		local break_stmt = M.get_break_stmt()
 
-		local file = assert(io.open(".gdbinit", "a"))
+		local file = assert(io.open(GDB_INIT_FILE, "a"))
 		assert(file:write(break_stmt))
 		assert(file:close())
 	end)
 
 	-- Clear all breakpoints
 	set('n', '<leader>bc', function()
-		local file = assert(io.open(".gdbinit", "a"))
+		local file = assert(io.open(GDB_INIT_FILE, "w"))
 		assert(file:write(""))
 		assert(file:close())
 	end)
@@ -24,11 +26,33 @@ end
 ---
 --- Makes a gdb break statement at your cursors current line.
 M.get_break_stmt = function()
-	local filename = vim.fn.expand("%:t")
+	local filename = vim.fn.expand("%:p")
 	local line_num = vim.fn.line('.')
 	local break_stmt = string.format("break %s:%i\n", filename, line_num)
 
 	return break_stmt
+end
+
+M.mark_breakpoints = function()
+	local breakpoints = {}
+
+	local file = assert(io.open(GDB_INIT_FILE, "r"))
+
+	for line in file:lines() do
+		local length = string.len(line)
+		local _, j = assert(string.find(line, "break "))
+		local name_and_line = string.sub(line, j + 1, length)
+
+		length = string.len(name_and_line)
+		local split_index, _ = assert(string.find(name_and_line, ":"))
+
+		local name = string.sub(name_and_line, 1, split_index - 1)
+		local line_num = string.sub(name_and_line, split_index + 1, length)
+		print("Name: '" .. name .. "' Line Num: '" .. line_num .. "'")
+		--		breakpoints += {name = name, line = line_num}
+	end
+
+	assert(file:close())
 end
 
 return M
