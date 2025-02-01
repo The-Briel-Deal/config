@@ -3,6 +3,7 @@ local M = {}
 local GDB_INIT_FILE = ".gdbinit"
 
 M.setup = function(_)
+	M.mark_breakpoints()
 	local set = vim.keymap.set
 
 	-- New breakpoint
@@ -12,6 +13,8 @@ M.setup = function(_)
 		local file = assert(io.open(GDB_INIT_FILE, "a"))
 		assert(file:write(break_stmt))
 		assert(file:close())
+
+		M.mark_breakpoints()
 	end)
 
 	-- Clear all breakpoints
@@ -19,6 +22,8 @@ M.setup = function(_)
 		local file = assert(io.open(GDB_INIT_FILE, "w"))
 		assert(file:write(""))
 		assert(file:close())
+
+		M.mark_breakpoints()
 	end)
 end
 
@@ -34,6 +39,7 @@ M.get_break_stmt = function()
 end
 
 M.mark_breakpoints = function()
+	vim.fn.sign_unplace("breakpoints")
 	vim.fn.sign_define("breakpoint", { text = "BP", texthl = "ErrorMsg" })
 	local breakpoints = {}
 
@@ -55,7 +61,7 @@ M.mark_breakpoints = function()
 
 	for i, breakpoint in pairs(breakpoints) do
 		-- print(i .. " -- Name: '" .. breakpoint.name .. "' Line Num: '" .. breakpoint.line .. "'")
-		vim.fn.sign_place(i, "breakpoints", "breakpoint", breakpoint.name, {lnum=breakpoint.line})
+		vim.fn.sign_place(i, "breakpoints", "breakpoint", breakpoint.name, { lnum = breakpoint.line })
 	end
 
 	assert(file:close())
