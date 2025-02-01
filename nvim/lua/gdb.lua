@@ -2,6 +2,39 @@ local M = {}
 
 local GDB_INIT_FILE = ".gdbinit"
 
+local function add_breakpoint(breakpoint, filename)
+	local file = assert(io.open(filename, "a"))
+	assert(file:write(breakpoint))
+	assert(file:close())
+end
+
+local function remove_breakpoint(breakpoint, filename)
+	local file = assert(io.open(filename, "r"))
+	local file_content = assert(file:read("a"))
+	local new_file_content = string.gsub(file_content, breakpoint, "")
+	print("Old file: '" .. file_content .. "',\nNew file: '" .. new_file_content .. "'")
+	assert(file:close())
+
+	file = assert(io.open(filename, "w"))
+	file:write(new_file_content)
+	assert(file:close())
+end
+
+local function already_contains_breakpoint(breakpoint, filename)
+	local file = assert(io.open(filename, "r"))
+	for line in file:lines() do
+		-- print("Line: '" .. line .. "', Breakpoint: '" .. breakpoint .. "'")
+		if (line .. "\n") == breakpoint then
+			assert(file:close())
+			return true
+		end
+	end
+	assert(file:close())
+	return false
+end
+
+
+
 M.setup = function(_)
 	M.mark_breakpoints()
 	local set = vim.keymap.set
@@ -9,10 +42,12 @@ M.setup = function(_)
 	-- New breakpoint
 	set('n', '<leader>bb', function()
 		local break_stmt = M.get_break_stmt()
+		if already_contains_breakpoint(break_stmt, GDB_INIT_FILE) then
+			remove_breakpoint(break_stmt, GDB_INIT_FILE)
+		else
+			add_breakpoint(break_stmt, GDB_INIT_FILE)
+		end
 
-		local file = assert(io.open(GDB_INIT_FILE, "a"))
-		assert(file:write(break_stmt))
-		assert(file:close())
 
 		M.mark_breakpoints()
 	end)
