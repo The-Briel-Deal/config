@@ -5,3 +5,5 @@ vim.lsp.start({
 	settings = {
 	}
 })
+
+require("gdb").setup {}
