@@ -11,19 +11,20 @@ end
 local function remove_breakpoint(breakpoint, filename)
 	local file = assert(io.open(filename, "r"))
 	local file_content = assert(file:read("a"))
-	local new_file_content = string.gsub(file_content, breakpoint, "")
-	print("Old file: '" .. file_content .. "',\nNew file: '" .. new_file_content .. "'")
+	local i, j = assert(string.find(file_content, breakpoint, 1, true))
 	assert(file:close())
 
+	local start_content = string.sub(file_content, 1, i - 1)
+	local end_content = string.sub(file_content, j + 1, -1)
+
 	file = assert(io.open(filename, "w"))
-	file:write(new_file_content)
+	file:write(start_content .. end_content)
 	assert(file:close())
 end
 
 local function already_contains_breakpoint(breakpoint, filename)
 	local file = assert(io.open(filename, "r"))
 	for line in file:lines() do
-		-- print("Line: '" .. line .. "', Breakpoint: '" .. breakpoint .. "'")
 		if (line .. "\n") == breakpoint then
 			assert(file:close())
 			return true
@@ -47,7 +48,6 @@ M.setup = function(_)
 		else
 			add_breakpoint(break_stmt, GDB_INIT_FILE)
 		end
-
 
 		M.mark_breakpoints()
 	end)
@@ -90,12 +90,10 @@ M.mark_breakpoints = function()
 
 		local name = string.sub(name_and_line, 1, split_index - 1)
 		local line_num = string.sub(name_and_line, split_index + 1, length)
-		-- print("Name: '" .. name .. "' Line Num: '" .. line_num .. "'")
 		breakpoints[#breakpoints + 1] = { name = name, line = line_num }
 	end
 
 	for i, breakpoint in pairs(breakpoints) do
-		-- print(i .. " -- Name: '" .. breakpoint.name .. "' Line Num: '" .. breakpoint.line .. "'")
 		vim.fn.sign_place(i, "breakpoints", "breakpoint", breakpoint.name, { lnum = breakpoint.line })
 	end
 
