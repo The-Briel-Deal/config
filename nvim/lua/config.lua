@@ -1,6 +1,6 @@
 local M = {}
 
-M.setup = function(opts)
+M.setup = function(_)
 	vim.cmd [[colorscheme tokyonight]]
 
 	vim.go.number = true
