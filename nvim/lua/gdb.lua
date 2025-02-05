@@ -47,7 +47,8 @@ M.mark_breakpoints = function()
 	vim.fn.sign_define("breakpoint", { text = "BP", texthl = "ErrorMsg" })
 	local breakpoints = {}
 
-	local file = assert(io.open(GDB_INIT_FILE, "r"))
+	local file = io.open(GDB_INIT_FILE, "r")
+	if file == nil then return end
 
 	for line in file:lines() do
 		local length = string.len(line)
