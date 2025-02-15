@@ -23,9 +23,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		-- Show Diagnostics
 		set('n', 'gl', function()
-			for i, v in ipairs(vim.diagnostic.get()) do
-				print(i .. ". " .. v.message);
-			end
+			vim.diagnostic.open_float({})
 		end, { buffer = true })
 
 		-- Format
