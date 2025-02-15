@@ -21,6 +21,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.lsp.buf.references({ includeDeclaration = false }, { on_list = on_list })
 		end, { buffer = true, nowait = true })
 
+		-- Show Diagnostics
+		set('n', 'gl', function()
+			for i, v in ipairs(vim.diagnostic.get()) do
+				print(i .. ". " .. v.message);
+			end
+		end, { buffer = true })
+
 		-- Format
 		set('n', '<F3>', function()
 			vim.lsp.buf.format()
