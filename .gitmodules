@@ -16,3 +16,6 @@
 [submodule "nvim/pack/util/opt/plenary"]
 	path = nvim/pack/util/start/plenary
 	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "nvim/pack/lsp/start/blink"]
+	path = nvim/pack/lsp/start/blink
+	url = git@github.com:Saghen/blink.cmp.git
