@@ -1,5 +1,14 @@
+require("blink.cmp").setup({
+	completion = {
+		documentation = {
+			auto_show = true
+		}
+	}
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
 	callback = function(args)
+		local cmp = require("blink.cmp")
 		local set = vim.keymap.set
 
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -34,14 +43,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.api.nvim_create_user_command("Format", function(_) vim.lsp.buf.format() end, {})
 
 		-- Completion
-		vim.lsp.completion.enable(true, client.id, args.buf)
-
 		set('i', '<C-n>',
-			vim.lsp.completion.trigger,
+			cmp.show,
 			{ buffer = true }
 		)
 		set('i', '<C-p>',
-			vim.lsp.completion.trigger,
+			cmp.show,
 			{ buffer = true }
 		)
 
