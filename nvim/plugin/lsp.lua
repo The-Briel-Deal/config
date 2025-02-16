@@ -6,6 +6,10 @@ require("blink.cmp").setup({
 		documentation = {
 			auto_show = true
 		}
+	},
+	keymap = {
+		['<C-n>'] = { 'show', 'select_next', 'fallback' },
+		['<C-p>'] = { 'show', 'select_prev', 'fallback' }
 	}
 })
 
@@ -44,16 +48,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		end, { buffer = true })
 
 		vim.api.nvim_create_user_command("Format", function(_) vim.lsp.buf.format() end, {})
-
-		-- Completion
-		set('i', '<C-n>',
-			cmp.show,
-			{ buffer = true }
-		)
-		set('i', '<C-p>',
-			cmp.show,
-			{ buffer = true }
-		)
 
 		-- Inlay Hints
 		vim.lsp.inlay_hint.enable(true)
