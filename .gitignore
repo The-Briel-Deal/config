@@ -71,3 +71,4 @@ menus/
 /weechat/
 /nvim/lazy-lock.json
 /fish/fish_variables
+fish/functions/get_artifact_dev.fish
