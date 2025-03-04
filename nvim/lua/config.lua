@@ -13,7 +13,7 @@ M.setup = function(_)
 	vim.g.clipboard = {
 		name = "Tmux Clipboard",
 		copy = {
-			["+"] = { 'tmux', 'load-buffer', '-' },
+			["+"] = { 'tmux', 'load-buffer', '-w', '-' },
 			["*"] = { 'wl-copy' },
 		},
 		paste = {
