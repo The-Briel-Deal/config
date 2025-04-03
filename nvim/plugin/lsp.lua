@@ -42,12 +42,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
 			vim.diagnostic.open_float({})
 		end, { buffer = true })
 
+		-- Rename
+		set('n', '<F2>', function()
+			vim.lsp.buf.rename()
+		end, { buffer = true })
+
+		vim.api.nvim_create_user_command("Rename",
+			function(_) vim.lsp.buf.rename() end,
+			{}
+		)
+
 		-- Format
 		set('n', '<F3>', function()
 			vim.lsp.buf.format()
 		end, { buffer = true })
 
-		vim.api.nvim_create_user_command("Format", function(_) vim.lsp.buf.format() end, {})
+		vim.api.nvim_create_user_command("Format",
+			function(_) vim.lsp.buf.format() end,
+			{}
+		)
 
 		-- Inlay Hints
 		vim.lsp.inlay_hint.enable(true)
