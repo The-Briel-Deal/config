@@ -73,3 +73,6 @@ menus/
 /fish/fish_variables
 fish/functions/get_artifact_dev.fish
 /uv/
+deluge/
+jellyfin/
+kcachegrindrc
