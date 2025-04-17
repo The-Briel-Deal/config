@@ -76,3 +76,6 @@ fish/functions/get_artifact_dev.fish
 deluge/
 jellyfin/
 kcachegrindrc
+freerdp/
+hexchat/
+packer/
