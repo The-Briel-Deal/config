@@ -19,3 +19,6 @@
 [submodule "nvim/pack/lsp/start/blink"]
 	path = nvim/pack/lsp/start/blink
 	url = git@github.com:Saghen/blink.cmp.git
+[submodule "nvim/pack/dap/start/nvim-dap"]
+	path = nvim/pack/dap/start/nvim-dap
+	url = https://github.com/mfussenegger/nvim-dap.git
