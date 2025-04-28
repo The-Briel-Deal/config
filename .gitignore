@@ -72,6 +72,7 @@ menus/
 /nvim/lazy-lock.json
 /fish/fish_variables
 fish/functions/get_artifact_dev.fish
+fish/functions/get_artifact_qa.fish
 /uv/
 deluge/
 jellyfin/

@@ -1,5 +1,6 @@
 -- vim.opt_global.python_recommended_style = 0
 vim.opt_local.shiftwidth = 2
+vim.opt_local.expandtab = true
 
 local root_files = {
 	'pyproject.toml',
