@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SELECTED=$(gob-curl -s 'https://gso-fact-internal-review.git.corp.google.com/changes/?q=owner:gabrielford@google.com+is:open' \
+SELECTED=$(gob-curl -s "https://gso-fact-internal-review.git.corp.google.com/changes/?q=owner:$USER@google.com+is:open" \
   | tail -n +2 \
   | jq -r '.[] | "\(.project) -- \(.subject) -- \(._number) -- \(.current_revision_number)"' \
   | fzf)
