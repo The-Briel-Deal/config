@@ -5,6 +5,11 @@ SELECTED=$(gob-curl -s 'https://gso-fact-internal-review.git.corp.google.com/cha
   | jq -r '.[] | "\(.project) -- \(.subject) -- \(._number) -- \(.current_revision_number)"' \
   | fzf)
 
+if [[ -z "$SELECTED" ]]; then
+  echo "No CL selected."
+  exit 1
+fi
+
 IFS=$'\n'
 
 declare -a 'SPLIT=($(sed "s/ -- /\n/g" <<< $SELECTED))'
