@@ -12,4 +12,8 @@ declare -a 'SPLIT=($(sed "s/ -- /\n/g" <<< $SELECTED))'
 CL_NUMBER=${SPLIT[1]}
 CL_LATEST_REVISION=${SPLIT[2]}
 
-echo $CL_NUMBER has $CL_LATEST_REVISION revisions
+echo "Pulling CL $CL_NUMBER at revision $CL_LATEST_REVISION."
+
+CL_REMOTE_REF=refs/changes/${CL_NUMBER:(-2)}/${CL_NUMBER}/${CL_LATEST_REVISION}
+
+echo $CL_REMOTE_REF
