@@ -2,15 +2,15 @@
 
 SELECTED=$(gob-curl -s 'https://gso-fact-internal-review.git.corp.google.com/changes/?q=owner:gabrielford@google.com+is:open' \
   | tail -n +2 \
-	| jq -r '.[] | "\(.subject) -- \(._number) -- \(.current_revision_number)"' \
+  | jq -r '.[] | "\(.project) -- \(.subject) -- \(._number) -- \(.current_revision_number)"' \
   | fzf)
 
 IFS=$'\n'
 
 declare -a 'SPLIT=($(sed "s/ -- /\n/g" <<< $SELECTED))'
 
-CL_NUMBER=${SPLIT[1]}
-CL_LATEST_REVISION=${SPLIT[2]}
+CL_NUMBER=${SPLIT[2]}
+CL_LATEST_REVISION=${SPLIT[3]}
 
 echo "Pulling CL $CL_NUMBER at revision $CL_LATEST_REVISION."
 
