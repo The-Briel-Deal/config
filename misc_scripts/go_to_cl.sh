@@ -17,4 +17,4 @@ echo "Fetching $REPO_NAME CL $CL_NUMBER at revision $CL_LATEST_REVISION."
 
 CL_REMOTE_REF=refs/changes/${CL_NUMBER:(-2)}/${CL_NUMBER}/${CL_LATEST_REVISION}
 
-echo $CL_REMOTE_REF
+git fetch origin $CL_REMOTE_REF
