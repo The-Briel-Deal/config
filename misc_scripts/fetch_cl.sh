@@ -1,6 +1,12 @@
 #!/bin/bash
+BASE_URL="https://gso-fact-internal-review.git.corp.google.com/changes/"
 
-SELECTED=$(gob-curl -s "https://gso-fact-internal-review.git.corp.google.com/changes/?q=owner:$USER@google.com+is:open" \
+OWNER="owner:$USER@google.com+"
+if [[ "$1" == "all_users" ]]; then
+  OWNER=""
+fi
+
+SELECTED=$(gob-curl -s "${BASE_URL}?q=${OWNER}is:open" \
   | tail -n +2 \
   | jq -r '.[] | "\(.project) -- \(.subject) -- \(._number) -- \(.current_revision_number)"' \
   | fzf)
