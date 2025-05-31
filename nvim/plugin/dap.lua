@@ -6,14 +6,25 @@ dap.adapters.gdb = {
 	args = { '--interpreter=dap', '--eval-command', 'set print pretty on' }
 }
 
-dap.configurations.c = { {
-	name = 'Launch',
-	type = 'gdb',
-	request = 'launch',
-	program = function()
-		return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
-	end,
-} }
+dap.configurations.c = {
+	{
+		name = 'Launch',
+		type = 'gdb',
+		request = 'launch',
+		program = function()
+			return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
+		end,
+	},
+	{
+		name = 'Launch nvim headless',
+		type = 'gdb',
+		request = 'launch',
+		program = function()
+			return vim.fn.getcwd() .. '/build/bin/nvim'
+		end,
+		args = {'--headless', '--listen', 'localhost:12345'}
+	},
+}
 
 dap.adapters.python = function(cb, config)
 	if config.request == 'attach' then
