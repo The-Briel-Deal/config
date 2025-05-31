@@ -6,14 +6,14 @@ dap.adapters.gdb = {
 	args = { '--interpreter=dap', '--eval-command', 'set print pretty on' }
 }
 
-dap.configurations.c = {
+dap.configurations.c = { {
 	name = 'Launch',
 	type = 'gdb',
 	request = 'launch',
 	program = function()
 		return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
 	end,
-}
+} }
 
 dap.adapters.python = function(cb, config)
 	if config.request == 'attach' then
