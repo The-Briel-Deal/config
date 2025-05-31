@@ -1,5 +1,11 @@
 local dap = require('dap') ---@module 'nvim-dap.lua.dap'
 
+dap.defaults.fallback.external_terminal = {
+	command = 'tmux',
+	args = {'splitw'}
+}
+dap.defaults.fallback.force_external_terminal = true
+
 dap.adapters.gdb = {
 	type = 'executable',
 	command = 'gdb',
