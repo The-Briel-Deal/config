@@ -6,10 +6,16 @@ dap.adapters.gdb = {
 	args = { '--interpreter=dap', '--eval-command', 'set print pretty on' }
 }
 
+dap.adapters.lldb = {
+	type = 'executable',
+	command = 'lldb-dap',
+	name = 'lldb',
+}
+
 dap.configurations.c = {
 	{
 		name = 'Launch',
-		type = 'gdb',
+		type = 'lldb',
 		request = 'launch',
 		program = function()
 			return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
@@ -17,7 +23,7 @@ dap.configurations.c = {
 	},
 	{
 		name = 'Launch nvim headless',
-		type = 'gdb',
+		type = 'lldb',
 		request = 'launch',
 		program = function()
 			return vim.fn.getcwd() .. '/build/bin/nvim'
