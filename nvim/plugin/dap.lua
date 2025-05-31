@@ -1,4 +1,4 @@
-local dap = require('dap')
+local dap = require('dap') ---@module 'nvim-dap.lua.dap'
 
 dap.adapters.gdb = {
 	type = 'executable',
@@ -6,10 +6,22 @@ dap.adapters.gdb = {
 	args = { '--interpreter=dap', '--eval-command', 'set print pretty on' }
 }
 
-dap.adapters.lldb = {
+local lldb_adapter = {
 	type = 'executable',
-	command = 'lldb-dap',
+	command = '/usr/bin/lldb-dap',
 	name = 'lldb',
+	args = {},
+}
+dap.adapters.lldb = lldb_adapter
+
+local launch_nvim_headless_conf = {
+	name = 'Launch nvim headless',
+	type = 'lldb',
+	request = 'launch',
+	program = function()
+		return vim.fn.getcwd() .. '/build/bin/nvim'
+	end,
+	args = { '--headless', '--listen', 'localhost:12345' }
 }
 
 dap.configurations.c = {
@@ -20,16 +32,9 @@ dap.configurations.c = {
 		program = function()
 			return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
 		end,
+		runInTerminal = true,
 	},
-	{
-		name = 'Launch nvim headless',
-		type = 'lldb',
-		request = 'launch',
-		program = function()
-			return vim.fn.getcwd() .. '/build/bin/nvim'
-		end,
-		args = {'--headless', '--listen', 'localhost:12345'}
-	},
+	launch_nvim_headless_conf,
 }
 
 dap.adapters.python = function(cb, config)
@@ -83,3 +88,45 @@ dap.configurations.python = {
 		end,
 	},
 }
+
+local dap_widgets = require('dap.ui.widgets')
+
+local set = vim.keymap.set
+
+local function session_active()
+	if dap.session() then
+		return true
+	end
+	print('No nvim-dap session active.')
+	return false
+end
+
+set('n', '<leader>drn', function()
+	dap.run(launch_nvim_headless_conf)
+	local suc, exitcode, code = os.execute('tmux splitw -b nvim --remote-ui --server localhost:12345')
+	print("suc: " .. tostring(suc) .. " exitcode: " .. tostring(exitcode) .. " code: " .. tostring(code))
+end)
+
+set('n', '<leader>dc', function()
+	dap.continue()
+end)
+
+set('n', '<leader>dk', function()
+	if session_active() then
+		dap_widgets.hover()
+	end
+end)
+
+set('n', '<leader>dC', function()
+	if session_active() then
+		dap.run_to_cursor()
+	end
+end)
+
+set('n', '<leader>bb', function()
+	dap.toggle_breakpoint()
+end)
+
+set('n', '<leader>bc', function()
+	dap.clear_breakpoints()
+end)

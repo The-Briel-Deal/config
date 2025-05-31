@@ -7,28 +7,29 @@ local GDB_INIT_FILE = ".gdbinit"
 
 M.setup = function(_)
 	M.mark_breakpoints()
-	local set = vim.keymap.set
+	-- local set = vim.keymap.set
 
+	--[[ Temporarily disabled since I am moving to nvim-dap ]]
 	-- New breakpoint
-	set('n', '<leader>bb', function()
-		local break_stmt = M.get_break_stmt()
-		if M.already_contains_breakpoint(break_stmt, GDB_INIT_FILE) then
-			M.remove_breakpoint(break_stmt, GDB_INIT_FILE)
-		else
-			M.add_breakpoint(break_stmt, GDB_INIT_FILE)
-		end
+	-- set('n', '<leader>bb', function()
+	-- 	local break_stmt = M.get_break_stmt()
+	-- 	if M.already_contains_breakpoint(break_stmt, GDB_INIT_FILE) then
+	-- 		M.remove_breakpoint(break_stmt, GDB_INIT_FILE)
+	-- 	else
+	-- 		M.add_breakpoint(break_stmt, GDB_INIT_FILE)
+	-- 	end
 
-		M.mark_breakpoints()
-	end)
+	-- 	M.mark_breakpoints()
+	-- end)
 
 	-- Clear all breakpoints
-	set('n', '<leader>bc', function()
-		local file = assert(io.open(GDB_INIT_FILE, "w"))
-		assert(file:write(""))
-		assert(file:close())
-
-		M.mark_breakpoints()
-	end)
+	-- set('n', '<leader>bc', function()
+	-- 	local file = assert(io.open(GDB_INIT_FILE, "w"))
+	-- 	assert(file:write(""))
+	-- 	assert(file:close())
+  -- 
+	-- 	M.mark_breakpoints()
+	-- end)
 end
 
 --- @return string
