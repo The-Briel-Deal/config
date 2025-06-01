@@ -65,15 +65,27 @@ set('n', '<leader>dc', function()
 	dap.continue()
 end)
 
-set('n', '<leader>dk', function()
+set('n', '<leader>dC', function()
+	if session_active() then
+		dap.run_to_cursor()
+	end
+end)
+
+set('n', '<leader>dh', function()
 	if session_active() then
 		dap_widgets.hover()
 	end
 end)
 
-set('n', '<leader>dC', function()
+set('n', '<leader>dk', function()
 	if session_active() then
-		dap.run_to_cursor()
+		dap.up()
+	end
+end)
+
+set('n', '<leader>dj', function()
+	if session_active() then
+		dap.down()
 	end
 end)
 
