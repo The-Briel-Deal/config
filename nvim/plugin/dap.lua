@@ -89,6 +89,12 @@ set('n', '<leader>dj', function()
 	end
 end)
 
+set('n', '<leader>dn', function()
+	if session_active() then
+		dap.step_over()
+	end
+end)
+
 set('n', '<leader>bb', function()
 	dap.toggle_breakpoint()
 end)
