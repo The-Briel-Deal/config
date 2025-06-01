@@ -11,6 +11,12 @@ dap.adapters.gdb = {
 	args = { '--interpreter=dap', '--eval-command', 'set print pretty on' }
 }
 
+dap.adapters.cppdbg = {
+	id = 'cppdbg',
+	type = 'executable',
+	command = os.getenv("HOME") .. '/.local/share/debug_adapters/extension/debugAdapters/bin/OpenDebugAD7',
+}
+
 dap.adapters.lldb = {
 	type = 'executable',
 	command = '/usr/bin/lldb-dap',
@@ -40,12 +46,23 @@ dap.configurations.c = {
 	},
 	{
 		name = 'Attach to gdb-server',
-		type = 'lldb',
-		request = 'attach',
+		type = 'cppdbg',
+		request = 'launch',
 		program = function()
 			return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
 		end,
-		['gdb-remote-port'] = 7777,
+		miDebuggerServerAddress = 'localhost:7777',
+		cwd = '.'
+	},
+	{
+		name = 'nvim - Attach Tests',
+		type = 'cppdbg',
+		request = 'launch',
+		program = function()
+			return vim.fn.getcwd() .. '/build/bin/nvim'
+		end,
+		miDebuggerServerAddress = 'localhost:7777',
+		cwd = '.'
 	},
 }
 
