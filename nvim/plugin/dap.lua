@@ -2,9 +2,8 @@ local dap = require('dap') ---@module 'nvim-dap.lua.dap'
 
 dap.defaults.fallback.external_terminal = {
 	command = 'tmux',
-	args = {'splitw'}
+	args = { 'splitw' }
 }
-dap.defaults.fallback.force_external_terminal = true
 
 dap.adapters.gdb = {
 	type = 'executable',
@@ -29,7 +28,25 @@ dap.configurations.c = {
 			return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
 		end,
 		runInTerminal = true,
-	}
+	},
+	{
+		name = 'Launch nvim headless',
+		type = 'lldb',
+		request = 'launch',
+		program = function()
+			return vim.fn.getcwd() .. '/build/bin/nvim'
+		end,
+		args = { '--headless', '--listen', 'localhost:12345' },
+	},
+	{
+		name = 'Attach to gdb-server',
+		type = 'lldb',
+		request = 'attach',
+		program = function()
+			return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
+		end,
+		['gdb-remote-port'] = 7777,
+	},
 }
 
 
