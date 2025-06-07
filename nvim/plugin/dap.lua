@@ -124,7 +124,7 @@ set('n', '<leader>dC', function()
 	end
 end)
 
-set('n', '<leader>dh', function()
+set('n', '<C-k>', function()
 	if session_active() then
 		dap_widgets.hover()
 	end
