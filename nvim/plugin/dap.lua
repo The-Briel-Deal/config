@@ -155,3 +155,17 @@ end)
 set('n', '<leader>bc', function()
 	dap.clear_breakpoints()
 end)
+
+--- Dap View
+local dap_view = require("dap-view")
+
+dap_view.setup({
+	winbar = {
+		sections = { "watches", "scopes", "exceptions", "breakpoints", "threads", "repl", "console" },
+	},
+	switchbuf = "uselast,useopen",
+})
+
+set('n', '<leader>dv', function()
+	dap_view.toggle()
+end)
