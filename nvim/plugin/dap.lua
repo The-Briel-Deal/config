@@ -157,7 +157,8 @@ set({ 'n', 'v' }, '<C-k>', function()
 			for line in string.gmatch(res.result, '[^\n^\r]*') do
 				local end_col = #line
 				vim.api.nvim_buf_set_lines(buf, cur_line, cur_line, true, { line })
-				vim.api.nvim_buf_set_extmark(buf, ns, cur_line, 0, { end_col = end_col, end_line = cur_line, hl_group = 'NormalFloat' })
+				vim.api.nvim_buf_set_extmark(buf, ns, cur_line, 0,
+					{ end_col = end_col, end_line = cur_line, hl_group = 'NormalFloat' })
 				cur_line = cur_line + 1
 			end
 
