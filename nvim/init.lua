@@ -1,4 +1,3 @@
-require("plugin").setup {}
-require("config").setup {}
-require("keymap").setup {}
-
+require('plugin').setup {}
+require('config').setup {}
+require('keymap').setup {}

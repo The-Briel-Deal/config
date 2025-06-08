@@ -2,12 +2,12 @@
 vim.opt_local.shiftwidth = 2
 
 local root_files = {
-	'.git',
+  '.git',
 }
 
 vim.lsp.start({
-	name = 'glsl_analyzer',
-	cmd = { 'glsl_analyzer' },
-	root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
-	capabilities = {},
+  name = 'glsl_analyzer',
+  cmd = { 'glsl_analyzer' },
+  root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
+  capabilities = {},
 })

@@ -2,22 +2,28 @@ vim.g.python_recommended_style = 0
 vim.opt_local.shiftwidth = 2
 vim.opt_local.expandtab = true
 
-vim.keymap.set('v', '<leader>fm',
-	'!pyink -q --line-length=80 --unstable --pyink-indentation=2 --pyink-use-majority-quotes - <Enter>', { buffer = true })
+vim.keymap.set(
+  'v',
+  '<leader>fm',
+  '!pyink -q --line-length=80 --unstable --pyink-indentation=2 --pyink-use-majority-quotes - <Enter>',
+  { buffer = true }
+)
 vim.keymap.set('n', '<leader>fm', function()
-	os.execute([[pyink -q --line-length=80 --unstable --pyink-indentation=2 --pyink-use-majority-quotes ]] ..
-	vim.api.nvim_buf_get_name(0))
-	vim.cmd.edit()
+  os.execute(
+    [[pyink -q --line-length=80 --unstable --pyink-indentation=2 --pyink-use-majority-quotes ]]
+      .. vim.api.nvim_buf_get_name(0)
+  )
+  vim.cmd.edit()
 end, { buffer = true })
 
 local root_files = {
-	'pyproject.toml',
-	'setup.py',
-	'setup.cfg',
-	'requirements.txt',
-	'Pipfile',
-	'pyrightconfig.json',
-	'.git',
+  'pyproject.toml',
+  'setup.py',
+  'setup.cfg',
+  'requirements.txt',
+  'Pipfile',
+  'pyrightconfig.json',
+  '.git',
 }
 
 --local function organize_imports()
@@ -51,28 +57,28 @@ local root_files = {
 --end
 
 vim.lsp.start({
-	name = 'pyright',
-	cmd = { 'pyright-langserver', '--stdio' },
-	root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
-	settings = {
-		python = {
-			analysis = {
-				autoSearchPaths = true,
-				useLibraryCodeForTypes = true,
-				diagnosticMode = 'openFilesOnly',
-			},
-		},
-	},
-	--	commands = {
-	--		PyrightOrganizeImports = {
-	--			organize_imports,
-	--			description = 'Organize Imports',
-	--		},
-	--		PyrightSetPythonPath = {
-	--			set_python_path,
-	--			description = 'Reconfigure pyright with the provided python path',
-	--			nargs = 1,
-	--			complete = 'file',
-	--		},
-	--	}
+  name = 'pyright',
+  cmd = { 'pyright-langserver', '--stdio' },
+  root_dir = vim.fs.dirname(vim.fs.find(root_files, { upward = true })[1]),
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = 'openFilesOnly',
+      },
+    },
+  },
+  --	commands = {
+  --		PyrightOrganizeImports = {
+  --			organize_imports,
+  --			description = 'Organize Imports',
+  --		},
+  --		PyrightSetPythonPath = {
+  --			set_python_path,
+  --			description = 'Reconfigure pyright with the provided python path',
+  --			nargs = 1,
+  --			complete = 'file',
+  --		},
+  --	}
 })
