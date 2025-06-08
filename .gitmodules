@@ -25,3 +25,6 @@
 [submodule "nvim/pack/dap/start/dap-view"]
 	path = nvim/pack/dap/start/dap-view
 	url = git@github.com:igorlfs/nvim-dap-view.git
+[submodule "nvim/pack/lsp/start/conform"]
+	path = nvim/pack/lsp/start/conform
+	url = git@github.com:stevearc/conform.nvim.git
