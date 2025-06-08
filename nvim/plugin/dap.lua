@@ -125,7 +125,13 @@ set('n', '<leader>dC', function()
 	end
 end)
 
+---	@type integer|nil
+local cur_win = nil
 set({ 'n', 'v' }, '<C-k>', function()
+	if cur_win then
+		vim.api.nvim_set_current_win(cur_win)
+		return
+	end
 	local session = session_active()
 	if session then
 		local expr_under_cursor = vim.fn.expand('<cexpr>')
@@ -173,8 +179,8 @@ set({ 'n', 'v' }, '<C-k>', function()
 				end
 			end)
 
-			--			vim.api.nvim_buf_set_lines(buf, 0, -1, true, contents)
-			local win = vim.api.nvim_open_win(buf, false,
+			assert.Nil(cur_win)
+			cur_win = vim.api.nvim_open_win(buf, false,
 				{
 					relative = 'cursor',
 					border = 'rounded',
@@ -185,12 +191,19 @@ set({ 'n', 'v' }, '<C-k>', function()
 					style = 'minimal',
 					title = 'DBG - ' .. expr_under_cursor,
 				})
+			local closed_float = false
+			local close_float = function()
+				if closed_float then return end
+				vim.api.nvim_win_close(cur_win, false)
+				cur_win = nil
+				closed_float = true
+			end
 			vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
-				callback = function()
-					vim.api.nvim_win_close(win, false)
-				end,
+				callback = close_float,
 				once = true,
+				buffer = 0,
 			})
+			vim.keymap.set('n', 'q', close_float, { buffer = buf });
 		end)
 	end
 end)
