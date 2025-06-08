@@ -132,13 +132,13 @@ set({ 'n', 'v' }, '<C-k>', function()
 		session:evaluate({ expression = expr_under_cursor, context = 'hover' }, function(err, res)
 			if err then
 				print('DAP - Could not evaluate \'' ..
-					expr_under_cursor .. (err.body.error and ('\': \'' .. err.body.error .. '\'') or '\'.'))
+					expr_under_cursor .. (err.body.error and ('\': \'' .. err.body.error.format .. '\'') or '\'.'))
 				return
 			end
 
 			assert.not_nil(res)
 
-			local buf = vim.api.nvim_create_buf(false, false)
+			local buf = vim.api.nvim_create_buf(false, true)
 			local ns = vim.api.nvim_create_namespace('dbg_float')
 
 			local cur_line = 0
