@@ -129,21 +129,21 @@ set({ 'n', 'v' }, '<C-k>', function()
 	local session = session_active()
 	if session then
 		local expr_under_cursor = vim.fn.expand('<cexpr>')
-		session:evaluate({ expression = expr_under_cursor, context = 'hover' }, function(err, res)
-			if err then
+		session:evaluate({ expression = expr_under_cursor, context = 'hover' }, function(eva_err, eva_res)
+			if eva_err then
 				print('DAP - Could not evaluate \'' ..
-					expr_under_cursor .. (err.body.error and ('\': \'' .. err.body.error.format .. '\'') or '\'.'))
+					expr_under_cursor .. (eva_err.body.error and ('\': \'' .. eva_err.body.error.format .. '\'') or '\'.'))
 				return
 			end
 
-			assert.not_nil(res)
+			assert.not_nil(eva_res)
 
 			local buf = vim.api.nvim_create_buf(false, true)
 			local ns = vim.api.nvim_create_namespace('dbg_float')
 
 			local cur_line = 0
 
-			local header = (res.type or '') .. ' ' .. expr_under_cursor
+			local header = (eva_res.type or '') .. ' ' .. expr_under_cursor
 			if type(header) == 'string' then
 				local end_col = #header
 				vim.api.nvim_buf_set_lines(buf, cur_line, cur_line, true, { header })
@@ -154,13 +154,24 @@ set({ 'n', 'v' }, '<C-k>', function()
 				cur_line = cur_line + 1
 			end
 
-			for line in string.gmatch(res.result, '[^\n^\r]*') do
+			for line in string.gmatch(eva_res.result, '[^\n^\r]*') do
 				local end_col = #line
 				vim.api.nvim_buf_set_lines(buf, cur_line, cur_line, true, { line })
 				vim.api.nvim_buf_set_extmark(buf, ns, cur_line, 0,
 					{ end_col = end_col, end_line = cur_line, hl_group = 'NormalFloat' })
 				cur_line = cur_line + 1
 			end
+
+			session:request('variables', { variablesReference = eva_res.variablesReference }, function(var_err, var_res)
+				for _, variable in ipairs(var_res.variables) do
+					local line = variable.name .. ' = ' .. variable.value
+					local end_col = #line
+					vim.api.nvim_buf_set_lines(buf, cur_line, cur_line, true, { line })
+					vim.api.nvim_buf_set_extmark(buf, ns, cur_line, 0,
+						{ end_col = end_col, end_line = cur_line, hl_group = 'NormalFloat' })
+					cur_line = cur_line + 1
+				end
+			end)
 
 			--			vim.api.nvim_buf_set_lines(buf, 0, -1, true, contents)
 			local win = vim.api.nvim_open_win(buf, false,
