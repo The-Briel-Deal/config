@@ -129,8 +129,12 @@ set({ 'n', 'v' }, '<C-k>', function()
 	local session = session_active()
 	if session then
 		local expr_under_cursor = vim.fn.expand('<cexpr>')
-		session:evaluate(expr_under_cursor, function(err, res)
-			assert.Nil(err)
+		session:evaluate({ expression = expr_under_cursor, context = 'hover' }, function(err, res)
+			if err then
+				print( 'DAP - Could not evaluate \'' .. expr_under_cursor .. (err.body.error and ('\': \'' .. err.body.error .. '\'') or '\'.'))
+				return
+			end
+
 			assert.not_nil(res)
 
 			local contents = {}
