@@ -1,4 +1,5 @@
 local dap = require('dap') ---@module 'nvim-dap.lua.dap'
+local assert = require('luassert')
 
 dap.defaults.fallback.external_terminal = {
 	command = 'tmux',
@@ -104,14 +105,14 @@ dap.configurations.c = {
 
 
 local function session_active()
-	if dap.session() then
-		return true
+	local session = dap.session()
+	if session and not session.closed then
+		return session
 	end
 	print('No nvim-dap session active.')
-	return false
+	return nil
 end
 
-local dap_widgets = require('dap.ui.widgets')
 local set = vim.keymap.set
 
 set('n', '<leader>dc', function()
@@ -125,8 +126,36 @@ set('n', '<leader>dC', function()
 end)
 
 set({ 'n', 'v' }, '<C-k>', function()
-	if session_active() then
-		dap_widgets.hover()
+	local session = session_active()
+	if session then
+		local expr_under_cursor = vim.fn.expand('<cexpr>')
+		session:evaluate(expr_under_cursor, function(err, res)
+			assert.Nil(err)
+			assert.not_nil(res)
+
+			local contents = {}
+			for line in string.gmatch(res.result, '[^\n^\r]*') do
+				table.insert(contents, line)
+			end
+			local buf = vim.api.nvim_create_buf(false, false)
+			vim.api.nvim_buf_set_lines(buf, 0, -1, true, contents)
+			local win = vim.api.nvim_open_win(buf, false,
+				{
+					relative = 'cursor',
+					border = 'rounded',
+					row = 2,
+					col = 2,
+					width = 40,
+					height = 10,
+					title = 'DBG - ' .. expr_under_cursor,
+				})
+			vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
+				callback = function()
+					vim.api.nvim_win_close(win, false)
+				end,
+				once = true,
+			})
+		end)
 	end
 end)
 
