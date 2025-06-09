@@ -127,20 +127,24 @@ end)
 ---@param fields table
 ---@param session dap.Session
 ---@param variable_reference integer
----@return table
-local function recurse_fields(fields, session, variable_reference)
-  local err, res = session:request('variables', { variablesReference = variable_reference })
-  assert.Nil(err)
-  assert(res)
-  for _, variable in ipairs(res.variables) do
-    if variable.variablesReference > 0 then
-      fields[variable.name] = {}
-      recurse_fields(fields[variable.name], session, variable.variablesReference)
-    else
-      fields[variable.name] = variable.value
+---@param then_run fun(fields: table)
+local function recurse_fields(fields, session, variable_reference, then_run)
+  session:request('variables', { variablesReference = variable_reference }, function(err, res)
+    -- print('err: ' .. vim.inspect(err))
+    -- print('res: ' .. vim.inspect(res))
+    assert.Nil(err)
+    assert(res)
+    for _, variable in ipairs(res.variables) do
+      if variable.variablesReference > 0 then
+        fields[variable.name] = {}
+        print(vim.inspect(variable))
+        recurse_fields(fields[variable.name], session, variable.variablesReference)
+      else
+        fields[variable.name] = variable.value
+      end
     end
-  end
-  return fields
+    return fields
+  end)
 end
 
 ---	@type integer|nil
