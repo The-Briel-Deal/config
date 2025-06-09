@@ -50,11 +50,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.rename()
     end, {})
 
-    -- Format
-    set('n', '<F3>', function()
-      vim.lsp.buf.format()
-    end, { buffer = true })
-
     vim.api.nvim_create_user_command('Format', function(_)
       vim.lsp.buf.format()
     end, {})

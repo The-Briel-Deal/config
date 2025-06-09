@@ -2,12 +2,6 @@ vim.g.python_recommended_style = 0
 vim.opt_local.shiftwidth = 2
 vim.opt_local.expandtab = true
 
-vim.keymap.set(
-  'v',
-  '<leader>fm',
-  '!pyink -q --line-length=80 --unstable --pyink-indentation=2 --pyink-use-majority-quotes - <Enter>',
-  { buffer = true }
-)
 vim.keymap.set('n', '<leader>fm', function()
   os.execute(
     [[pyink -q --line-length=80 --unstable --pyink-indentation=2 --pyink-use-majority-quotes ]]
