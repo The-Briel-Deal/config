@@ -124,6 +124,29 @@ set('n', '<leader>dC', function()
   end
 end)
 
+---@param fields table
+---@param session dap.Session
+---@param variable_reference integer
+---@param then_run fun(fields: table)
+local function recurse_fields(fields, session, variable_reference, then_run)
+  session:request('variables', { variablesReference = variable_reference }, function(err, res)
+    -- print('err: ' .. vim.inspect(err))
+    -- print('res: ' .. vim.inspect(res))
+    assert.Nil(err)
+    assert(res)
+    for _, variable in ipairs(res.variables) do
+      if variable.variablesReference > 0 then
+        fields[variable.name] = {}
+        print(vim.inspect(variable))
+        recurse_fields(fields[variable.name], session, variable.variablesReference)
+      else
+        fields[variable.name] = variable.value
+      end
+    end
+    return fields
+  end)
+end
+
 ---	@type integer|nil
 local cur_win = nil
 set({ 'n', 'v' }, '<C-k>', function()
@@ -183,25 +206,24 @@ set({ 'n', 'v' }, '<C-k>', function()
           cur_line = cur_line + 1
         end
 
-        session:request(
-          'variables',
-          { variablesReference = eva_res.variablesReference },
-          function(var_err, var_res)
-            for _, variable in ipairs(var_res.variables) do
-              local line = variable.name .. ' = ' .. variable.value
-              local end_col = #line
-              vim.api.nvim_buf_set_lines(buf, cur_line, cur_line, true, { line })
-              vim.api.nvim_buf_set_extmark(
-                buf,
-                ns,
-                cur_line,
-                0,
-                { end_col = end_col, end_line = cur_line, hl_group = 'NormalFloat' }
-              )
-              cur_line = cur_line + 1
-            end
-          end
-        )
+        local vars = {}
+
+        local variables = recurse_fields(vars, session, eva_res.variablesReference)
+
+        local vars_str = vim.inspect(variables)
+
+        for line in string.gmatch(vars_str, '[^\n^\r]*') do
+          local end_col = #line
+          vim.api.nvim_buf_set_lines(buf, cur_line, cur_line, true, { line })
+          vim.api.nvim_buf_set_extmark(
+            buf,
+            ns,
+            cur_line,
+            0,
+            { end_col = end_col, end_line = cur_line, hl_group = 'NormalFloat' }
+          )
+          cur_line = cur_line + 1
+        end
 
         assert.Nil(cur_win)
         cur_win = vim.api.nvim_open_win(buf, false, {
