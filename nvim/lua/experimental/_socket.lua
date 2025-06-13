@@ -71,19 +71,19 @@ local function async_downloadn(host, file, n)
 	end
 end
 
-local host = "lunarmodules.github.io"
-local file = "/luasocket/socket.html"
+local host = "localhost"
+local file = "/"
 
 
--- local start_time = os.clock()
--- downloadn(host, file, 100)
--- local end_time = os.clock()
--- 
--- print('sync', (end_time - start_time) * 1000.0)
+local start_time = socket.gettime()
+downloadn(host, file, 100)
+local end_time = socket.gettime()
+
+print('sync', (end_time - start_time))
 
 
-local start_time = os.clock()
-async_downloadn(host, file, 1000)
-local end_time = os.clock()
+start_time = socket.gettime()
+async_downloadn(host, file, 100)
+end_time = socket.gettime()
 
-print('async', (end_time - start_time) * 1000.0)
+print('async', (end_time - start_time))
