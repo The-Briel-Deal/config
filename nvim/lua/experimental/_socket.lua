@@ -22,10 +22,15 @@ local function download (host, file)
     end
   end
   c:close()
-  print(str)
+	return str
 end
 
 local host = "lunarmodules.github.io"
 local file = "/luasocket/socket.html"
 
+
+local start_time = os.clock()
 download(host, file)
+local end_time = os.clock()
+
+print(end_time - start_time)
