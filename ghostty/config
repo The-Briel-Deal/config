@@ -1,3 +1,8 @@
+keybind = clear
+
+keybind = cmd+v=paste_from_clipboard
+keybind = cmd+shift+plus=increase_font_size:1
+keybind = cmd+minus=decrease_font_size:1
 theme = tokyonight_moon
 background-opacity = 0.95
 background-blur-radius = 20
