@@ -19,6 +19,7 @@ local M = {}
 --- @field win integer
 --- @field buf integer
 --- @field ns integer
+--- @field autocmd_id integer?
 ---
 local FloatBase = {
   height = 20,
@@ -46,8 +47,16 @@ function FloatBase:sync_body()
   end
 end
 
-function FloatBase:close_float()
+function FloatBase:close()
   vim.api.nvim_win_close(self.win, false)
+  if self.autocmd_id then
+    vim.api.nvim_del_autocmd(self.autocmd_id)
+    self.autocmd_id = nil
+  end
+end
+
+function FloatBase:focus()
+  vim.api.nvim_set_current_win(self.win)
 end
 
 function M.New(opts)
@@ -58,6 +67,7 @@ function M.New(opts)
     width = opts.width,
     title = opts.title,
     body = opts.body,
+    autocmd_id = nil,
     buf = buf,
     ns = ns,
   }
@@ -75,13 +85,17 @@ function M.New(opts)
     style = 'minimal',
   })
 
-  vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
+  o.autocmd_id = vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
     callback = function()
-      o:close_float()
+      o:close()
     end,
     once = true,
     buffer = 0,
   })
+
+  vim.keymap.set('n', 'q', function()
+    o:close()
+  end, { buffer = buf })
 
   return o
 end
