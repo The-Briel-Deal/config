@@ -206,11 +206,12 @@ set({ 'n', 'v' }, '<C-k>', function()
           cur_line = cur_line + 1
         end
 
-        local vars = {}
+        -- local vars = {}
 
-        local variables = recurse_fields(vars, session, eva_res.variablesReference)
+        -- local variables = recurse_fields(vars, session, eva_res.variablesReference)
 
-        local vars_str = vim.inspect(variables)
+        -- local vars_str = vim.inspect(variables)
+        local vars_str = 'foo'
 
         for line in string.gmatch(vars_str, '[^\n^\r]*') do
           local end_col = #line
