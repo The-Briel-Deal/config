@@ -46,6 +46,10 @@ function FloatBase:sync_body()
   end
 end
 
+function FloatBase:close_float()
+  vim.api.nvim_win_close(self.win, false)
+end
+
 function M.New(opts)
   local buf = vim.api.nvim_create_buf(false, true)
   local ns = vim.api.nvim_create_namespace('dbg_float')
@@ -58,6 +62,7 @@ function M.New(opts)
     ns = ns,
   }
   setmetatable(o, { __index = FloatBase })
+  --- @cast o FloatWin
   o:sync_body()
   o.win = vim.api.nvim_open_win(buf, false, {
     title = opts.title,
@@ -68,6 +73,14 @@ function M.New(opts)
     relative = 'cursor',
     border = 'rounded',
     style = 'minimal',
+  })
+
+  vim.api.nvim_create_autocmd({ 'CursorMoved' }, {
+    callback = function()
+      o:close_float()
+    end,
+    once = true,
+    buffer = 0,
   })
 
   return o
