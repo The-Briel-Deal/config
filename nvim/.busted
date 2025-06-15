@@ -1,0 +1,7 @@
+return {
+  default = {
+    ROOT = { 'test' },
+    lua = 'nlua',
+    lpath = './test/?.lua;./test/?/?.lua;./test/?/init.lua',
+  },
+}

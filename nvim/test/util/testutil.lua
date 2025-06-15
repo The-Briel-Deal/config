@@ -6,8 +6,7 @@ luaassert:set_parameter('TableFormatLevel', 100)
 
 --- Functions executing in the context of the test runner (not the current nvim test session).
 --- @class test.testutil
-local M = {
-}
+local M = {}
 
 --- @param path string
 --- @return boolean
