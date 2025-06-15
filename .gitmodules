@@ -28,6 +28,3 @@
 [submodule "nvim/pack/lsp/start/conform"]
 	path = nvim/pack/lsp/start/conform
 	url = ../../stevearc/conform.nvim.git
-[submodule "nvim/pack/test/opt/busted"]
-	path = nvim/pack/test/opt/busted
-	url = ../../lunarmodules/busted.git
