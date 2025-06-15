@@ -1,0 +1,5 @@
+describe('Testing busted', function()
+  it('should work', function()
+    assert.truthy('yes pwease')
+  end)
+end)
