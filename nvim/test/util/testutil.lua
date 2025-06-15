@@ -395,11 +395,13 @@ function M.is_arch(s)
 end
 
 function M.is_asan()
-  return M.paths.is_asan
+  -- return M.paths.is_asan
+	return false
 end
 
 function M.is_zig_build()
-  return M.paths.is_zig_build
+  -- return M.paths.is_zig_build
+	return false
 end
 
 local tmpname_id = 0
