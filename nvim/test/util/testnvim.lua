@@ -888,7 +888,7 @@ function M.exec_lua(code, ...)
   end
 
   assert(session, 'no Nvim session')
-  return require('test.functional.testnvim.exec_lua')(session, 2, code, ...)
+  return require('util.testnvim.exec_lua')(session, 2, code, ...)
 end
 
 function M.get_pathsep()
