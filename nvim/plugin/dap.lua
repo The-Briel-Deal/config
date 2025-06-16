@@ -112,10 +112,18 @@ local function session_active()
   return nil
 end
 
+local dap_ui = require 'dap.ui.widgets'
+
 local set = vim.keymap.set
 
 set('n', '<leader>dc', function()
   dap.continue()
+end)
+
+set({'n', 'v'}, '<C-k>', function()
+  if session_active() then
+    dap_ui.hover()
+  end
 end)
 
 set('n', '<leader>dC', function()
