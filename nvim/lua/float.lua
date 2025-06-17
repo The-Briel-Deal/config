@@ -5,6 +5,7 @@
 --- @field width integer
 --- @field title string
 --- @field body string
+--- @field focus_key string?
 
 --- @class FloatWinMod
 --- @field New fun(opts: NewFloatOpts): FloatWin
@@ -16,7 +17,9 @@ local M = {}
 --- @field width integer
 --- @field title string
 --- @field body string
+--- @field focus_key string?
 --- @field win integer
+--- @field lower_buf integer
 --- @field buf integer
 --- @field ns integer
 --- @field autocmd_id integer?
@@ -53,6 +56,9 @@ function FloatBase:close()
     vim.api.nvim_del_autocmd(self.autocmd_id)
     self.autocmd_id = nil
   end
+  if self.focus_key then
+    vim.keymap.del('n', self.focus_key, { buffer = self.lower_buf })
+  end
 end
 
 function FloatBase:focus()
@@ -67,7 +73,9 @@ function M.New(opts)
     width = opts.width,
     title = opts.title,
     body = opts.body,
+    focus_key = opts.focus_key,
     autocmd_id = nil,
+    lower_buf = vim.api.nvim_get_current_buf(),
     buf = buf,
     ns = ns,
   }
@@ -90,8 +98,14 @@ function M.New(opts)
       o:close()
     end,
     once = true,
-    buffer = 0,
+    buffer = o.lower_buf,
   })
+
+  if opts.focus_key then
+    vim.keymap.set('n', opts.focus_key, function()
+      o:focus()
+    end, { buffer = o.lower_buf })
+  end
 
   vim.keymap.set('n', 'q', function()
     o:close()

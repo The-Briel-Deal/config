@@ -77,4 +77,49 @@ describe('Floating window', function()
                           |
     ]])
   end)
+
+  it('does not error on window close', function()
+    -- Buffer needs to have chars so I can move cursor.
+    feed([[iabc<esc>0]])
+
+    exec_lua(function()
+      local float = require('float')
+      float.New { title = 'foo', width = 10, height = 5, body = 'foo\nbar\nbaz', focus_key = '<C-k>' }
+    end)
+
+    screen:add_extra_attr_ids({
+      [101] = { foreground = Screen.colors.NvimLightGray4 },
+      [102] = { foreground = Screen.colors.NvimDarkGreen },
+      [103] = { background = Screen.colors.NvimLightGrey1 },
+      [104] = { foreground = Screen.colors.NvimDarkGrey2, bold = true },
+    })
+
+    screen:expect([[
+      ^abc                 |
+      {101:~}{103:╭}{104:foo}{103:───────╮}{101:       }|
+      {101:~}{103:│foo       │}{101:       }|
+      {101:~}{103:│          │}{101:       }|
+      {101:~}{103:│bar       │}{101:       }|
+      {101:~}{103:│          │}{101:       }|
+      {101:~}{103:│baz       │}{101:       }|
+      {101:~}{103:╰──────────╯}{101:       }|
+      {101:~                   }|
+                          |
+    ]])
+
+    feed([[<C-k>]])
+
+    screen:expect([[
+      abc                 |
+      {101:~}{103:╭}{104:foo}{103:───────╮}{101:       }|
+      {101:~}{103:│^foo       │}{101:       }|
+      {101:~}{103:│          │}{101:       }|
+      {101:~}{103:│bar       │}{101:       }|
+      {101:~}{103:│          │}{101:       }|
+      {101:~}{103:│baz       │}{101:       }|
+      {101:~}{103:╰──────────╯}{101:       }|
+      {101:~                   }|
+                          |
+    ]])
+  end)
 end)
