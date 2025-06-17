@@ -121,5 +121,13 @@ describe('Floating window', function()
       {101:~                   }|
                           |
     ]])
+
+    feed([[q]])
+
+    screen:expect([[
+      ^abc                 |
+      {101:~                   }|*8
+                          |
+    ]])
   end)
 end)
