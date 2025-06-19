@@ -7,6 +7,7 @@ require('hover').register({
     return vim.tbl_contains({
       'c',
       'sh',
+      'lua',
       'zsh',
       'tcl',
       'make',
