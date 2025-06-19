@@ -1,7 +1,12 @@
 local float = require('float')
 local dap = require('dap') ---@module 'nvim-dap.lua.dap'
+local dap_ui = require 'dap.ui'
+local dap_ui_widgets = require 'dap.ui.widgets'
+local dap_virt_text = require('nvim-dap-virtual-text')
 local assert = require('luassert') ---@module 'luassert'
+
 local api = vim.api
+local set = vim.keymap.set
 
 dap.defaults.fallback.external_terminal = {
   command = 'tmux',
@@ -181,6 +186,8 @@ dap.configurations.c = {
   },
 }
 
+dap_virt_text.setup({}) ---@diagnostic disable-line
+
 local function session_active()
   local session = dap.session()
   if session and not session.closed then
@@ -189,11 +196,6 @@ local function session_active()
   print('No nvim-dap session active.')
   return nil
 end
-
-local dap_ui_widgets = require 'dap.ui.widgets'
-local dap_ui = require 'dap.ui'
-
-local set = vim.keymap.set
 
 set('n', '<leader>dc', function()
   dap.continue()
@@ -250,8 +252,9 @@ local function hover(expr, winopts)
   local view = dap_ui_widgets
     .builder(dap_ui_widgets.expression)
     .new_win(dap_ui_widgets.with_resize(with_winopts(function()
-      local floatingWin = float.New({focus_key = '<C-k>', height = 30, width = 20, body = '', title = 'dbg'})
-			return floatingWin.win
+      local floatingWin =
+        float.New({ focus_key = '<C-k>', height = 30, width = 20, body = '', title = 'dbg' })
+      return floatingWin.win
     end, winopts)))
     .build()
   local buf = view.open(value)
