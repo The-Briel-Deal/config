@@ -408,6 +408,11 @@ function M.open_floating_preview(contents, bufnr, syntax, opts)
     silent = true,
     nowait = true,
   })
+  vim.keymap.set('n', '<Esc>', '<cmd>bdelete<cr>', {
+    buffer = floating_bufnr,
+    silent = true,
+    nowait = true,
+  })
 
   close_preview_autocmd(hover_winid, floating_bufnr, cbuf)
 

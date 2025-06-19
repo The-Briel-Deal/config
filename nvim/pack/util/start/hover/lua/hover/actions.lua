@@ -284,15 +284,25 @@ function M.hover_switch(direction, opts)
 
   if current_provider then
     if direction == 'previous' then
-      async.void(run_provider)(
-        providers[active_providers[(provider_idx - 1) % provider_count]],
-        opts
-      )
+      async.void(function()
+				local i = -1
+				while not run_provider(providers[active_providers[(provider_idx - i) % provider_count]], opts) do
+					if i * -1 > provider_count then
+						break
+					end
+					i = i - 1
+				end
+			end)()
     elseif direction == 'next' then
-      async.void(run_provider)(
-        providers[active_providers[(provider_idx + 1) % provider_count]],
-        opts
-      )
+      async.void(function()
+				local i = 1
+				while not run_provider(providers[active_providers[(provider_idx - i) % provider_count]], opts) do
+					if i > provider_count then
+						break
+					end
+					i = i + 1
+				end
+			end)()
     end
   end
 end
