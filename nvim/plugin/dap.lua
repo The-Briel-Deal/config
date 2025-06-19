@@ -1,5 +1,7 @@
+local float = require('float')
 local dap = require('dap') ---@module 'nvim-dap.lua.dap'
 local assert = require('luassert') ---@module 'luassert'
+local api = vim.api
 
 dap.defaults.fallback.external_terminal = {
   command = 'tmux',
@@ -188,7 +190,8 @@ local function session_active()
   return nil
 end
 
-local dap_ui = require 'dap.ui.widgets'
+local dap_ui_widgets = require 'dap.ui.widgets'
+local dap_ui = require 'dap.ui'
 
 local set = vim.keymap.set
 
@@ -196,9 +199,72 @@ set('n', '<leader>dc', function()
   dap.continue()
 end)
 
+---@param expr nil|string|fun():string
+---@return string
+local function eval_expression(expr)
+  local mode = api.nvim_get_mode()
+  if mode.mode == 'v' then
+    -- [bufnum, lnum, col, off]; 1-indexed
+    local start = vim.fn.getpos('v')
+    local end_ = vim.fn.getpos('.')
+
+    local start_row = start[2]
+    local start_col = start[3]
+
+    local end_row = end_[2]
+    local end_col = end_[3]
+
+    if start_row == end_row and end_col < start_col then
+      end_col, start_col = start_col, end_col
+    elseif end_row < start_row then
+      start_row, end_row = end_row, start_row
+      start_col, end_col = end_col, start_col
+    end
+
+    api.nvim_feedkeys(api.nvim_replace_termcodes('<ESC>', true, false, true), 'n', false)
+
+    -- buf_get_text is 0-indexed; end-col is exclusive
+    local lines = api.nvim_buf_get_text(0, start_row - 1, start_col - 1, end_row - 1, end_col, {})
+    return table.concat(lines, '\n')
+  end
+  expr = expr or '<cexpr>'
+  if type(expr) == 'function' then
+    return expr()
+  else
+    return vim.fn.expand(expr)
+  end
+end
+
+local function with_winopts(new_win, winopts)
+  return function(...)
+    local win = new_win(...)
+    dap_ui.apply_winopts(win, winopts)
+    return win
+  end
+end
+
+---@param expr nil|string|fun():string
+---@param winopts table<string, any>?
+local function hover(expr, winopts)
+  local value = eval_expression(expr)
+  local view = dap_ui_widgets
+    .builder(dap_ui_widgets.expression)
+    .new_win(dap_ui_widgets.with_resize(with_winopts(function()
+      local floatingWin = float.New({focus_key = '<C-k>', height = 30, width = 20, body = '', title = 'dbg'})
+			return floatingWin.win
+    end, winopts)))
+    .build()
+  local buf = view.open(value)
+  api.nvim_buf_set_name(buf, 'dap-hover-' .. tostring(buf) .. ': ' .. value)
+  api.nvim_win_set_cursor(view.win, { 1, 0 })
+  return view
+end
+
+local winopts = { border = 'rounded' }
+
 set({ 'n', 'v' }, '<C-k>', function()
   if session_active() then
-    dap_ui.hover()
+    hover(nil, winopts)
   end
 end)
 

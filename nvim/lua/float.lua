@@ -51,7 +51,9 @@ function FloatBase:sync_body()
 end
 
 function FloatBase:close()
-  vim.api.nvim_win_close(self.win, false)
+  if vim.api.nvim_win_is_valid(self.win) then
+    vim.api.nvim_win_close(self.win, false)
+  end
   if self.autocmd_id then
     vim.api.nvim_del_autocmd(self.autocmd_id)
     self.autocmd_id = nil
