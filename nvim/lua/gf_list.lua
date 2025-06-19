@@ -1,5 +1,6 @@
----@class GfList @The base class for all list objects
----@brief [[
+--- @class GfList<T>: { [integer]: T } @The base class for all list objects
+--- @field _len integer
+--- @brief [[
 --- Note: I stole this from plenary since the broken types were annoying me.
 ---
 --- This module implements python-like lists. It can be used like so:
@@ -8,16 +9,17 @@
 ---     local l = List{3, 20, 44}
 ---     print(l)  -- [3, 20, 44]
 --- </pre>
----@brief ]]
+--- @brief ]]
 local List = {}
 
-
 ---List constructor. Can be used in higher order functions
----@param  tbl table: A list-like table containing the initial elements of the list
----@return GfList: A new list object
+---@generic T
+---@param  tbl table<`T`>: A list-like table containing the initial elements of the list
+---@return GfList<T>: A new list object
 function List.new(tbl)
   if type(tbl) == 'table' then
     local len = #tbl
+		---@type GfList
     local obj = setmetatable(tbl, List)
     obj._len = len
     return obj

@@ -212,6 +212,7 @@ end)
 
 set({ 'n', 'v' }, '<C-k>', function()
   if session_active() then
+    get_nested_fields(dap.session(), nil)
     dap_ui.hover()
   end
 end)
