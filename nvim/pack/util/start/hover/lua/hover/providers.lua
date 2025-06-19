@@ -3,8 +3,8 @@ local async = require('hover.async')
 local M = {}
 
 --- @class Hover.Options
---- @field bufnr integer
---- @field pos {[1]: integer, [2]: integer}
+--- @field bufnr? integer
+--- @field pos? {[1]: integer, [2]: integer}
 --- @field relative? string
 --- @field providers? string[]
 
