@@ -22,6 +22,9 @@
 [submodule "nvim/pack/dap/start/nvim-dap"]
 	path = nvim/pack/dap/start/nvim-dap
 	url = ../../mfussenegger/nvim-dap.git
+[submodule "nvim/pack/dap/start/nvim-dap-virtual-text"]
+	path = nvim/pack/dap/start/nvim-dap-virtual-text
+	url = ../../theHamsta/nvim-dap-virtual-text.git
 [submodule "nvim/pack/dap/start/dap-view"]
 	path = nvim/pack/dap/start/dap-view
 	url = ../../igorlfs/nvim-dap-view.git
