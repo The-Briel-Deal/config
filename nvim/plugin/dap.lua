@@ -194,7 +194,7 @@ local function get_nested_fields(session, var_ref)
   local list = require('gf_list')
   session:request('variables', { variablesReference = var_ref }, function(err, result)
     assert.is_nil(err)
-    ---@type GfList
+    ---@type GfList<dap.Variable>
     local vars = list.new({ table.unpack(result.variables) })
     while #vars ~= 0 do
       local cur = vars:pop()

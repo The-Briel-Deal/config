@@ -87,7 +87,9 @@ function List:push(other)
 end
 
 --- Pops the last element off the list and returns it
---- @return any: The (previously) last element from the list
+--- @generic T
+--- @param self GfList<`T`>
+--- @return T: The (previously) last element from the list
 --- @see List.push
 function List:pop()
   local result = table.remove(self)
