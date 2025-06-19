@@ -1,5 +1,5 @@
 local dap = require('dap') ---@module 'nvim-dap.lua.dap'
-local assert = require('luassert')
+local assert = require('luassert') ---@module 'luassert'
 
 dap.defaults.fallback.external_terminal = {
   command = 'tmux',
@@ -186,6 +186,20 @@ local function session_active()
   end
   print('No nvim-dap session active.')
   return nil
+end
+
+--- @param session dap.Session
+--- @param var_ref integer
+local function get_nested_fields(session, var_ref)
+  local list = require('gf_list')
+  session:request('variables', { variablesReference = var_ref }, function(err, result)
+    assert.is_nil(err)
+    ---@type GfList
+    local vars = list.new({ table.unpack(result.variables) })
+    while #vars ~= 0 do
+      local cur = vars:pop()
+    end
+  end)
 end
 
 local dap_ui = require 'dap.ui.widgets'

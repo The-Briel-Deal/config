@@ -11,7 +11,13 @@ vim.lsp.start({
     Lua = {
       hint = { enable = true },
       workspace = {
-        library = { vim.env.VIMRUNTIME },
+        library = {
+          vim.env.VIMRUNTIME,
+          '${3rd}/busted/library',
+          '${3rd}/luassert/library',
+          '${3rd}/luv/library',
+        },
+        checkThirdParty = 'Enable',
       },
     },
   },
