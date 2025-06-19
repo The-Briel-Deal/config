@@ -188,39 +188,6 @@ local function session_active()
   return nil
 end
 
---- @param variable dap.Variable
---- @return table<string|integer, string>|string
-local function expand_var(variable)
-  if not variable.variables then
-    return variable.value
-  end
-  local result = {}
-  for var in variable.variables do
-    ---@cast var dap.Variable
-    result[var.name] = expand_var(var)
-  end
-  return result
-end
-
---- @param session dap.Session
---- @param var_ref integer
-local function get_nested_fields(session, var_ref)
-  local list = require('gf_list')
-  session:request('variables', { variablesReference = var_ref }, function(err, result)
-    assert.is_nil(err)
-    ---@type GfList<dap.Variable>
-    local vars = list.new({ table.unpack(result.variables) })
-
-    result = {}
-    for i, var in vars:iter() do
-      ---@cast i integer
-      ---@cast var dap.Variable
-      result[var.name] = expand_var(var)
-    end
-    print(vim.inspect(result))
-  end)
-end
-
 local dap_ui = require 'dap.ui.widgets'
 
 local set = vim.keymap.set
@@ -231,11 +198,6 @@ end)
 
 set({ 'n', 'v' }, '<C-k>', function()
   if session_active() then
-    local sess = dap.session()
-    assert(sess)
-    sess:evaluate(vim.fn.expand('<cexpr>'), function(err, result)
-      get_nested_fields(sess, result.variablesReference)
-    end)
     dap_ui.hover()
   end
 end)
