@@ -197,10 +197,6 @@ local function session_active()
   return nil
 end
 
-set('n', '<leader>dc', function()
-  dap.continue()
-end)
-
 ---@param expr nil|string|fun():string
 ---@return string
 local function eval_expression(expr)
@@ -271,7 +267,11 @@ set({ 'n', 'v' }, '<C-k>', function()
   end
 end)
 
-set('n', '<leader>dC', function()
+set('n', '<A-S-c>', function()
+  dap.continue()
+end)
+
+set('n', '<A-c>', function()
   if session_active() then
     dap.run_to_cursor()
   end
