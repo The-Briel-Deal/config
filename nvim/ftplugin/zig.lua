@@ -7,4 +7,9 @@ vim.lsp.start({
       { upward = true, path = vim.api.nvim_buf_get_name(0) }
     )[1]
   ),
+  settings = {
+    zls = {
+      enable_build_on_save = true,
+    },
+  },
 })
