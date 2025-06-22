@@ -7,6 +7,7 @@ setup({
   formatters_by_ft = {
     python = { 'pyink', lsp_format = 'fallback' },
     lua = { 'stylua', lsp_format = 'fallback' },
+    zig = { 'zigfmt', lsp_format = 'fallback' },
   },
 })
 
