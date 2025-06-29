@@ -17,6 +17,7 @@ x-scheme-handler/unknown=firefox.desktop
 x-scheme-handler/mailto=userapp-Thunderbird-CWE9O2.desktop
 message/rfc822=userapp-Thunderbird-CWE9O2.desktop
 x-scheme-handler/mid=userapp-Thunderbird-CWE9O2.desktop
+x-scheme-handler/discord=vesktop.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;
