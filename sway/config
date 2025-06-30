@@ -58,10 +58,8 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+d focus child
 
-# Warpd global hotkey workaround
-bindsym Mod4+Mod1+x exec warpd --hint
-bindsym Mod4+Mod1+c exec warpd --normal
-bindsym Mod4+Mod1+g exec warpd --grid
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
