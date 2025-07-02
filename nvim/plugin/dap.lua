@@ -96,6 +96,18 @@ dap.adapters.cppdbg = {
     .. '/.local/share/debug_adapters/extension/debugAdapters/bin/OpenDebugAD7',
 }
 
+dap.configurations.zig = {
+  {
+    name = 'generic - Launch',
+    type = 'cppdbg',
+    request = 'launch',
+    cwd = vim.fn.getcwd(),
+    program = function()
+      return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
+    end,
+    externalConsole = true,
+  },
+}
 dap.configurations.c = {
   {
     name = 'generic - Launch',
