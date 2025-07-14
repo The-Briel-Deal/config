@@ -69,3 +69,8 @@ set -g fish_prompt_color_username $light_blue
 set -g fish_prompt_color_hostname $lavender
 set -g fish_prompt_color_path $beige
 set -g fish_prompt_color_operators $dark_blue
+
+# ZVM
+set -gx ZVM_INSTALL "$HOME/.zvm/self"
+set -gx PATH $PATH "$HOME/.zvm/bin"
+set -gx PATH $PATH "$ZVM_INSTALL/"
