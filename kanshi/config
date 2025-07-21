@@ -43,3 +43,24 @@ profile desktop {
                 scale 1.0
 				}
 }
+
+profile lg_only {
+        output "LG Electronics LG TV SSCR2 0x01010101" {
+                mode 3840x2160@120Hz
+                position 0,0
+                scale 1.0
+        }
+}
+
+profile desktop {
+        output "LG Electronics LG TV SSCR2 0x01010101" {
+                mode 3840x2160
+                position 0,0
+                scale 1.0
+        }
+				output "Dell Inc. DELL P3223QE 6QD0XN3" {
+                mode 3840x2160
+                position 3840,0
+                scale 1.0
+				}
+}

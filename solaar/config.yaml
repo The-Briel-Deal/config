@@ -15,7 +15,7 @@
   hires-scroll-mode: false
   hires-smooth-invert: false
   hires-smooth-resolution: false
-  onboard_profiles: 1
+  onboard_profiles: 2
   per-key-lighting: {1: -1, 2: -1, 3: -1, 4: -1, 5: -1, 6: -1, 7: -1, 8: -1}
   report_rate: 1
   rgb_control: 0
