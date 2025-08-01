@@ -1,3 +1,10 @@
+vim.pack.add({
+  { src = 'https://github.com/neovim/nvim-lspconfig' },
+})
+
+vim.lsp.enable('ts_ls')
+
+
 require('blink.cmp').setup({
   completion = {
     menu = {
@@ -15,7 +22,6 @@ require('blink.cmp').setup({
 
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(args)
-    local cmp = require('blink.cmp')
     local set = vim.keymap.set
 
     local client = vim.lsp.get_client_by_id(args.data.client_id)

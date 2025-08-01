@@ -8,6 +8,8 @@ M.setup = function(_)
   vim.go.termsync = false
   vim.go.tabstop = 2
   vim.go.shiftwidth = 2
+  vim.go.expandtab = true
+
   vim.g.netrw_banner = false
   vim.g.c_syntax_for_h = 1
   vim.g.clipboard = {
