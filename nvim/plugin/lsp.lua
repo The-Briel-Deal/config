@@ -5,6 +5,7 @@ vim.pack.add({
 vim.lsp.config('luals', {
   name = 'luals',
   cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
   root_dir = vim.fs.dirname(
     vim.fs.find(
       { '.luarc.json', 'init.lua', '.gitignore' },
