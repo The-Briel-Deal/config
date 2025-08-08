@@ -2,8 +2,31 @@ vim.pack.add({
   { src = 'https://github.com/neovim/nvim-lspconfig' },
 })
 
-vim.lsp.enable({'ts_ls', 'pyright'})
-
+vim.lsp.config('luals', {
+  name = 'luals',
+  cmd = { 'lua-language-server' },
+  root_dir = vim.fs.dirname(
+    vim.fs.find(
+      { '.luarc.json', 'init.lua', '.gitignore' },
+      { upward = true, path = vim.api.nvim_buf_get_name(0) }
+    )[1]
+  ),
+  settings = {
+    Lua = {
+      hint = { enable = true },
+      workspace = {
+        library = {
+          vim.env.VIMRUNTIME,
+          '${3rd}/busted/library',
+          '${3rd}/luassert/library',
+          '${3rd}/luv/library',
+        },
+        checkThirdParty = 'Enable',
+      },
+    },
+  },
+})
+vim.lsp.enable({ 'ts_ls', 'pyright', 'clangd', 'glsl_analyzer', 'gopls', 'luals', 'zls' })
 
 require('blink.cmp').setup({
   completion = {
