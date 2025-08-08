@@ -2,7 +2,7 @@ vim.pack.add({
   { src = 'https://github.com/neovim/nvim-lspconfig' },
 })
 
-vim.lsp.enable('ts_ls')
+vim.lsp.enable({'ts_ls', 'pyright'})
 
 
 require('blink.cmp').setup({
