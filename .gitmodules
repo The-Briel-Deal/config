@@ -7,9 +7,6 @@
 [submodule "nvim/pack/util/start/treesitter"]
 	path = nvim/pack/util/start/treesitter
 	url = ../../nvim-treesitter/nvim-treesitter.git
-[submodule "nvim/pack/color/tokyonight"]
-	path = nvim/pack/color/start/tokyonight
-	url = ../../folke/tokyonight.nvim.git
 [submodule "nvim/pack/util/start/telescope"]
 	path = nvim/pack/util/start/telescope
 	url = ../../nvim-telescope/telescope.nvim.git
