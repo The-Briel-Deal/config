@@ -1,9 +1,6 @@
 local M = {}
 
 M.setup = function(_)
-  vim.pack.add({
-    { src = 'https://github.com/folke/tokyonight.nvim.git' },
-  })
   vim.cmd [[colorscheme tokyonight]]
 
   vim.go.number = true

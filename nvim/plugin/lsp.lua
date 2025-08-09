@@ -1,7 +1,3 @@
-vim.pack.add({
-  { src = 'https://github.com/neovim/nvim-lspconfig' },
-})
-
 vim.lsp.config('luals', {
   name = 'luals',
   cmd = { 'lua-language-server' },
