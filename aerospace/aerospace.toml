@@ -59,7 +59,6 @@ alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 cmd-alt-esc = 'reload-config'
 cmd-alt-r = 'flatten-workspace-tree'
 cmd-alt-f = 'layout floating tiling'
-backspace = 'close-all-windows-but-current'
 
 alt-shift-h = 'join-with left'
 alt-shift-j = 'join-with down'
