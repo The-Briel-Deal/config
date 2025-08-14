@@ -3,6 +3,7 @@ profile asus_4k_240hz_and_lg_c2 {
     mode 3840x2160@240
     position 0,0
     scale 1.0
+    adaptive_sync on
   }
   output "LG Electronics LG TV SSCR2 0x01010101" {
     mode 3840x2160@120
