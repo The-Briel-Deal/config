@@ -23,6 +23,15 @@ vim.lsp.config('luals', {
     },
   },
 })
+
+vim.lsp.config('zls', {
+  settings = {
+    zls = {
+      enable_build_on_save = true,
+    },
+  },
+})
+
 vim.lsp.enable({ 'ts_ls', 'pyright', 'clangd', 'glsl_analyzer', 'gopls', 'luals', 'zls' })
 
 require('blink.cmp').setup({
