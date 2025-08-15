@@ -33,12 +33,8 @@ vim.lsp.config('zls', {
 })
 
 vim.lsp.config('pyright', {
-  root_dir = vim.fs.dirname(
-    vim.fs.find(
-      { '.venv', 'pyproject.toml', '.git', '.gitignore' },
-      { upward = true, path = vim.api.nvim_buf_get_name(0) }
-    )[1]
-  ),
+  -- Starts with '.git' because one of my work projects uses uv workspaces.
+  root_markers = {'.git', 'pyproject.toml', 'setup.py', 'requirements.txt'},
   settings = {
     python = {
       analysis = {
