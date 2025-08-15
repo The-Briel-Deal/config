@@ -32,7 +32,30 @@ vim.lsp.config('zls', {
   },
 })
 
-vim.lsp.enable({ 'ts_ls', 'pyright', 'clangd', 'glsl_analyzer', 'gopls', 'luals', 'zls' })
+vim.lsp.config('pyright', {
+  root_dir = vim.fs.dirname(
+    vim.fs.find(
+      { '.venv', 'pyproject.toml', '.git', '.gitignore' },
+      { upward = true, path = vim.api.nvim_buf_get_name(0) }
+    )[1]
+  ),
+  settings = {
+    python = {
+      analysis = {
+        logLevel = 'Trace',
+      },
+    },
+  },
+})
+
+vim.lsp.enable({
+  'ts_ls',
+  'pyright',
+  'clangd', --[['glsl_analyzer', --]]
+  'gopls',
+  'luals',
+  'zls',
+})
 
 require('blink.cmp').setup({
   completion = {
