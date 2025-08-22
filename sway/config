@@ -1,6 +1,8 @@
 exec_always pkill kanshi; exec kanshi
 exec lxqt-policykit-agent
 
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+
 output "*" bg $HOME/.config/wallpapers/arch_00_3840x2160.png fill
 output "*" adaptive_sync on
 output "*" allow_tearing yes
