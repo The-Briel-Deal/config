@@ -34,7 +34,7 @@ vim.lsp.config('zls', {
 
 vim.lsp.config('pyright', {
   -- Starts with '.git' because one of my work projects uses uv workspaces.
-  root_markers = {'.git', 'pyproject.toml', 'setup.py', 'requirements.txt'},
+  root_markers = { '.git', 'pyproject.toml', 'setup.py', 'requirements.txt' },
   settings = {
     python = {
       analysis = {
@@ -54,6 +54,12 @@ vim.lsp.enable({
 })
 
 require('blink.cmp').setup({
+  cmdline = {
+    enabled = true,
+    keymap = {
+      preset = 'inherit',
+    },
+  },
   completion = {
     menu = {
       auto_show = false,
