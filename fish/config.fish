@@ -12,6 +12,11 @@ if test $hostname = "gf.c.googlers.com";
     pyenv init - | source
 end;
 
+# Init direnv if it's in path 
+if which direnv &>/dev/null
+    direnv hook fish | source
+end
+
 # Eval Brew on my Mac.
 if test $hostname = "gabrielford-macbookpro.roam.internal"
     eval "$(/opt/homebrew/bin/brew shellenv)"
