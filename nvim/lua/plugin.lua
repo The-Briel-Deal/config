@@ -8,6 +8,10 @@ M.setup = function(opts)
     { src = 'https://github.com/neovim/nvim-lspconfig' },
   })
   vim.pack.add({
+    { src = 'https://github.com/linux-cultist/venv-selector.nvim.git' },
+  })
+  require('venv-selector').setup {}
+  vim.pack.add({
     { src = 'https://github.com/tpope/vim-fugitive.git' },
   })
   vim.pack.add({
