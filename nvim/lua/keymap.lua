@@ -65,6 +65,13 @@ M.setup = function(opts)
       desc = 'Find Files',
     },
     {
+      key = '<leader>fi',
+      callback = function()
+        require('telescope.builtin').live_grep({additional_args={'--no-ignore'}})
+      end,
+      desc = 'Find Files (no ignore)',
+    },
+    {
       key = '<leader>fg',
       callback = function()
         require('telescope.builtin').git_files({ use_file_path = true })
