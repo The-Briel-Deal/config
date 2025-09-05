@@ -72,6 +72,16 @@ require('blink.cmp').setup({
     ['<C-n>'] = { 'show', 'select_next', 'fallback' },
     ['<C-p>'] = { 'show', 'select_prev', 'fallback' },
   },
+  sources = {
+    default = { 'lsp', 'path', 'snippets', 'buffer' },
+    per_filetype = {
+      sql = { 'snippets', 'dadbod', 'buffer' },
+    },
+    -- add vim-dadbod-completion to your completion providers
+    providers = {
+      dadbod = { name = 'Dadbod', module = 'vim_dadbod_completion.blink' },
+    },
+  },
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {

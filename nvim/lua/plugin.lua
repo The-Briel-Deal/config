@@ -15,6 +15,11 @@ M.setup = function(opts)
     { src = 'https://github.com/tpope/vim-fugitive.git' },
   })
   vim.pack.add({
+    { src = 'https://github.com/tpope/vim-dadbod.git' },
+    { src = 'https://github.com/kristijanhusak/vim-dadbod-ui.git' },
+    { src = 'https://github.com/kristijanhusak/vim-dadbod-completion.git' },
+  })
+  vim.pack.add({
     { src = 'https://github.com/stevearc/oil.nvim.git' },
   })
   vim.pack.add({
