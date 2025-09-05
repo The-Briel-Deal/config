@@ -96,6 +96,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.references({ includeDeclaration = false }, { on_list = on_list })
     end, { buffer = true, nowait = true })
 
+    set('n', 'gi', function()
+      vim.lsp.buf.implementation({})
+    end, { buffer = true, nowait = true })
+
     -- Show Diagnostics
     set('n', 'gl', function()
       vim.diagnostic.open_float({})
