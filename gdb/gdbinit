@@ -1,2 +1,6 @@
 set auto-load safe-path /
 set debuginfod enabled on
+
+set history save on
+set history filename ~/.gdb-history
+set history size 1000
