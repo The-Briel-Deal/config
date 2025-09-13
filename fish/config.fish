@@ -23,7 +23,7 @@ if test $hostname = "gabrielford-macbookpro.roam.internal"
 end
 
 # Set Editor and Theme.
-export EDITOR=vim
+export EDITOR=nvim
 export GTK_THEME=Adwaita:dark
 
 # Keybinds
