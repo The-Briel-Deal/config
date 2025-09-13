@@ -3,6 +3,7 @@
 ;; see home-row-mod-advanced.kbd
 
 (defcfg
+  linux-dev /dev/input/by-path/platform-i8042-serio-0-event-kbd
   process-unmapped-keys yes
 )
 (defsrc
