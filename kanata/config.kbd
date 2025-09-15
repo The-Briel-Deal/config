@@ -8,6 +8,8 @@
 )
 (defsrc
   caps a   s   d   f   j   k   l   ;
+
+  lctl
 )
 (defvar
   ;; Note: consider using different time values for your different fingers.
@@ -28,4 +30,6 @@
 )
 (deflayer base
   esc @a  @s  @d  @f  @j  @k  @l  @;
+
+  grave
 )
