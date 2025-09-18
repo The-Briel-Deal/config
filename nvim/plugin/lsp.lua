@@ -76,6 +76,7 @@ require('blink.cmp').setup({
     default = { 'lsp', 'path', 'snippets', 'buffer' },
     per_filetype = {
       sql = { 'snippets', 'dadbod', 'buffer' },
+      mysql = { 'snippets', 'dadbod', 'buffer' },
     },
     -- add vim-dadbod-completion to your completion providers
     providers = {
