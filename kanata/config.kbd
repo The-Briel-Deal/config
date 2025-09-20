@@ -40,7 +40,7 @@
   tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  @a   @s   @d   @f    g    h   @j   @k   @l   @;    '    ret
   lsft  z    x    c    v    b    n    m    ,    .    /    rsft
-  grv  lmet lalt           spc            ralt rmet rctl
+  grv  lmet bspc           spc            ralt rmet rctl
 )
 (deflayer passthrough
                                                         @base  _
