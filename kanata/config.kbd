@@ -25,7 +25,8 @@
   l (tap-hold $tap-time $hold-time l ralt)
   ; (tap-hold $tap-time $hold-time ; rmet)
 
-  lt_bspc_nav (tap-hold $tap-time $hold-time bspc (layer-while-held nav_braces))
+  nav (layer-while-held nav)
+  lt_bspc_nav (tap-hold $tap-time $hold-time bspc (layer-while-held braces))
 
   base (layer-switch base)
   pass (layer-switch passthrough)
@@ -35,15 +36,23 @@
   =     1    2    3    4    5    6    7    8    9    0    -    =    bspc
   tab   q    w    e    r    t    y    u    i    o    p    [    ]    \
   esc  @a   @s   @d   @f    g    h   @j   @k   @l   @;    '    ret
-  lsft  z    x    c    v    b    n    m    ,    .    /    rsft
+  @nav  z    x    c    v    b    n    m    ,    .    /    rsft
   grv  lmet @lt_bspc_nav    spc            ralt rmet rctl
 )
-(deflayer nav_braces
+(deflayer braces
                                                           _    _
   _     _    _    _    _    _    _    _    _    S-9  S-0  _    _    _
   _     _    _    _    _    _    _    _    _    S-,  S-.  _    _    _
   _     _    _    _    _    _    _    _    _    S-[  S-]  _    _
   _     _    _    _    _    _    _    _    _    [    ]    _
+  _     _    _              _              _    _    _
+)
+(deflayer nav
+                                                          _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _    _    _
+  _     _    _    _    _    _   left down  up  right _    _    _
+  _     _    _    _    _    _    _    _    _    _    _    _
   _     _    _              _              _    _    _
 )
 (deflayer passthrough
