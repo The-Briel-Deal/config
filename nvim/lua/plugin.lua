@@ -46,6 +46,9 @@ M.setup = function(opts)
   vim.pack.add({
     { src = 'https://github.com/stevearc/conform.nvim.git' },
   })
+  require('tokyonight').setup {
+    transparent = true,
+  }
   require('oil').setup {
     default_file_explorer = true,
     columns = {
