@@ -21,8 +21,6 @@ gamescope/
 obs-studio/
 via-nativia/
 yuzu/
-user-dirs.dirs
-user-dirs.locale
 systemd/
 pavucontrol.ini
 dolphinrc
