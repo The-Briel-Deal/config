@@ -40,10 +40,27 @@ vim.lsp.config('lua_ls', {
     Lua = {},
   },
 })
+
+local zig_lib_path = function ()
+  local cwd = vim.fn.getcwd()
+  local start_index, _ = string.find(cwd, "Code/zig")
+  if start_index then
+    return cwd .. "/lib"
+  end
+  return nil
+end
+
 vim.lsp.config('zls', {
+  ---@param client vim.lsp.Client
+  ---@param bufnr integer
+  on_attach = function(client, bufnr)
+    _ = bufnr
+    client.settings.zls["zig_lib_path"] = zig_lib_path()
+  end,
   settings = {
     zls = {
-      enable_build_on_save = true,
+      zig_lib_path = nil,
+      enable_build_on_save = false,
     },
   },
 })

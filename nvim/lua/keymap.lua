@@ -67,7 +67,7 @@ M.setup = function(opts)
     {
       key = '<leader>fi',
       callback = function()
-        require('telescope.builtin').live_grep({additional_args={'--no-ignore'}})
+        require('telescope.builtin').live_grep({ additional_args = { '--no-ignore' } })
       end,
       desc = 'Find Files (no ignore)',
     },
@@ -124,6 +124,44 @@ M.setup = function(opts)
       key = '<leader>fb',
       callback = function()
         require('telescope.builtin').buffers()
+      end,
+      desc = 'Find Buffer in open Buffers',
+    },
+    {
+      key = '<leader>fp',
+      callback = function()
+        local pickers = require('telescope.pickers')
+        local finders = require('telescope.finders')
+        local cl_list = vim
+          .system({
+            'bash',
+            '-c',
+            [=[
+            BASE_URL="https://gso-fact-internal-review.git.corp.google.com/changes/"
+            
+            OWNER="owner:$USER@google.com+"
+            if [[ "$1" == "all_users" ]]; then
+              OWNER=""
+            fi
+            
+            SELECTED=$(gob-curl -s "${BASE_URL}?q=${OWNER}is:open" \
+              | tail -n +2 \
+              | jq -r '.[] | "\(.project) -- \(.subject) -- \(._number) -- \(.current_revision_number)\\n"')
+            echo $SELECTED
+            ]=],
+          }, {})
+          :wait(10000)
+        local lines = {}
+        for s in cl_list.stdout:gmatch('(.-)\\n') do
+          table.insert(lines, s)
+        end
+        pickers
+          .new({}, {
+            finder = finders.new_table({
+              results = lines,
+            }),
+          })
+          :find()
       end,
       desc = 'Find Buffer in open Buffers',
     },
