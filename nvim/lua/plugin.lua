@@ -46,6 +46,9 @@ M.setup = function(opts)
   vim.pack.add({
     { src = 'https://github.com/stevearc/conform.nvim.git' },
   })
+  vim.pack.add({
+    { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim.git' },
+  })
   require('tokyonight').setup {
     transparent = true,
   }
