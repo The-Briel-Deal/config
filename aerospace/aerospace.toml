@@ -35,6 +35,7 @@ outer.right =      0
 [mode.main.binding]
 
 cmd-q = 'exec-and-forget open -na "Ghostty"'
+cmd-r = 'exec-and-forget ~/.config/misc_scripts/mac_launcher.sh'
 cmd-alt-c = 'close'
 
 alt-slash = 'layout tiles horizontal vertical'

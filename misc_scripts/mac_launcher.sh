@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ls /Applications/ /Applications/Utilities/ /System/Applications/ /System/Applications/Utilities/ | \
+                                                            grep '\.app$' | \
+                                                            sed 's/\.app$//g' | \
+                                                            choose | \
+                                                            xargs -I {} open -a '{}.app'
