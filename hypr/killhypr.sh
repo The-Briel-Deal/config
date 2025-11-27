@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-if pgrep -x Hyprland >/dev/null; then
+if pgrep -x hyprland >/dev/null; then
     hyprctl dispatch exit 0
     sleep 2
-    if pgrep -x Hyprland >/dev/null; then
-        killall -9 Hyprland
+    if pgrep -x hyprland >/dev/null; then
+        killall -9 hyprland
     fi
 fi
