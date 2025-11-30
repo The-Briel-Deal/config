@@ -125,7 +125,7 @@ bindsym $mod+control+r mode "resize"
 # resize window (you can also use the mouse for that)
 mode "passthrough" {
         # back to normal: Escape.
-        bindsym Escape mode "default"
+        bindsym $mod+control+shift+p mode "default"
 }
 
 bindsym $mod+control+p mode "passthrough"
