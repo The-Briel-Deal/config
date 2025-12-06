@@ -20,7 +20,7 @@ bindsym $mod+q exec kitty
 bindsym $mod+c kill
 
 # start tofi (a program launcher)
-set $menu fuzzel --launch-prefix 'swaymsg exec --'
+set $menu fuzzel --launch-prefix 'swaymsg exec -- QT_SCALE_FACTOR=2 '
 bindsym $mod+r exec $menu
 
 # change focus
