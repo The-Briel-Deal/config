@@ -92,8 +92,7 @@ dap.configurations.python = {
 dap.adapters.cppdbg = {
   id = 'cppdbg',
   type = 'executable',
-  command = os.getenv('HOME')
-    .. '/.local/share/debug_adapters/extension/debugAdapters/bin/OpenDebugAD7',
+  command = 'cppdbg',
 }
 
 dap.configurations.zig = {
@@ -117,6 +116,7 @@ dap.configurations.c = {
       return vim.fn.input('Path to executable:', vim.fn.getcwd() .. '/', 'file')
     end,
     externalConsole = true,
+    cwd = vim.fn.getcwd(),
   },
   {
     name = 'generic - Attach to gdb-server',

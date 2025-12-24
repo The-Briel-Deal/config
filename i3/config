@@ -20,7 +20,7 @@ bindsym $mod+q exec kitty
 bindsym $mod+c kill
 
 # start tofi (a program launcher)
-set $menu fuzzel --launch-prefix 'swaymsg exec --'
+set $menu dmenu_run
 bindsym $mod+r exec $menu
 
 # change focus
