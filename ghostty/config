@@ -6,3 +6,4 @@ keybind = cmd+minus=decrease_font_size:1
 theme = TokyoNight
 background-opacity = 0.95
 background-blur-radius = 20
+mouse-scroll-multiplier = 1.0
