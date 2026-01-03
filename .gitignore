@@ -85,3 +85,6 @@ tmux/tmux.local.conf
 wayvnc/
 mpd/database
 ncmpcpp/error.log
+bgb/
+retroarch/
+wireshark/
