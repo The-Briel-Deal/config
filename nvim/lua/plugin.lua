@@ -26,7 +26,10 @@ M.setup = function(opts)
   })
   require('neotest').setup({
     adapters = {
-      require('neotest-python'),
+      require('neotest-python')({
+        runner = "pytest",
+        pytest_discover_instances = true,
+      }),
     },
   })
   require('venv-selector').setup {}
