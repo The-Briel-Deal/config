@@ -20,6 +20,14 @@ M.setup = function(opts)
     { src = 'https://github.com/stevearc/conform.nvim.git' },
     { src = 'https://github.com/MeanderingProgrammer/render-markdown.nvim.git' },
     { src = 'https://github.com/ramilito/kubectl.nvim.git', version = 'v2.24.0' },
+    { src = 'https://github.com/nvim-neotest/nvim-nio.git' },
+    { src = 'https://github.com/nvim-neotest/neotest.git' },
+    { src = 'https://github.com/nvim-neotest/neotest-python.git' },
+  })
+  require('neotest').setup({
+    adapters = {
+      require('neotest-python'),
+    },
   })
   require('venv-selector').setup {}
   require('tokyonight').setup {
