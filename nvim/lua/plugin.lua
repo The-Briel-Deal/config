@@ -28,7 +28,7 @@ M.setup = function(opts)
     adapters = {
       require('neotest-python')({
         runner = "pytest",
-        pytest_discover_instances = true,
+        pytest_discover_instances = false, -- This makes my work machine's ssh hang with bigger repos lol.
       }),
     },
   })

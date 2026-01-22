@@ -169,6 +169,35 @@ M.setup = function(opts)
   for _, keymap in ipairs(telescope_keymap) do
     set('n', keymap.key, keymap.callback, { desc = keymap.desc })
   end
+
+  local neotest = require('neotest')
+  ---@type {key: string, callback: fun(), desc: string}[]
+  local neotest_keymap = {
+    {
+      key = '<leader>ts',
+      callback = function()
+        neotest.summary.toggle()
+      end,
+      desc = 'Open/Close Neotest Summary',
+    },
+    {
+      key = '<leader>tr',
+      callback = function()
+        neotest.run()
+      end,
+      desc = 'Run Test',
+    },
+    {
+      key = '<leader>to',
+      callback = function()
+        neotest.output_panel.toggle()
+      end,
+      desc = 'Open/Close Neotest Output Panel',
+    },
+  }
+  for _, keymap in ipairs(neotest_keymap) do
+    set('n', keymap.key, keymap.callback, { desc = keymap.desc })
+  end
 end
 
 return M
