@@ -27,10 +27,14 @@ M.setup = function(opts)
   require('neotest').setup({
     adapters = {
       require('neotest-python')({
-        runner = "pytest",
+        runner = 'pytest',
         pytest_discover_instances = false, -- This makes my work machine's ssh hang with bigger repos lol.
       }),
     },
+    summary = {
+      open = 'topleft vsplit | vertical resize 35',
+    },
+    log_level = 2,
   })
   require('venv-selector').setup {}
   require('tokyonight').setup {
