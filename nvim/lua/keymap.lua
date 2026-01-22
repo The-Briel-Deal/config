@@ -183,7 +183,7 @@ M.setup = function(opts)
     {
       key = '<leader>tr',
       callback = function()
-        neotest.run()
+        neotest.run.run()
       end,
       desc = 'Run Test',
     },
