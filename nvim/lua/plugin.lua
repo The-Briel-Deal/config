@@ -24,7 +24,9 @@ M.setup = function(opts)
     { src = 'https://github.com/nvim-neotest/neotest.git' },
     { src = 'https://github.com/nvim-neotest/neotest-python.git' },
   })
-  require('neotest').setup({
+  local neotest = require('neotest')
+  ---@diagnostic disable: missing-fields
+  neotest.setup({
     adapters = {
       require('neotest-python')({
         runner = 'pytest',
@@ -36,10 +38,27 @@ M.setup = function(opts)
     },
     log_level = 2,
   })
+  local gb_emu_path = vim.uv.fs_realpath(vim.fs.abspath('~/Code/gb_emu'))
+
+  if gb_emu_path ~= nil then
+    neotest.setup_project(gb_emu_path, {
+      adapters = {
+        require('neotest-python')({
+          runner = 'pytest',
+          pytest_discover_instances = true,
+        }),
+      },
+      summary = {
+        open = 'topleft vsplit | vertical resize 35',
+      },
+      log_level = 2,
+    })
+  end
   require('venv-selector').setup {}
   require('tokyonight').setup {
     transparent = true,
   }
+  ---@diagnostic enable: missing-fields
   require('kubectl').setup {
     lsp = { enabled = true },
     completion = { follow_cursor = false },
