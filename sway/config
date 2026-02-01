@@ -14,7 +14,7 @@ set $mod Mod4
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+q exec kitty
+bindsym $mod+q exec foot
 
 # kill focused window
 bindsym $mod+c kill
