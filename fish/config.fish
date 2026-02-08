@@ -22,6 +22,9 @@ if test $hostname = "gabrielford-macbookpro.roam.internal"
     eval "$(/opt/homebrew/bin/brew shellenv)"
 end
 
+# Set user XDG_DATA_DIR
+set -gxp --path XDG_DATA_DIRS $(realpath ~/.local/share/)
+
 # Set Editor and Theme.
 export EDITOR=nvim
 export GTK_THEME=Adwaita:dark
