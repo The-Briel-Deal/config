@@ -41,11 +41,11 @@ vim.lsp.config('lua_ls', {
   },
 })
 
-local zig_lib_path = function ()
+local zig_lib_path = function()
   local cwd = vim.fn.getcwd()
-  local start_index, _ = string.find(cwd, "Code/zig")
+  local start_index, _ = string.find(cwd, 'Code/zig')
   if start_index then
-    return cwd .. "/lib"
+    return cwd .. '/lib'
   end
   return nil
 end
@@ -55,7 +55,7 @@ vim.lsp.config('zls', {
   ---@param bufnr integer
   on_attach = function(client, bufnr)
     _ = bufnr
-    client.settings.zls["zig_lib_path"] = zig_lib_path()
+    client.settings.zls['zig_lib_path'] = zig_lib_path()
   end,
   settings = {
     zls = {
@@ -84,6 +84,7 @@ vim.lsp.enable({
   'gopls',
   'lua_ls',
   'zls',
+  'angularls',
 })
 
 require('blink.cmp').setup({
