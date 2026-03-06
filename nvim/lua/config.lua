@@ -3,6 +3,7 @@ local M = {}
 M.setup = function(_)
   vim.cmd [[colorscheme tokyonight]]
 
+  vim.go.exrc = true
   vim.go.number = true
   vim.go.relativenumber = true
   vim.go.termsync = false
