@@ -10,7 +10,7 @@ M.setup = function(opts)
     { src = 'https://github.com/kristijanhusak/vim-dadbod-ui.git' },
     { src = 'https://github.com/kristijanhusak/vim-dadbod-completion.git' },
     { src = 'https://github.com/stevearc/oil.nvim.git' },
-    { src = 'https://github.com/nvim-treesitter/nvim-treesitter.git' },
+    { src = 'https://github.com/nvim-treesitter/nvim-treesitter.git', version = 'main' },
     { src = 'https://github.com/nvim-telescope/telescope.nvim.git' },
     { src = 'https://github.com/nvim-lua/plenary.nvim.git' },
     { src = 'https://github.com/Saghen/blink.cmp.git', version = 'v1.6.0' },
