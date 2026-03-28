@@ -1,10 +1,10 @@
--- require 'nvim-treesitter.configs'.setup {
---   modules = {},
---   ensure_installed = {},
---   ignore_install = {},
---   sync_install = true,
---   auto_install = true,
---   highlight = {
---     enable = true,
---   },
--- }
+local nv_ts = require('nvim-treesitter')
+nv_ts.setup()
+nv_ts.install({
+  'c',
+  'cpp',
+  'python',
+  'lua',
+  'markdown',
+  'markdown_inline',
+})
