@@ -20,4 +20,10 @@ vim.api.nvim_create_user_command('GFTermDebug', function(args)
     ':Continue<CR>',
     { desc = 'termdebug: Continue execution until next breakpoint.' }
   )
+  vim.api.nvim_set_keymap(
+    'n',
+    '<A-k>',
+    ':Evaluate<CR>',
+    { desc = 'termdebug: Evaluate expression at cursor.' }
+  )
 end, { desc = "Wrapper around vim's built in termdebug package." })
