@@ -1,16 +1,24 @@
 local nv_ts = require('nvim-treesitter')
 nv_ts.setup()
 nv_ts.install({
+  'asm',
   'c',
   'cpp',
-  'python',
   'lua',
   'markdown',
   'markdown_inline',
+  'python',
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'c', 'cpp', 'python', 'lua', 'markdown' },
+  pattern = {
+    'asm',
+    'c',
+    'cpp',
+    'lua',
+    'markdown',
+    'python',
+  },
   callback = function()
     -- syntax highlighting, provided by Neovim
     vim.treesitter.start()
