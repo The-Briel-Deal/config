@@ -8,6 +8,8 @@ nv_ts.install({
   'markdown',
   'markdown_inline',
   'python',
+  'fish',
+  'bash',
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -18,6 +20,8 @@ vim.api.nvim_create_autocmd('FileType', {
     'lua',
     'markdown',
     'python',
+    'fish',
+    'bash',
   },
   callback = function()
     -- syntax highlighting, provided by Neovim
