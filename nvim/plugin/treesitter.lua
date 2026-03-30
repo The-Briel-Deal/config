@@ -10,6 +10,7 @@ nv_ts.install({
   'python',
   'fish',
   'bash',
+  'rust',
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -22,6 +23,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'python',
     'fish',
     'bash',
+    'rust',
   },
   callback = function()
     -- syntax highlighting, provided by Neovim
