@@ -11,6 +11,7 @@ nv_ts.install({
   'fish',
   'bash',
   'rust',
+  'meson',
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -24,6 +25,7 @@ vim.api.nvim_create_autocmd('FileType', {
     'fish',
     'bash',
     'rust',
+    'meson',
   },
   callback = function()
     -- syntax highlighting, provided by Neovim
