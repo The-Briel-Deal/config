@@ -1,6 +1,7 @@
 .gsd-keyboard.settings-ported
 /Code - OSS/
 /Code/
+/Deskflow/
 /Electron/
 /Element/
 /Epic/
@@ -47,7 +48,9 @@
 /ibus/
 /jellyfin/
 /k9s/
+/lan-mouse/
 /libvirt/
+/ly/save.txt
 /menus/
 /mgba/
 /monitors.xml
@@ -69,6 +72,7 @@
 /systemd/
 /tmux/tmux.local.conf
 /torbrowser/
+/tracy/
 /uv/
 /via-nativia/
 /virt-viewer/
@@ -91,7 +95,3 @@ knfsshare
 pavucontrol.ini
 user-dirs.dirs
 xdg-terminals.list
-/Deskflow/
-/lan-mouse/
-/tracy/
-/ly/save.txt
