@@ -3,6 +3,9 @@ exec lxqt-policykit-agent
 
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
+workspace 1 output 'ASUSTek COMPUTER INC PG27UCDM T2LMAS031352'
+workspace 2 output 'LG Electronics LG TV SSCR2 0x01010101'
+
 output "*" bg $HOME/.config/wallpapers/arch_00_3840x2160.png fill
 output "*" adaptive_sync on
 output "*" allow_tearing yes
