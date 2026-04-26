@@ -146,6 +146,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
       vim.lsp.buf.implementation({})
     end, { buffer = true, nowait = true })
 
+    set('n', 'ga', function()
+      vim.lsp.buf.code_action()
+    end, { buffer = true, nowait = true })
+
     -- Show Diagnostics
     set('n', 'gl', function()
       vim.diagnostic.open_float({})
