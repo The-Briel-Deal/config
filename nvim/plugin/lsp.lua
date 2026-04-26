@@ -80,7 +80,8 @@ vim.lsp.config('pyright', {
 vim.lsp.enable({
   'ts_ls',
   'pyright',
-  'clangd', --[['glsl_analyzer', --]]
+  'clangd',
+  'mesonlsp',
   'gopls',
   'lua_ls',
   'zls',
