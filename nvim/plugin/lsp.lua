@@ -76,16 +76,27 @@ vim.lsp.config('pyright', {
     },
   },
 })
+vim.lsp.config('harper_ls', {
+  -- Starts with '.git' because one of my work projects uses uv workspaces.
+  settings = {
+    ['harper-ls'] = {
+      linters = {
+        ToDoHyphen = false,
+      },
+    },
+  },
+})
 
 vim.lsp.enable({
-  'ts_ls',
-  'pyright',
-  'clangd',
-  'mesonlsp',
-  'gopls',
-  'lua_ls',
-  'zls',
   'angularls',
+  'clangd',
+  'gopls',
+  'harper_ls',
+  'lua_ls',
+  'mesonlsp',
+  'pyright',
+  'ts_ls',
+  'zls',
 })
 
 require('blink.cmp').setup({
