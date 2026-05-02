@@ -1,3 +1,5 @@
+APU
+CGB
 LSP
 Neodev
 Neorg
@@ -7,6 +9,7 @@ autocommand
 catppuccin
 cmp
 config
+gameboy
 keymaps
 lspconfig
 lua
