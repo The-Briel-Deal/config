@@ -130,6 +130,9 @@ M.setup = function(opts)
       'size',
       'mtime',
     },
+    keymaps = {
+        ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+    }
   }
 end
 
