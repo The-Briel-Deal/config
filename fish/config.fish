@@ -23,7 +23,9 @@ if test $hostname = "gabrielford-macbookpro.roam.internal"
 end
 
 # Set user XDG_DATA_DIR
-set -gxp --path XDG_DATA_DIRS $(realpath ~/.local/share/)
+if not contains $(realpath ~/.local/share/) $XDG_DATA_DIRS
+    set -gxp --path XDG_DATA_DIRS $(realpath ~/.local/share/)
+end
 
 # Set Editor and Theme.
 export EDITOR=nvim
