@@ -1,4 +1,4 @@
-.gsd-keyboard.settings-ported
+/.gsd-keyboard.settings-ported
 /Code - OSS/
 /Code/
 /Deskflow/
@@ -49,6 +49,7 @@
 /ibus/
 /jellyfin/
 /k9s/
+/kactivitymanagerdrc
 /lan-mouse/
 /libvirt/
 /lxqt/

@@ -17,8 +17,9 @@ x-scheme-handler/unknown=chromium.desktop
 x-scheme-handler/mailto=userapp-Thunderbird-CWE9O2.desktop
 message/rfc822=userapp-Thunderbird-CWE9O2.desktop
 x-scheme-handler/mid=userapp-Thunderbird-CWE9O2.desktop
-x-scheme-handler/discord=vesktop.desktop
+x-scheme-handler/discord=discord.desktop
 video/x-matroska=vlc.desktop
+x-scheme-handler/jetbrains=jetbrainsd.desktop
 
 [Added Associations]
 x-scheme-handler/http=firefox.desktop;

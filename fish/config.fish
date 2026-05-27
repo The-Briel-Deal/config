@@ -27,6 +27,11 @@ if not contains $(realpath ~/.local/share/) $XDG_DATA_DIRS
     set -gxp --path XDG_DATA_DIRS $(realpath ~/.local/share/)
 end
 
+# Set user PATH
+if not contains $(realpath ~/.local/bin/) $PATH
+    set -gxp --path PATH $(realpath ~/.local/bin/)
+end
+
 # Set Editor and Theme.
 export EDITOR=nvim
 export GTK_THEME=Adwaita:dark
