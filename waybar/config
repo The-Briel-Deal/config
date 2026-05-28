@@ -22,17 +22,9 @@
   "modules-right": [
     "custom/left-arrow-dark",
     "pulseaudio",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "memory",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "cpu",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "battery",
-    "custom/left-arrow-light",
-    "custom/left-arrow-dark",
     "disk",
     "custom/left-arrow-light",
     "custom/left-arrow-dark",
@@ -90,7 +82,7 @@
   },
   "cpu": {
     "interval": 5,
-    "format": "CPU {usage:2}%"
+    "format": "CPU {usage}%"
   },
   "battery": {
     "states": {
@@ -109,7 +101,7 @@
   },
   "disk": {
     "interval": 5,
-    "format": "Disk {percentage_used:2}%",
+    "format": "Disk {percentage_used}%",
     "path": "/"
   },
   "tray": {
