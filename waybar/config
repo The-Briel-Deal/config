@@ -78,11 +78,11 @@
   },
   "memory": {
     "interval": 5,
-    "format": "Mem {}%"
+    "format": "<span foreground=\"#1e2030\"></span><span foreground=\"#24273a\" background=\"#1e2030\"></span> Mem {}%"
   },
   "cpu": {
     "interval": 5,
-    "format": "CPU {usage}%"
+    "format": "<span foreground=\"#1e2030\"></span><span foreground=\"#24273a\" background=\"#1e2030\"></span> CPU {usage}%"
   },
   "battery": {
     "states": {
@@ -90,7 +90,7 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon} {capacity}%",
+    "format": "<span foreground=\"#1e2030\"></span><span foreground=\"#24273a\" background=\"#1e2030\"></span> {icon} {capacity}%",
     "format-icons": [
       "",
       "",
@@ -101,7 +101,7 @@
   },
   "disk": {
     "interval": 5,
-    "format": "Disk {percentage_used}%",
+    "format": "<span foreground=\"#1e2030\"></span><span foreground=\"#24273a\" background=\"#1e2030\"></span> Disk {percentage_used}%",
     "path": "/"
   },
   "tray": {
