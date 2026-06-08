@@ -91,6 +91,7 @@ vim.lsp.enable({
   'angularls',
   'clangd',
   'gopls',
+  'glsl_analyzer',
   'harper_ls',
   'lua_ls',
   'mesonlsp',
