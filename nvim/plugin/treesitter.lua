@@ -2,32 +2,34 @@ local nv_ts = require('nvim-treesitter')
 nv_ts.setup()
 nv_ts.install({
   'asm',
+  'bash',
   'c',
   'cpp',
+  'fish',
+  'glsl',
   'lua',
   'markdown',
   'markdown_inline',
-  'python',
-  'fish',
-  'bash',
-  'rust',
   'meson',
   'ninja',
+  'python',
+  'rust',
 })
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = {
     'asm',
+    'bash',
     'c',
     'cpp',
+    'fish',
+    'glsl',
     'lua',
     'markdown',
-    'python',
-    'fish',
-    'bash',
-    'rust',
     'meson',
     'ninja',
+    'python',
+    'rust',
   },
   callback = function()
     -- syntax highlighting, provided by Neovim
