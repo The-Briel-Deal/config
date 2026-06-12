@@ -90,11 +90,12 @@ vim.lsp.config('harper_ls', {
 vim.lsp.enable({
   'angularls',
   'clangd',
-  'gopls',
   'glsl_analyzer',
+  'gopls',
   'harper_ls',
   'lua_ls',
   'mesonlsp',
+  'neocmake',
   'pyright',
   'ts_ls',
   'zls',
