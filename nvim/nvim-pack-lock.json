@@ -9,6 +9,10 @@
       "rev": "18aeab3d63d350dcf44d64c462cc489a3412af40",
       "src": "https://github.com/stevearc/conform.nvim.git"
     },
+    "context.vim": {
+      "rev": "b779a19653e94d4a7d6e668f1d71e48de34591fa",
+      "src": "https://github.com/wellle/context.vim.git"
+    },
     "kubectl.nvim": {
       "rev": "04c15d23e6aaa80adf1ad0a5a421e40a55ea2a14",
       "src": "https://github.com/ramilito/kubectl.nvim.git",
@@ -46,6 +50,11 @@
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter.git",
       "version": "'main'"
+    },
+    "nvim-treesitter-context": {
+      "rev": "b311b30818951d01f7b4bf650521b868b3fece16",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter-context.git",
+      "version": "'master'"
     },
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
