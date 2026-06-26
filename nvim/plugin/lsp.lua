@@ -92,7 +92,9 @@ vim.lsp.enable({
   'clangd',
   'glsl_analyzer',
   'gopls',
-  'harper_ls',
+  --- Harper LSP ended up being way more annoying than I thought it would be.
+  --- I'm leaving it disabled by default for now.
+  -- 'harper_ls',
   'lua_ls',
   'mesonlsp',
   'neocmake',
