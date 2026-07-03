@@ -23,6 +23,10 @@ M.setup = function(opts)
     vim.cmd.wincmd('l')
   end)
 
+  set('n', '<leader>dq', function()
+    vim.diagnostic.setqflist()
+  end)
+
   -- Open new Daily Note.
   set('n', '<leader>nd', function()
     local template_path = '~/Notes/Templates/nvim-daily-note.md'
