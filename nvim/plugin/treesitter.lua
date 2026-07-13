@@ -7,6 +7,7 @@ nv_ts.install({
   'cpp',
   'fish',
   'glsl',
+  'javascript',
   'lua',
   'markdown',
   'markdown_inline',
@@ -14,6 +15,7 @@ nv_ts.install({
   'ninja',
   'python',
   'rust',
+  'typescript',
 })
 
 vim.api.nvim_create_autocmd('FileType', {
@@ -24,12 +26,14 @@ vim.api.nvim_create_autocmd('FileType', {
     'cpp',
     'fish',
     'glsl',
+    'javascript',
     'lua',
     'markdown',
     'meson',
     'ninja',
     'python',
     'rust',
+    'typescript',
   },
   callback = function()
     -- syntax highlighting, provided by Neovim
