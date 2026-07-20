@@ -24,6 +24,9 @@ M.setup = function(opts)
     { src = 'https://github.com/theHamsta/nvim-dap-virtual-text.git' },
     { src = 'https://github.com/tpope/vim-dadbod.git' },
     { src = 'https://github.com/tpope/vim-fugitive.git' },
+    -- An alternative to cmake-tools is https://github.com/Shatur/neovim-tasks
+    -- which I should also try out.
+    { src = 'https://github.com/Civitasv/cmake-tools.nvim.git' },
   })
   local neotest = require('neotest')
   ---@diagnostic disable: missing-fields
@@ -132,8 +135,8 @@ M.setup = function(opts)
       'mtime',
     },
     keymaps = {
-        ["~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
-    }
+      ['~'] = { 'actions.cd', opts = { scope = 'tab' }, mode = 'n' },
+    },
   }
 end
 
