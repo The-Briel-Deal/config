@@ -23,4 +23,5 @@ end
 vim.api.nvim_buf_create_user_command(0, 'SwitchSourceHeader', switch_source_header, {})
 vim.keymap.set('n', '<leader>gh', switch_source_header, { buffer = true })
 
-require('gdb').setup {}
+--- disabling this for now
+-- require('gdb').setup {}
