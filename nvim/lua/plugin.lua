@@ -138,6 +138,7 @@ M.setup = function(opts)
       ['~'] = { 'actions.cd', opts = { scope = 'tab' }, mode = 'n' },
     },
   }
+  require('cmake-tools').setup {}
 end
 
 return M
