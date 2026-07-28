@@ -16,7 +16,7 @@ set $mod Mod4
 # Remad my thinkpad's caps key to ctrl
 input "1:1:AT_Translated_Set_2_keyboard" {
    xkb_layout us
-   xkb_options caps:ctrl_modifier
+   xkb_options caps:escape
 }
 
 # Use Mouse+$mod to drag floating windows to their wanted position
