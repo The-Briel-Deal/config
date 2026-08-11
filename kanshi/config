@@ -66,6 +66,13 @@ profile laptop_screen_only {
   output "Samsung Display Corp. 0x4180 Unknown" enable
 }
 
+profile thinkpad_screen_only {
+  output "Samsung Display Corp. 0x419F Unknown" {
+    mode 2880x1800
+    scale 1.0
+  }
+}
+
 profile desktop {
   output "LG Electronics LG TV SSCR2 0x01010101" {
     mode 3840x2160
