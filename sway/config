@@ -1,5 +1,10 @@
+# Set mod key as Mod4, by default this is Super/Meta.
+set $mod Mod4
+
 exec_always pkill kanshi; exec kanshi
 exec lxqt-policykit-agent
+exec swaync
+bindsym $mod+n exec swaync-client -t -sw
 
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
@@ -10,8 +15,6 @@ workspace number 1
 output "*" bg $HOME/.config/wallpapers/arch_00_3840x2160.png fill
 output "*" adaptive_sync on
 output "*" allow_tearing yes
-# Set mod key as Mod4, by default this is Super/Meta.
-set $mod Mod4
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

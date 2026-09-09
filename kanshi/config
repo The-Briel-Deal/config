@@ -66,10 +66,17 @@ profile laptop_screen_only {
   output "Samsung Display Corp. 0x4180 Unknown" enable
 }
 
-profile thinkpad_screen_only {
+profile thinkpad_scale_2 {
   output "Samsung Display Corp. 0x419F Unknown" {
     mode 2880x1800
     scale 2.0
+  }
+}
+
+profile thinkpad_scale_1 {
+  output "Samsung Display Corp. 0x419F Unknown" {
+    mode 2880x1800
+    scale 1.0
   }
 }
 
