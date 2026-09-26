@@ -13,7 +13,9 @@
 /Valve Corporation/
 /Vector 35/
 /VirtualBox/
+/act/
 /aerc/accounts.conf
+/autostart/
 /bgb/
 /browsh/
 /btop/
@@ -28,6 +30,7 @@
 /discord/
 /enchant/
 /evolution/
+/filezilla/
 /fish/fish_variables
 /fish/functions/get_artifact_dev.fish
 /fish/functions/get_artifact_qa.fish
@@ -71,10 +74,13 @@
 /pulse/
 /pypoetry/
 /rclone/
+/remmina/
 /retroarch/
+/sunshine/
 /supertuxkart/
 /systemd/
 /tmux/tmux.local.conf
+/toolbox/
 /torbrowser/
 /tracy/
 /uv/
@@ -85,6 +91,7 @@
 /weechat/
 /wireshark/
 /yuzu/
+/zoom/
 GNOME-xdg-terminals.list
 QtProject.conf
 baloo*
@@ -99,3 +106,5 @@ knfsshare
 pavucontrol.ini
 user-dirs.dirs
 xdg-terminals.list
+zoom.conf
+zoomus.conf
