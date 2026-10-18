@@ -76,25 +76,11 @@ vim.lsp.config('pyright', {
     },
   },
 })
-vim.lsp.config('harper_ls', {
-  -- Starts with '.git' because one of my work projects uses uv workspaces.
-  settings = {
-    ['harper-ls'] = {
-      linters = {
-        ToDoHyphen = false,
-      },
-    },
-  },
-})
 
 vim.lsp.enable({
-  'angularls',
   'clangd',
   'glsl_analyzer',
   'gopls',
-  --- Harper LSP ended up being way more annoying than I thought it would be.
-  --- I'm leaving it disabled by default for now.
-  -- 'harper_ls',
   'lua_ls',
   'mesonlsp',
   'neocmake',
