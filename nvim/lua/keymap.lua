@@ -202,6 +202,12 @@ M.setup = function(opts)
   for _, keymap in ipairs(neotest_keymap) do
     set('n', keymap.key, keymap.callback, { desc = keymap.desc })
   end
+  set(
+    'n',
+    '<leader>nh', -- nh = No Highlight
+    vim.cmd.nohlsearch,
+    { desc = 'Clear highlights from search matches' }
+  )
 end
 
 return M
