@@ -10,6 +10,7 @@ M.setup = function(_)
   vim.go.tabstop = 2
   vim.go.shiftwidth = 2
   vim.go.expandtab = true
+  vim.go.foldenable = false
 
   vim.g.netrw_banner = false
   vim.g.c_syntax_for_h = 1
