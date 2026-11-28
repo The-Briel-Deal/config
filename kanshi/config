@@ -65,7 +65,7 @@ profile asahi_work_monitor {
 profile thinkpad {
   output "Samsung Display Corp. 0x419F Unknown" {
     mode 2880x1800
-    scale 1.0
+    scale 1.5
   }
 }
 
